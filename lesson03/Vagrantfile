@@ -2,8 +2,11 @@
 # vi: set ft=ruby :
 
 Vagrant.configure("2") do |config|
-  N = 3 # max number of worker nodes
-  Ver = '1.21.1' # Kubernetes Version to install
+  number_of_node = 3 # max number of worker nodes
+  kubernetes_version = '1.20.2' # Kubernetes Version to install
+  docker_version = '19.03.14-3.el7' # Docker Version to install
+  containerd_version = '1.3.9-3.1.el7' # Containerd Version to install. it deps on docker
+
   #=============#
   # Master Node #
   #=============#
@@ -13,15 +16,15 @@ Vagrant.configure("2") do |config|
       cfg.vm.provider "virtualbox" do |vb|
         vb.name = "master-node (sysnet4admin)"
         vb.cpus = 2
-        vb.memory = 3072
+        vb.memory = 1746
         vb.customize ["modifyvm", :id, "--groups", "/sysnet4admin-k8s"]
       end
       cfg.vm.host_name = "master-node"
       cfg.vm.network "private_network", ip: "192.168.4.10"
       cfg.vm.network "forwarded_port", guest: 22, host: 60010, auto_correct: true, id: "ssh"
       cfg.vm.synced_folder "../data", "/vagrant", disabled: true 
-      cfg.vm.provision "shell", path: "configuration.sh", args: N
-      cfg.vm.provision "shell", path: "install_pkg.sh", args: [ Ver, "Main" ]
+      cfg.vm.provision "shell", path: "configuration.sh", args: number_of_node
+      cfg.vm.provision "shell", path: "install_package.sh", args: [kubernetes_version, docker_version, containerd_version]
       cfg.vm.provision "shell", path: "master_node_init.sh"
     end
 
@@ -29,21 +32,21 @@ Vagrant.configure("2") do |config|
   # Worker Nodes #
   #==============#
 
-  (1..N).each do |i|
+  (1..number_of_node).each do |i|
     config.vm.define "worker-node-0#{i}" do |cfg|
       cfg.vm.box = "sysnet4admin/CentOS-k8s"
       cfg.vm.provider "virtualbox" do |vb|
         vb.name = "worker-node-0#{i} (sysnet4admin)"
         vb.cpus = 1
-        vb.memory = 2560
+        vb.memory = 1024
         vb.customize ["modifyvm", :id, "--groups", "/sysnet4admin-k8s"]
       end
       cfg.vm.host_name = "worker-node-0#{1}"
       cfg.vm.network "private_network", ip: "192.168.4.10#{i}"
       cfg.vm.network "forwarded_port", guest: 22, host: "6010#{i}", auto_correct: true, id: "ssh"
       cfg.vm.synced_folder "../data", "/vagrant", disabled: true
-      cfg.vm.provision "shell", path: "configuration.sh", args: N
-      cfg.vm.provision "shell", path: "install_pkg.sh", args: Ver
+      cfg.vm.provision "shell", path: "configuration.sh", args: number_of_node
+      cfg.vm.provision "shell", path: "install_package.sh", args: [kubernetes_version, docker_version, containerd_version]
       cfg.vm.provision "shell", path: "worker_node_join.sh"
     end
   end

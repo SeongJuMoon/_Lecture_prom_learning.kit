@@ -41,7 +41,7 @@ Vagrant.configure("2") do |config|
         vb.memory = 1024
         vb.customize ["modifyvm", :id, "--groups", "/sysnet4admin-k8s"]
       end
-      cfg.vm.host_name = "worker-node-0#{1}"
+      cfg.vm.host_name = "worker-node-0#{i}"
       cfg.vm.network "private_network", ip: "192.168.4.10#{i}"
       cfg.vm.network "forwarded_port", guest: 22, host: "6010#{i}", auto_correct: true, id: "ssh"
       cfg.vm.synced_folder "../data", "/vagrant", disabled: true

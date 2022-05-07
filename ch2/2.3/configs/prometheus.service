@@ -1,0 +1,16 @@
+[Unit]
+Description=The Prometheus monitoring system and time series database.
+Documentation=https://prometheus.io
+After=network.target
+
+[Service]
+User=root
+LimitNOFILE=65536
+ExecStart=/usr/bin/prometheus \
+    --config.file=/etc/prometheus/prometheus.yml \
+    --storage.tsdb.path=/var/lib/prometheus/data
+ExecReload=/bin/kill -HUP $MAINPID
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfSessionData xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <SessionData SessionId="prometheus/server" SessionName="prometheus" ImageKey="computer" Host="127.0.0.1" Port="60010" Proto="SSH" PuttySession="Default Settings" Username="root" ExtraArgs="-pw vagrant" SPSLFileName="" RemotePath="" LocalPath="" />
+  <SessionData SessionId="prometheus/node-01" SessionName="node-01" ImageKey="computer" Host="127.0.0.1" Port="60101" Proto="SSH" PuttySession="Default Settings" Username="root" ExtraArgs="-pw vagrant" SPSLFileName="" RemotePath="" LocalPath="" />
+  <SessionData SessionId="prometheus/node-02" SessionName="node-02" ImageKey="computer" Host="127.0.0.1" Port="60102" Proto="SSH" PuttySession="Default Settings" Username="root" ExtraArgs="-pw vagrant" SPSLFileName="" RemotePath="" LocalPath="" />
+</ArrayOfSessionData>

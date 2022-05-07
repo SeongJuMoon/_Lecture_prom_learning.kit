@@ -1,8 +1,10 @@
   # =============== #
   # prometheus Node #
   # =============== #
+
+number_of_node = 2 # max number of node-exporters
+
 Vagrant.configure("2") do |config|
-  number_of_node = 2 # max number of node-exporters
     config.vm.define "prometheus-server" do |cfg|
       cfg.vm.box = "sysnet4admin/CentOS-k8s"
       cfg.vm.provider "virtualbox" do |vb|
@@ -19,9 +21,9 @@ Vagrant.configure("2") do |config|
       cfg.vm.provision "shell", path: "get_code_from_git.sh"
     end
 
-  #==============#
-  # Node Exporter#
-  #==============#
+  #===============#
+  # Node Exporter #
+  #===============#
 
   (1..number_of_node).each do |i|
     config.vm.define "node-0#{i}" do |cfg|

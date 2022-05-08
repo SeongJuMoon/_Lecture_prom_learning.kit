@@ -1,45 +1,60 @@
-  # =============== #
-  # prometheus Node #
-  # =============== #
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
 
-number_of_node = 2 # max number of node-exporters
+## configuration variables ##
+# max number of worker nodes
+N = 3
+# each of components to install 
+k8s_V = '1.22.0'           # Kubernetes 
+docker_V = '20.10.8-3.el7' # Docker  
+ctrd_V = '1.4.9-3.1.el7'   # Containerd 
+## /configuration variables ##
 
 Vagrant.configure("2") do |config|
-    config.vm.define "prometheus-server" do |cfg|
+  
+  #=============#
+  # Master Node #
+  #=============#
+
+    config.vm.define "m-k8s-#{k8s_V[0..2]}" do |cfg|
       cfg.vm.box = "sysnet4admin/CentOS-k8s"
       cfg.vm.provider "virtualbox" do |vb|
-        vb.name = "prometheus-server"
-        vb.cpus = 1
-        vb.memory = 1746
-        vb.customize ["modifyvm", :id, "--groups", "/prometheus"]
+        vb.name = "m-k8s-#{k8s_V[0..2]}(github_SysNet4Admin)"
+        vb.cpus = 2
+        vb.memory = 2048
+        vb.customize ["modifyvm", :id, "--groups", "/k8s-SgMST-#{k8s_V[0..2]}(github_SysNet4Admin)"]
       end
-      cfg.vm.host_name = "prometheus-server"
-      cfg.vm.network "private_network", ip: "192.168.3.10"
+      cfg.vm.host_name = "m-k8s"
+      cfg.vm.network "private_network", ip: "192.168.1.10"
       cfg.vm.network "forwarded_port", guest: 22, host: 60010, auto_correct: true, id: "ssh"
       cfg.vm.synced_folder "../data", "/vagrant", disabled: true 
-      cfg.vm.provision "shell", path: "install_package.sh"
-      cfg.vm.provision "shell", path: "get_code_from_git.sh"
+      cfg.vm.provision "shell", path: "k8s_env_build.sh", args: N
+      cfg.vm.provision "shell", path: "k8s_pkg_cfg.sh", args: [ k8s_V, docker_V, ctrd_V ]
+      cfg.vm.provision "shell", path: "master_node.sh"
+      cfg.vm.provision "shell", path: "provisionning.sh"
     end
 
-  #===============#
-  # Node Exporter #
-  #===============#
+  #==============#
+  # Worker Nodes #
+  #==============#
 
-  (1..number_of_node).each do |i|
-    config.vm.define "node-0#{i}" do |cfg|
+  (1..N).each do |i|
+    config.vm.define "w#{i}-k8s-#{k8s_V[0..2]}" do |cfg|
       cfg.vm.box = "sysnet4admin/CentOS-k8s"
       cfg.vm.provider "virtualbox" do |vb|
-        vb.name = "node-0#{i}"
+        vb.name = "w#{i}-k8s-#{k8s_V[0..2]}(github_SysNet4Admin)"
         vb.cpus = 1
-        vb.memory = 1024
-        vb.customize ["modifyvm", :id, "--groups", "/prometheus"]
+        vb.memory = 1536
+        vb.customize ["modifyvm", :id, "--groups", "/k8s-SgMST-#{k8s_V[0..3]}(github_SysNet4Admin)"]
       end
-      cfg.vm.host_name = "node-0#{i}"
-      cfg.vm.network "private_network", ip: "192.168.3.10#{i}"
+      cfg.vm.host_name = "w#{i}-k8s"
+      cfg.vm.network "private_network", ip: "192.168.1.10#{i}"
       cfg.vm.network "forwarded_port", guest: 22, host: "6010#{i}", auto_correct: true, id: "ssh"
       cfg.vm.synced_folder "../data", "/vagrant", disabled: true
-      cfg.vm.provision "shell", path: "install_package.sh"
-      cfg.vm.provision "shell", path: "get_code_from_git.sh"
+      cfg.vm.provision "shell", path: "k8s_env_build.sh", args: N
+      cfg.vm.provision "shell", path: "k8s_pkg_cfg.sh", args: [ k8s_V, docker_V, ctrd_V ]
+      cfg.vm.provision "shell", path: "work_nodes.sh"
     end
   end
+
 end

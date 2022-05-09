@@ -31,11 +31,11 @@ git clone https://github.com/SeongJuMoon/_Lecture_prometheus_learning.kit.git
 mv /home/vagrant/_Lecture_prometheus_learning.kit $HOME
 find $HOME/_Lecture_prometheus_learning.kit -regex ".*\.\(sh\)" -exec chmod 700 {} \;
 
-# make rerepo-k8s-learning.kit and put permission
-# cat <<EOF > /usr/local/bin/rerepo-k8s-learning.kit
-# #!/usr/bin/env bash
-# rm -rf $HOME/_Lecture_prometheus_learning.kit 
-# git clone https://github.com/sysnet4admin/_Lecture_prometheus_learning.kit.git $HOME/_Lecture_prometheus_learning.kit
-# find $HOME/_Lecture_prometheus_learning.kit -regex ".*\.\(sh\)" -exec chmod 700 {} \;
-# EOF
-# chmod 700 /usr/local/bin/rerepo-k8s-learning.kit
+# make rerepo-prometheus_learning.kit and put permission
+cat <<EOF > /usr/local/bin/rerepo-prometheus_learning.kit
+#!/usr/bin/env bash
+rm -rf $HOME/_Lecture_prometheus_learning.kit 
+git clone https://github.com/seongjumoon/_Lecture_prometheus_learning.kit.git $HOME/_Lecture_prometheus_learning.kit
+find $HOME/_Lecture_prometheus_learning.kit -regex ".*\.\(sh\)" -exec chmod 700 {} \;
+EOF
+chmod 700 /usr/local/bin/rerepo-prometheus_learning.kit

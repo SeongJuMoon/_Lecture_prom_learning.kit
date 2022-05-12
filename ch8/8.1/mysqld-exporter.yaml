@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:  
+  labels:
+    app.kubernetes.io/component: exporter
+    app.kubernetes.io/name: mysqld-exporter
+    app.kubernetes.io/part-of: prometheus-stack
+    app.kubernetes.io/version: 0.14.0
+  name: mysqld-exporter
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/component: exporter
+      app.kubernetes.io/name: mysqld-exporter
+      app.kubernetes.io/part-of: prometheus-stack
+      app.kubernetes.io/version: 0.14.0
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/component: exporter
+        app.kubernetes.io/name: mysqld-exporter
+        app.kubernetes.io/part-of: prometheus-stack
+        app.kubernetes.io/version: 0.14.0
+    spec:
+      containers:
+      - image: prom/mysqld-exporter:v0.14.0
+        name: mysqld-exporter
+        env:
+        - name: DATA_SOURCE_NAME
+          value: "exporter:1234@mysql.default.svc.cluster.local"
+        resources:
+          limits:
+            memory: 128Mi
+          requests:
+            memory: 128Mi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app.kubernetes.io/component: exporter
+    app.kubernetes.io/name: mysqld-exporter
+    app.kubernetes.io/part-of: prometheus-stack
+    app.kubernetes.io/version: 0.14.0
+spec:
+  type: ClusterIP
+  ports:
+  - name: metrics
+    port: 9104
+    targetPort: 9104

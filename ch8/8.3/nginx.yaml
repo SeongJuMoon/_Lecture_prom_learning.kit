@@ -1,0 +1,115 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  labels:
+    app.kubernetes.io/component: nginx
+    app.kubernetes.io/name: nginx
+    app.kubernetes.io/instance: nginx
+    app.kubernetes.io/part-of: nginx
+    app.kubernetes.io/version: 1.21.0
+  name: site-config
+data:
+  site.conf.template: |
+      server {
+        charset utf-8;
+        listen ${PORT} ;
+        location / {
+          add_header Content-Type text/html;
+
+          access_log off;
+          return 200 '<html><body><h1>Hello World!</h1></body></html>';
+        }
+        location /stub_status {
+          stub_status on;
+        }
+      }
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app.kubernetes.io/component: nginx
+    app.kubernetes.io/name: nginx
+    app.kubernetes.io/instance: nginx
+    app.kubernetes.io/part-of: nginx
+    app.kubernetes.io/version: 1.21.0
+  name: nginx
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/component: nginx
+      app.kubernetes.io/name: nginx
+      app.kubernetes.io/instance: nginx
+      app.kubernetes.io/part-of: nginx
+      app.kubernetes.io/version: 1.21.0
+  template:
+    metadata:
+      annotations:
+        kubectl.kubernetes.io/default-container: nginx
+      labels:
+        app.kubernetes.io/component: nginx
+        app.kubernetes.io/name: nginx
+        app.kubernetes.io/instance: nginx
+        app.kubernetes.io/part-of: nginx
+        app.kubernetes.io/version: 1.21.0
+    spec:
+      containers:
+      - image: nginx:1.21
+        name: nginx
+        resources:
+          requests:
+            memory: 80Mi
+          limits:
+            memory: 80Mi
+        volumeMounts:
+        - name: site-vol
+          mountPath: /etc/nginx/templates
+        env:
+        - name: HOST_IP
+          valueFrom:
+            fieldRef:
+              fieldPath: status.hostIP
+        - name: PORT
+          value: '8080'
+      - image: nginx/nginx-prometheus-exporter:0.10.0
+        name: exporter
+        ports:
+        - containerPort: 9113
+        args:
+        - -nginx.scrape-uri=http://localhost:8080/stub_status
+      volumes:
+      - name: site-vol
+        configMap:
+          name: site-config
+          items:
+          - key: site.conf.template
+            path: site.conf.template
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app.kubernetes.io/component: nginx
+    app.kubernetes.io/name: nginx
+    app.kubernetes.io/instance: nginx
+    app.kubernetes.io/part-of: nginx
+    app.kubernetes.io/version: 1.21.0
+  name: nginx
+spec:
+  type: LoadBalancer
+  ports:
+  - name: web
+    port: 80
+    targetPort: 8080
+  - name: metrics
+    port: 9113
+    targetPort: 9113
+  selector:
+    matchLabels:
+      app.kubernetes.io/component: nginx
+      app.kubernetes.io/name: nginx
+      app.kubernetes.io/instance: nginx
+      app.kubernetes.io/part-of: nginx
+      app.kubernetes.io/version: 1.21.0

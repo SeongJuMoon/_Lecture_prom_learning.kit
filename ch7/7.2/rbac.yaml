@@ -1,0 +1,57 @@
+apiVersion: v1
+automountServiceAccountToken: false
+kind: ServiceAccount
+metadata:
+  labels:
+    app.kubernetes.io/name: prometheus
+    app.kubernetes.io/component: prometheus
+    app.kubernetes.io/instance: handsonlab
+    app.kubernetes.io/part-of: prometheus-stack
+    app.kubernetes.io/version: 2.35.0
+  name: prometheus-handsonlab
+  namespace: monitoring
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: prometheus-handsonlab
+rules:
+- apiGroups: [""]
+  resources:
+  - nodes
+  - nodes/metrics
+  - services
+  - endpoints
+  - pods
+  verbs: ["get", "list", "watch"]
+- apiGroups: [""]
+  resources:
+  - configmaps
+  verbs: ["get"]
+- apiGroups:
+  - networking.k8s.io
+  resources:
+  - ingresses
+  verbs: ["get", "list", "watch"]
+- nonResourceURLs: ["/metrics"]
+  verbs: ["get"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  labels:
+    app.kubernetes.io/name: prometheus
+    app.kubernetes.io/component: prometheus
+    app.kubernetes.io/instance: handsonlab
+    app.kubernetes.io/part-of: prometheus-stack
+    app.kubernetes.io/version: 2.35.0
+  name: prometheus-handsonlab
+  namespace: monitoring
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: prometheus-handsonlab
+subjects:
+- kind: ServiceAccount
+  name: prometheus-handsonlab
+  namespace: monitoring

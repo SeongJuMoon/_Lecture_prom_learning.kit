@@ -1,0 +1,22 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PodMonitor
+metadata:
+  labels:
+    monitoring: true
+    app.kubernetes.io/instance: metallb
+    app.kubernetes.io/name: metallb
+    app.kubernetes.io/version: v0.10.2
+  name: metallb
+  namespace: monitoring
+spec:
+  namespaceSelector:
+    any: true
+  podMetricsEndpoints:
+  - interval: 30s
+    port: metrics
+  selector:
+    matchLabels:
+      app.kubernetes.io/instance: metallb
+      app.kubernetes.io/instance: metallb
+      app.kubernetes.io/name: metallb
+      app.kubernetes.io/version: v0.10.2

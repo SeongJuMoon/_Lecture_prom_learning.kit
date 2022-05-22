@@ -1,0 +1,23 @@
+
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  labels:
+    app.kubernetes.io/component: controller
+    app.kubernetes.io/name: prometheus-operator
+    app.kubernetes.io/part-of: kube-prometheus
+    app.kubernetes.io/version: 0.56.1
+    prometheus: k8s
+    role: alert-rules
+  name: nginx
+  namespace: monitoring
+spec:
+  groups:
+  - name: nginx
+    rules:
+    - alert: nginx is non-ha.
+      annotations:
+        description: ${{$labels.namespace}} 에 배포된 nginx가 HA하지 않음.
+        summary: Error while performing list
+      expr: |
+        sum(up{job="nginx"}) <= 1 

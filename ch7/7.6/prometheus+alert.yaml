@@ -1,0 +1,61 @@
+apiVersion: monitoring.coreos.com/v1
+kind: Prometheus
+metadata:
+  labels:
+    app.kubernetes.io/name: prometheus
+    app.kubernetes.io/component: prometheus
+    app.kubernetes.io/instance: handsonlab
+    app.kubernetes.io/part-of: prometheus-stack
+    app.kubernetes.io/version: 2.35.0
+  name: prometheus
+  namespace: monitoring
+spec:
+  alerting:
+    alertmanagers:
+    - apiVersion: v2
+      namespace: monitoring
+      name: alertmanager
+      port: web
+  image: quay.io/prometheus/prometheus:v2.35.0
+  storage:
+    volumeClaimTemplate:
+      metadata:
+        name: prometheus-server
+      spec:
+        accessModes:
+        - ReadWriteOnce
+        resources:
+          requests:
+            storage: 8Gi
+        storageClassName: managed-nfs-storage
+  nodeSelector:
+    kubernetes.io/os: linux
+  podMetadata:
+    labels:
+      app.kubernetes.io/name: prometheus
+      app.kubernetes.io/component: prometheus
+      app.kubernetes.io/instance: handsonlab
+      app.kubernetes.io/part-of: prometheus-stack
+      app.kubernetes.io/version: 2.35.0
+  podMonitorSelector:
+    matchExpressions:
+      - key: app
+        operator: Exists
+  serviceMonitorSelector:
+    matchExpressions:
+      - key: app
+        operator: Exists
+  probeSelector:
+    matchExpressions:
+      - key: app
+        operator: Exists
+  replicas: 1
+  resources:
+    requests:
+      memory: 400Mi
+  securityContext:
+    fsGroup: 2000
+    runAsNonRoot: true
+    runAsUser: 1000
+  serviceAccountName: prometheus-handsonlab
+  version: 2.35.0

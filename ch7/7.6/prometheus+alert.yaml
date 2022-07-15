@@ -39,15 +39,15 @@ spec:
       app.kubernetes.io/version: 2.35.0
   podMonitorSelector:
     matchExpressions:
-      - key: app
+      - key: monitoring
         operator: Exists
   serviceMonitorSelector:
     matchExpressions:
-      - key: app
+      - key: monitoring
         operator: Exists
   probeSelector:
     matchExpressions:
-      - key: app
+      - key: monitoring
         operator: Exists
   replicas: 1
   resources:

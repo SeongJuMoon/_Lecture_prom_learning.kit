@@ -49,6 +49,9 @@ spec:
     matchExpressions:
       - key: monitoring
         operator: Exists
+  ruleSelector:
+    matchLabels:
+      role: alert-rules
   replicas: 1
   resources:
     requests:

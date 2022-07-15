@@ -17,6 +17,5 @@ spec:
   selector:
     matchLabels:
       app.kubernetes.io/instance: metallb
-      app.kubernetes.io/instance: metallb
       app.kubernetes.io/name: metallb
       app.kubernetes.io/version: v0.10.2

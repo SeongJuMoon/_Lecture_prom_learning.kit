@@ -32,10 +32,10 @@ spec:
           limits:
             memory: 110Mi
         ports:
-        - containerPorts: 3306
+        - containerPort: 3306
         env:
         - name: MYSQL_ROOT_PASSWORD
-          value: 1234
+          value: "1234"
 ---
 apiVersion: v1
 kind: Service

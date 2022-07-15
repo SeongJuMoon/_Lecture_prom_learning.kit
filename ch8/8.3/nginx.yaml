@@ -107,9 +107,8 @@ spec:
     port: 9113
     targetPort: 9113
   selector:
-    matchLabels:
-      app.kubernetes.io/component: nginx
-      app.kubernetes.io/name: nginx
-      app.kubernetes.io/instance: nginx
-      app.kubernetes.io/part-of: nginx
-      app.kubernetes.io/version: 1.21.0
+    app.kubernetes.io/component: nginx
+    app.kubernetes.io/name: nginx
+    app.kubernetes.io/instance: nginx
+    app.kubernetes.io/part-of: nginx
+    app.kubernetes.io/version: 1.21.0

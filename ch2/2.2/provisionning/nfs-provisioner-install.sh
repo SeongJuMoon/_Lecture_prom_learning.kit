@@ -7,3 +7,6 @@ helm install nfs-provisioner edu/nfs-subdir-external-provisioner \
     --set nfs.server=192.168.1.10 \
     --set nfs.path=/nfs_shared/dynamic-vol \
     --set storageClass.name=managed-nfs-storage
+
+# default storage class setup.
+kubectl annotate storageclass managed-nfs-storage storageclass.kubernetes.io/is-default-class=true

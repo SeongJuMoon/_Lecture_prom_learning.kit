@@ -12,7 +12,7 @@ metadata:
 spec:
   ports:
   - name: web
-    port: 9090
+    port: 80
     targetPort: web
   - name: reloader-web
     port: 8080
@@ -20,7 +20,7 @@ spec:
   selector:
     app.kubernetes.io/name: prometheus
     app.kubernetes.io/component: prometheus
-    app.kubernetes.io/instance: handsonlab
+    app.kubernetes.io/instance: prometheus
     app.kubernetes.io/part-of: prometheus-stack
     app.kubernetes.io/version: 2.35.0
   type: LoadBalancer

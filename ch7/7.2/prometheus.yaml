@@ -30,7 +30,7 @@ spec:
     labels:
       app.kubernetes.io/name: prometheus
       app.kubernetes.io/component: prometheus
-      app.kubernetes.io/instance: handsonlab
+      app.kubernetes.io/instance: prometheus
       app.kubernetes.io/part-of: prometheus-stack
       app.kubernetes.io/version: 2.35.0
   replicas: 1

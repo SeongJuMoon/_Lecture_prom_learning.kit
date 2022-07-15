@@ -21,7 +21,7 @@ spec:
       app.kubernetes.io/instance: alertmanager
       app.kubernetes.io/part-of: prometheus-stack
       app.kubernetes.io/version: 0.24.0
-  replicas: 3
+  replicas: 1
   resources:
     limits:
       cpu: 100m

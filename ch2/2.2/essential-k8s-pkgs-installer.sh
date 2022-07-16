@@ -20,5 +20,8 @@ sh $SCRIPTSDIR/nfs-exporter.sh dynamic-vol
 kubectl apply -f  $SCRIPTSDIR/nfs-provisioner.yaml
 
 # storageclass installer & set default storageclass
-sh $SCRIPTSDIR/storageclass-intaller.sh
+kubectl apply -f $SCRIPTSDIR/storageclass.yaml 
+
+# setup default storage class due to no mention later on
+kubectl annotate storageclass managed-nfs-storage storageclass.kubernetes.io/is-default-class=true
 

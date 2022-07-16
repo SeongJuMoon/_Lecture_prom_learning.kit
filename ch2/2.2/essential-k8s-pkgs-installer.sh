@@ -15,5 +15,9 @@ sh $SCRIPTSDIR/metrics-server-0.6.1.sh
 # NFS dir configuration
 sh $SCRIPTSDIR/nfs-exporter.sh dynamic-vol
 
-# nfs-provsioner installer & set default storageclass
-source $SCRIPTSDIR/nfs-provisioner-installer-w-sc.sh
+# nfs-provsioner installer 
+sh $SCRIPTSDIR/nfs-provisioner-installer.sh
+
+# storageclass installer & set default storageclass
+sh $SCRIPTSDIR/storageclass-intaller.sh
+

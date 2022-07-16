@@ -9,8 +9,6 @@ metadata:
     app.kubernetes.io/version: 0.14.0
   name: mysql
 spec:
-  selector:
-    app: mysql
   endpoints:
   - interval: 30s
     port: metrics

@@ -31,13 +31,14 @@ spec:
           value: "exporter:1234@mysql.default.svc.cluster.local"
         resources:
           limits:
-            memory: 128Mi
+            memory: 256Mi
           requests:
-            memory: 128Mi
+            memory: 256Mi
 ---
 apiVersion: v1
 kind: Service
 metadata:
+  name: mysqld-exporter
   labels:
     app.kubernetes.io/component: exporter
     app.kubernetes.io/name: mysqld-exporter

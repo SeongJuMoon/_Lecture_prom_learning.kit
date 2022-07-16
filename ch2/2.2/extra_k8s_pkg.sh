@@ -12,6 +12,9 @@ source $SCRIPTSDIR/helm-repo-add.sh
 # metallb v0.13.3
 source $SCRIPTSDIR/metallb-installer-0.13.3-w-CRD.sh
 
+# metrics server v0.6.1
+source $SCRIPTSDIR/metrics-server-0.6.1.sh
+
 # NFS dir configuration
 source $SCRIPTSDIR/nfs-exporter.sh dynamic-vol
 

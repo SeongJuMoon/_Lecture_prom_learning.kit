@@ -25,4 +25,4 @@ kubectl apply -f $SCRIPTSDIR/storageclass.yaml
 kubectl annotate storageclass managed-nfs-storage storageclass.kubernetes.io/is-default-class=true
 
 # config metallb ip range and it cannot deploy with metallb due to CRD cannot create yet 
-kubectl apply -f $SCRIPTSDIR/metallb-iprange.yaml
+(sleep 300 && kubectl apply -f $SCRIPTSDIR/metallb-iprange.yaml)&

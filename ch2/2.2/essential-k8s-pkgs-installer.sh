@@ -10,7 +10,7 @@ sh $SCRIPTSDIR/get-helm-3.9.1.sh
 kubectl apply -f $SCRIPTSDIR/metallb-native-v0.13.3.yaml
 kubectl apply -f $SCRIPTSDIR/metallb-iprange.yaml
 
-# metrics server v0.6.1
+# metrics server v0.6.1 - insecure mode 
 kubectl apply -f  $SCRIPTSDIR/metrics-server-0.6.1.yaml
 
 # NFS dir configuration

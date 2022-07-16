@@ -28,9 +28,9 @@ spec:
         name: mysql
         resources:
           requests:
-            memory: 110Mi
+            memory: 500Mi
           limits:
-            memory: 110Mi
+            memory: 500Mi
         ports:
         - containerPort: 3306
         env:

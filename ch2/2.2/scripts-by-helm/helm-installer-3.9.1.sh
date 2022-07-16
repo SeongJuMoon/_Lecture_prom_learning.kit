@@ -22,7 +22,7 @@
 : ${DEBUG:="false"}
 : ${VERIFY_CHECKSUM:="true"}
 : ${VERIFY_SIGNATURES:="false"}
-: ${HELM_INSTALL_DIR:="/usr/local/bin"}
+: ${HELM_INSTALL_DIR:="/usr/bin"}
 : ${GPG_PUBRING:="pubring.kbx"}
 # it custom adhoc use version fix, special thanks for sysnet4admin i got a inspired
 : ${DESIRED_VERSION:="v3.9.1"}

@@ -1,2 +1,0 @@
-k apply -f redis.yaml
-k apply -f redis-pod

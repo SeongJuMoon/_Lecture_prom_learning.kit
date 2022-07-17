@@ -3,12 +3,11 @@ kind: ServiceMonitor
 metadata:
   labels:
     monitoring: "true"
-    app.kubernetes.io/component: nginx
-    app.kubernetes.io/name: nginx
-    app.kubernetes.io/instance: nginx
-    app.kubernetes.io/part-of: nginx
-    app.kubernetes.io/version: 1.21.0
-  name: nginx
+    app.kubernetes.io/component: redis
+    app.kubernetes.io/name: redis
+    app.kubernetes.io/part-of: redis
+    app.kubernetes.io/version: 6.0
+  name: redis
   namespace: monitoring
 spec:
   endpoints:
@@ -16,8 +15,7 @@ spec:
     port: metrics
   selector:
     matchLabels:
-      app.kubernetes.io/component: nginx
-      app.kubernetes.io/name: nginx
-      app.kubernetes.io/instance: nginx
-      app.kubernetes.io/part-of: nginx
-      app.kubernetes.io/version: 1.21.0
+      app.kubernetes.io/component: redis
+      app.kubernetes.io/name: redis
+      app.kubernetes.io/part-of: redis
+      app.kubernetes.io/version: 6.0

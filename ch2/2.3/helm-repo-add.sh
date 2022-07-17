@@ -5,3 +5,5 @@ helm repo update
 
 # helm auto-completion 
 helm completion bash >/etc/bash_completion.d/helm
+# reload bash shell
+exec bash 

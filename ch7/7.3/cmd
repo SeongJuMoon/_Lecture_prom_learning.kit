@@ -1,4 +1,3 @@
 k apply -f rbac.yaml
-k apply -f daemonset.yaml
-k apply -f service.yaml
-k apply -f serviceMonitor.yaml
+k apply -f prometheus.yaml
+k apply -f loadbalancer.yaml

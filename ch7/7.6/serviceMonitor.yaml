@@ -2,22 +2,36 @@ apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
   labels:
-    app.kubernetes.io/component: alert-router
-    app.kubernetes.io/instance: alertmanager
-    app.kubernetes.io/name: alertmanager
+    monitoring: "true"
+    app.kubernetes.io/component: exporter
+    app.kubernetes.io/name: kube-state-metrics
     app.kubernetes.io/part-of: prometheus-stack
-    app.kubernetes.io/version: 0.24.0
-  name: alertmanager
+    app.kubernetes.io/version: 2.4.2
+  name: kube-state-metrics
   namespace: monitoring
 spec:
   endpoints:
-  - interval: 30s
-    port: web
-  - interval: 30s
-    port: reloader-web
+  - bearerTokenFile: /var/run/secrets/kubernetes.io/serviceaccount/token
+    honorLabels: true
+    interval: 30s
+    port: https-main
+    relabelings:
+    - action: labeldrop
+      regex: (pod|service|endpoint|namespace)
+    scheme: https
+    scrapeTimeout: 30s
+    tlsConfig:
+      insecureSkipVerify: true
+  - bearerTokenFile: /var/run/secrets/kubernetes.io/serviceaccount/token
+    interval: 30s
+    port: https-self
+    scheme: https
+    tlsConfig:
+      insecureSkipVerify: true
+  jobLabel: app.kubernetes.io/name
   selector:
     matchLabels:
-      app.kubernetes.io/component: alert-router
-      app.kubernetes.io/instance: alertmanager
-      app.kubernetes.io/name: alertmanager
-      app.kubernetes.io/part-of: kube-prometheus
+      app.kubernetes.io/component: exporter
+      app.kubernetes.io/name: kube-state-metrics
+      app.kubernetes.io/part-of: prometheus-stack
+      app.kubernetes.io/version: 2.4.2

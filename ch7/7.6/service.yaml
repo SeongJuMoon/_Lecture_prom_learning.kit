@@ -2,26 +2,23 @@ apiVersion: v1
 kind: Service
 metadata:
   labels:
-    app.kubernetes.io/component: alert-router
-    app.kubernetes.io/instance: alertmanager
-    app.kubernetes.io/name: alertmanager
+    app.kubernetes.io/component: exporter
+    app.kubernetes.io/name: kube-state-metrics
     app.kubernetes.io/part-of: prometheus-stack
-    app.kubernetes.io/version: 0.24.0
-  name: alertmanager
+    app.kubernetes.io/version: 2.4.2
+  name: kube-state-metrics
   namespace: monitoring
 spec:
-  type: LoadBalancer
+  clusterIP: None
   ports:
-  - name: web
-    port: 9093
-    targetPort: web
-  - name: reloader-web
-    port: 8080
-    targetPort: reloader-web
+  - name: https-main
+    port: 8443
+    targetPort: https-main
+  - name: https-self
+    port: 9443
+    targetPort: https-self
   selector:
-    app.kubernetes.io/component: alert-router
-    app.kubernetes.io/name: alertmanager
-    app.kubernetes.io/instance: alertmanager
-    app.kubernetes.io/part-of: prometheus-stack
-    app.kubernetes.io/version: 0.24.0
-  sessionAffinity: ClientIP
+      app.kubernetes.io/component: exporter
+      app.kubernetes.io/name: kube-state-metrics
+      app.kubernetes.io/part-of: prometheus-stack
+      app.kubernetes.io/version: 2.4.2

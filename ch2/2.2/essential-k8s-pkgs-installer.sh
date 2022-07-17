@@ -13,7 +13,7 @@ kubectl apply -f $SCRIPTSDIR/metallb-native-v0.13.3.yaml
 # it looks like Operator limitation
 
 # config metallb layer2 mode 
-(sleep 300 && kubectl apply -f $SCRIPTSDIR/metallb-l2mode.yaml)&
+(sleep 240 && kubectl apply -f $SCRIPTSDIR/metallb-l2mode.yaml)&
 kubectl apply -f metallb-l2mode.yaml
 # config metallb ip range and it cannot deploy now due to CRD cannot create yet 
 (sleep 300 && kubectl apply -f $SCRIPTSDIR/metallb-iprange.yaml)&

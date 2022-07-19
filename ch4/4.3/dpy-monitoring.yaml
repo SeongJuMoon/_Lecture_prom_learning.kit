@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: dpy-monitoring
+  name: dpy-monitoring
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dpy-monitoring
+  template:
+    metadata:
+      labels:
+        app: dpy-monitoring
+    spec:
+      containers:
+      - image: nginx:stable
+        name: nginx

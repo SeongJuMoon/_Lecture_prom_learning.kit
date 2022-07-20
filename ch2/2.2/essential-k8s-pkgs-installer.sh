@@ -36,3 +36,5 @@ kubectl apply -f $SCRIPTSDIR/storageclass.yaml
 # setup default storage class due to no mention later on
 kubectl annotate storageclass managed-nfs-storage storageclass.kubernetes.io/is-default-class=true
 
+# repo add (temp)
+$HOME/_Lecture_prometheus_learning.kit/ch2/2.3/helm-repo-add.sh 

@@ -9,6 +9,9 @@ SCRIPTSDIR=$HOME/_Lecture_prometheus_learning.kit/ch2/2.2/extra-k8s-pkgs
 # helm 3.9.1 installer
 sh $SCRIPTSDIR/get-helm-3.9.1.sh
 
+# repo edu add 
+sh $SCRIPTSDIR/helm-repo-add.sh 
+
 # metallb v0.13.3
 kubectl apply -f $SCRIPTSDIR/metallb-native-v0.13.3.yaml
 
@@ -38,5 +41,3 @@ kubectl apply -f $SCRIPTSDIR/storageclass.yaml
 # setup default storage class due to no mention later on
 kubectl annotate storageclass managed-nfs-storage storageclass.kubernetes.io/is-default-class=true
 
-# repo add (temp)
-$HOME/_Lecture_prometheus_learning.kit/ch2/2.3/helm-repo-add.sh 

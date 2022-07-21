@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+# helm add env 
+PATH=$PATH:/usr/local/bin
+
 helm repo add edu https://k8s-edu.github.io/helm-charts
 helm repo update
 

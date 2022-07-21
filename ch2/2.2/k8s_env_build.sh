@@ -48,5 +48,3 @@ nameserver 1.1.1.1 #cloudflare DNS
 nameserver 8.8.8.8 #Google DNS
 EOF
 
-# helm env
-PATH=$PATH:/usr/local/bin

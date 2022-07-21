@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-# helm env add 
-PATH=$PATH:/usr/local/bin
+# helm env add (move to parent vagrantfile)
+# PATH=$PATH:/usr/local/bin
 
 # main scripfiles dir 
 SCRIPTSDIR=$HOME/_Lecture_prometheus_learning.kit/ch2/2.2/extra-k8s-pkgs

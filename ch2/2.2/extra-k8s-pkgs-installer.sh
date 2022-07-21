@@ -1,7 +1,10 @@
 #!/usr/bin/env bash
 
+# helm env add 
+PATH=$PATH:/usr/local/bin
+
 # main scripfiles dir 
-SCRIPTSDIR=$HOME/_Lecture_prometheus_learning.kit/ch2/2.2/essential-k8s-pkgs
+SCRIPTSDIR=$HOME/_Lecture_prometheus_learning.kit/ch2/2.2/extra-k8s-pkgs
 
 # helm 3.9.1 installer
 sh $SCRIPTSDIR/get-helm-3.9.1.sh

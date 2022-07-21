@@ -20,7 +20,6 @@ kubectl apply -f $SCRIPTSDIR/metallb-native-v0.13.3.yaml
 
 # config metallb layer2 mode 
 (sleep 540 && kubectl apply -f $SCRIPTSDIR/metallb-l2mode.yaml)&
-kubectl apply -f metallb-l2mode.yaml
 # config metallb ip range and it cannot deploy now due to CRD cannot create yet 
 (sleep 600 && kubectl apply -f $SCRIPTSDIR/metallb-iprange.yaml)&
 

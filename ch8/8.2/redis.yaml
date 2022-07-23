@@ -5,7 +5,7 @@ metadata:
     app.kubernetes.io/component: redis
     app.kubernetes.io/name: redis
     app.kubernetes.io/part-of: redis
-    app.kubernetes.io/version: 6.0
+    app.kubernetes.io/version: "6.0"
   name: redis
 spec:
   replicas: 1
@@ -14,7 +14,7 @@ spec:
       app.kubernetes.io/component: redis
       app.kubernetes.io/name: redis
       app.kubernetes.io/part-of: redis
-      app.kubernetes.io/version: 6.0
+      app.kubernetes.io/version: "6.0"
   template:
     metadata:
       annotations:
@@ -23,7 +23,7 @@ spec:
         app.kubernetes.io/component: redis
         app.kubernetes.io/name: redis
         app.kubernetes.io/part-of: redis
-        app.kubernetes.io/version: 6.0
+        app.kubernetes.io/version: "6.0"
     spec:
       containers:
       - image: redis:6.0
@@ -35,6 +35,7 @@ spec:
             memory: 80Mi
         ports:
         - containerPort: 6379
+
       - image: oliver006/redis_exporter
         name: redis-exporter
         ports:
@@ -47,7 +48,7 @@ metadata:
     app.kubernetes.io/component: redis
     app.kubernetes.io/name: redis
     app.kubernetes.io/part-of: redis
-    app.kubernetes.io/version: 6.0
+    app.kubernetes.io/version: "6.0"
   name: redis
 spec:
   type: ClusterIP
@@ -59,8 +60,7 @@ spec:
     port: 9121
     targetPort: 9121
   selector:
-    matchLabels:
-      app.kubernetes.io/component: redis
-      app.kubernetes.io/name: redis
-      app.kubernetes.io/part-of: redis
-      app.kubernetes.io/version: 6.0    
+    app.kubernetes.io/component: redis
+    app.kubernetes.io/name: redis
+    app.kubernetes.io/part-of: redis
+    app.kubernetes.io/version: "6.0"    

@@ -3,18 +3,19 @@ kind: ServiceMonitor
 metadata:
   labels:
     monitoring: "true"
-    app.kubernetes.io/component: exporter
-    app.kubernetes.io/name: mysqld-exporter
-    app.kubernetes.io/part-of: prometheus-stack
-    app.kubernetes.io/version: 0.14.0
-  name: mysql
+    app.kubernetes.io/component: redis
+    app.kubernetes.io/name: redis
+    app.kubernetes.io/part-of: redis
+    app.kubernetes.io/version: 6.0
+  name: redis
+  namespace: monitoring
 spec:
   endpoints:
   - interval: 30s
     port: metrics
   selector:
     matchLabels:
-      app.kubernetes.io/component: exporter
-      app.kubernetes.io/name: mysqld-exporter
-      app.kubernetes.io/part-of: prometheus-stack
-      app.kubernetes.io/version: 0.14.0
+      app.kubernetes.io/component: redis
+      app.kubernetes.io/name: redis
+      app.kubernetes.io/part-of: redis
+      app.kubernetes.io/version: 6.0

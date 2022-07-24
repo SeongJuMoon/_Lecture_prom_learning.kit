@@ -12,6 +12,8 @@ spec:
   endpoints:
   - interval: 30s
     port: metrics
+  namespaceSelector:
+    any: true
   selector:
     matchLabels:
       app.kubernetes.io/component: exporter

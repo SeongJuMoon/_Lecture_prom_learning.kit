@@ -7,6 +7,7 @@ metadata:
     app.kubernetes.io/name: mysqld-exporter
     app.kubernetes.io/part-of: prometheus-stack
     app.kubernetes.io/version: 0.14.0
+  namespace: monitoring
   name: mysql
 spec:
   endpoints:
@@ -16,7 +17,4 @@ spec:
     any: true
   selector:
     matchLabels:
-      app.kubernetes.io/component: exporter
-      app.kubernetes.io/name: mysqld-exporter
-      app.kubernetes.io/part-of: prometheus-stack
-      app.kubernetes.io/version: 0.14.0
+      app.kubernetes.io/component: mysql

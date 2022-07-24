@@ -36,6 +36,16 @@ spec:
         env:
         - name: MYSQL_ROOT_PASSWORD
           value: "1234"
+      - image: prom/mysqld-exporter:v0.14.0
+        name: mysqld-exporter
+        env:
+        - name: DATA_SOURCE_NAME
+          value: "root:1234@mysql"
+        resources:
+          limits:
+            memory: 256Mi
+          requests:
+            memory: 256Mi
 ---
 apiVersion: v1
 kind: Service
@@ -57,3 +67,6 @@ spec:
    - name: mysql
      port: 3306
      targetPort: 3306
+   - name: metrics
+     port: 9104
+     targetPort: 9104

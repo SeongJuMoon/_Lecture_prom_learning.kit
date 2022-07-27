@@ -9,5 +9,6 @@ helm install prometheus edu/prometheus \
 --set nodeExporter.tolerations[1].effect="NoSchedule" \
 --set nodeExporter.tolerations[1].operator="Exists" \
 --set server.service.type="LoadBalancer" \
+--set alertmanager.service.type="LoadBalancer" \
 --namespace=monitoring \
 --create-namespace

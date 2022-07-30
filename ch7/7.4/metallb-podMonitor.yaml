@@ -3,9 +3,7 @@ kind: PodMonitor
 metadata:
   labels:
     monitoring: "true"
-    app.kubernetes.io/instance: metallb
-    app.kubernetes.io/name: metallb
-    app.kubernetes.io/version: v0.10.2
+    app: metallb
   name: metallb
   namespace: monitoring
 spec:
@@ -13,8 +11,7 @@ spec:
     any: true
   podMetricsEndpoints:
   - interval: 30s
-    port: metrics
+    port: monitoring
   selector:
     matchLabels:
-      app.kubernetes.io/instance: metallb
-      app.kubernetes.io/name: metallb
+      app: metallb

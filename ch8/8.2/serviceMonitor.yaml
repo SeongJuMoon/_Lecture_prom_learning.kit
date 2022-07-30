@@ -17,7 +17,4 @@ spec:
     any: true
   selector:
     matchLabels:
-      app.kubernetes.io/component: redis
-      app.kubernetes.io/name: redis
-      app.kubernetes.io/part-of: redis
-      app.kubernetes.io/version: "6.0"
+      app: redis-exporter

@@ -27,16 +27,16 @@ echo 'alias k=kubectl' >> ~/.bashrc
 echo "alias ka='kubectl apply -f'" >> ~/.bashrc
 echo 'complete -F __start_kubectl k' >> ~/.bashrc
 
-# git clone prometheus code
-git clone https://github.com/SeongJuMoon/_Lecture_prometheus_learning.kit.git
-mv /home/vagrant/_Lecture_prometheus_learning.kit $HOME
-find $HOME/_Lecture_prometheus_learning.kit -regex ".*\.\(sh\)" -exec chmod 700 {} \;
+# git clone prom code
+git clone https://github.com/SeongJuMoon/_Lecture_prom_learning.kit.git
+mv /home/vagrant/_Lecture_prom_learning.kit $HOME
+find $HOME/_Lecture_prom_learning.kit -regex ".*\.\(sh\)" -exec chmod 700 {} \;
 
-# make rerepo-prometheus_learning.kit and put permission
-cat <<EOF > /usr/local/bin/rerepo-prometheus_learning.kit
+# make rerepo-prom_learning.kit and put permission
+cat <<EOF > /usr/local/bin/rerepo-prom_learning.kit
 #!/usr/bin/env bash
-rm -rf $HOME/_Lecture_prometheus_learning.kit 
-git clone https://github.com/seongjumoon/_Lecture_prometheus_learning.kit.git $HOME/_Lecture_prometheus_learning.kit
-find $HOME/_Lecture_prometheus_learning.kit -regex ".*\.\(sh\)" -exec chmod 700 {} \;
+rm -rf $HOME/_Lecture_prom_learning.kit 
+git clone https://github.com/seongjumoon/_Lecture_prom_learning.kit.git $HOME/_Lecture_prom_learning.kit
+find $HOME/_Lecture_prom_learning.kit -regex ".*\.\(sh\)" -exec chmod 700 {} \;
 EOF
-chmod 700 /usr/local/bin/rerepo-prometheus_learning.kit
+chmod 700 /usr/local/bin/rerepo-prom_learning.kit

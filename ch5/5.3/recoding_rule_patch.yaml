@@ -5,4 +5,4 @@ data:
         interval: 5s
         rules:
           - record: node_exporter:node_memory_free:memory_used_percentages
-            expr: 100 - 100 * (node_memory_MemFree_bytes / node_memory_MemTotal_bytes)
+            expr: 100 - 100 * ((node_memory_MemTotal_bytes - node_memory_MemFree_bytes - node_memory_Buffers_bytes - node_memory_Cached_bytes - node_memory_SReclaimable_bytes)  / node_memory_MemTotal_bytes)

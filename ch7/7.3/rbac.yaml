@@ -5,16 +5,16 @@ metadata:
   labels:
     app.kubernetes.io/name: prometheus
     app.kubernetes.io/component: prometheus
-    app.kubernetes.io/instance: handsonlab
+    app.kubernetes.io/instance: prometheus
     app.kubernetes.io/part-of: prometheus-stack
-    app.kubernetes.io/version: 2.35.0
-  name: prometheus-handsonlab
+    app.kubernetes.io/version: 2.37.0
+  name: prometheus
   namespace: monitoring
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
-  name: prometheus-handsonlab
+  name: prometheus
 rules:
 - apiGroups: [""]
   resources:
@@ -42,16 +42,16 @@ metadata:
   labels:
     app.kubernetes.io/name: prometheus
     app.kubernetes.io/component: prometheus
-    app.kubernetes.io/instance: handsonlab
+    app.kubernetes.io/instance: prometheus
     app.kubernetes.io/part-of: prometheus-stack
-    app.kubernetes.io/version: 2.35.0
-  name: prometheus-handsonlab
+    app.kubernetes.io/version: 2.37.0
+  name: prometheus
   namespace: monitoring
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
-  name: prometheus-handsonlab
+  name: prometheus
 subjects:
 - kind: ServiceAccount
-  name: prometheus-handsonlab
+  name: prometheus
   namespace: monitoring

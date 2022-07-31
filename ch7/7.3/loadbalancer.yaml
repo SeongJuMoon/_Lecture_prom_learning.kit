@@ -4,10 +4,10 @@ metadata:
   labels:
     app.kubernetes.io/name: prometheus
     app.kubernetes.io/component: prometheus
-    app.kubernetes.io/instance: handsonlab
+    app.kubernetes.io/instance: prometheus
     app.kubernetes.io/part-of: prometheus-stack
-    app.kubernetes.io/version: 2.35.0
-  name: handsonlabs
+    app.kubernetes.io/version: 2.37.0
+  name: prometheus
   namespace: monitoring
 spec:
   ports:
@@ -22,5 +22,5 @@ spec:
     app.kubernetes.io/component: prometheus
     app.kubernetes.io/instance: prometheus
     app.kubernetes.io/part-of: prometheus-stack
-    app.kubernetes.io/version: 2.35.0
+    app.kubernetes.io/version: 2.37.0
   type: LoadBalancer

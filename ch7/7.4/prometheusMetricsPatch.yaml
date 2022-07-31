@@ -1,0 +1,18 @@
+apiVersion: monitoring.coreos.com/v1
+kind: Prometheus
+metadata:
+  name: prometheus
+  namespace: monitoring
+spec:
+  podMonitorSelector:
+    matchExpressions:
+      - key: monitoring
+        operator: Exists
+  serviceMonitorSelector:
+    matchExpressions:
+      - key: monitoring
+        operator: Exists
+  probeSelector:
+    matchExpressions:
+      - key: monitoring
+        operator: Exists

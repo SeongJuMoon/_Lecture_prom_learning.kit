@@ -8,9 +8,12 @@ SCRIPTSDIR=$HOME/_Lecture_prom_learning.kit/ch2/2.2/extra-k8s-pkgs
 
 # helm 3.9.1 installer
 sh $SCRIPTSDIR/get-helm-3.9.1.sh
-
 # repo edu add 
 sh $SCRIPTSDIR/helm-repo-add.sh 
+# helm completion on bash-completion dir & alias+ 
+helm completion bash > /etc/bash_completion.d/helm
+echo 'alias h=helm' >> ~/.bashrc
+echo 'complete -F __start_helm h' >> ~/.bashrc 
 
 # metallb v0.13.3
 kubectl apply -f $SCRIPTSDIR/metallb-native-v0.13.3.yaml

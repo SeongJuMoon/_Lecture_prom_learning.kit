@@ -9,6 +9,9 @@ helm install prometheus edu/prometheus \
 --set nodeExporter.tolerations[1].effect="NoSchedule" \
 --set nodeExporter.tolerations[1].operator="Exists" \
 --set server.service.type="LoadBalancer" \
+--set server.service.loadBalancer="192.168.1.11" \
 --set alertmanager.service.type="LoadBalancer" \
+--set alertmanager.service.loadBalancer="192.168.1.12" \
+--set server.extraFlags[0]="storage.tsdb.no-lockfile" \
 --namespace=monitoring \
 --create-namespace

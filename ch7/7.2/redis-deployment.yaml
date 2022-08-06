@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: redis
+spec:
+  selector:
+    matchLabels:
+      app: redis
+  template:
+    metadata:
+      labels:
+        app: redis
+    spec:
+      containers:
+      - name: myapp
+        image: redis:6.0
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "256m"
+        ports:
+        - containerPort: 6379

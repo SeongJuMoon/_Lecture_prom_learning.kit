@@ -1,0 +1,58 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: mysql
+  name: mysql
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mysql
+  template:
+    metadata:
+      labels:
+        app: mysql
+    spec:
+      containers:
+      - image: mysql:5.7.38
+        name: mysql
+        resources:
+          limits:
+            cpu: "128m"
+            memory: 225Mi
+        ports:
+        - containerPort: 3306
+        env:
+        - name: MYSQL_ROOT_PASSWORD
+          value: "1234"
+      - image: prom/mysqld-exporter:v0.14.0
+        name: mysqld-exporter
+        env:
+        - name: DATA_SOURCE_NAME
+          value: "root:1234@(mysql:3306)/"
+        resources:
+          limits:
+            cpu: "128m"
+            memory: 225Mi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    prometheus.io/scrape: "true"
+    prometheus.io/port: "9104"
+  labels:
+    app: mysql
+  name: mysql
+spec:
+  type: ClusterIP
+  selector:
+    app: mysql
+  ports:
+   - name: mysql
+     port: 3306
+     targetPort: 3306
+   - name: metrics
+     port: 9104
+     targetPort: 9104

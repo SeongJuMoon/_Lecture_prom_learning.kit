@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: redis-exporter
+  name: redis-exporter
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: redis-exporter
+  template:
+    metadata:
+      labels:
+        app: redis-exporter
+    spec:
+      containers:
+      - image: oliver006/redis_exporter:v1.43.0
+        name: redis-exporter
+        ports:
+        - containerPort: 9121
+        args:
+        - "--redis.addr=redis.default.svc.cluster.local"
+        resources:
+          limits:
+            cpu: "128m"
+            memory: 128Mi

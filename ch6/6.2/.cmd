@@ -1,0 +1,1 @@
+kubectl patch configmap prometheus-server -n monitoring  --patch-file prometheus-config-patch.yaml

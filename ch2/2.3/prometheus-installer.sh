@@ -10,6 +10,7 @@ helm install prometheus edu/prometheus \
 --set nodeExporter.tolerations[1].effect="NoSchedule" \
 --set nodeExporter.tolerations[1].operator="Exists" \
 --set server.service.type="LoadBalancer" \
+--set server.extraFlags[0]="web.enable-lifecycle" \
 --set server.extraFlags[1]="storage.tsdb.no-lockfile" \
 --namespace=monitoring \
 --create-namespace

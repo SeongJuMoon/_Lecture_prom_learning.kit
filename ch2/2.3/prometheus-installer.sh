@@ -13,6 +13,6 @@ helm install prometheus edu/prometheus \
 --set alertmanager.service.type="LoadBalancer" \
 --set alertmanager.service.loadBalancerIP="192.168.1.12" \
 --set server.extraFlags[0]="storage.tsdb.no-lockfile" \
---set server.extraFlags[1]="--web.enable-lifecycle" \
+--set server.extraFlags[1]="web.enable-lifecycle" \
 --namespace=monitoring \
 --create-namespace

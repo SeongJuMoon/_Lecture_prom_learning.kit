@@ -1,4 +1,0 @@
-k apply -f rbac.yaml
-k apply -f deployment.yaml
-k apply -f service.yaml
-k apply -f serviceMonitor.yaml

@@ -21,4 +21,4 @@ spec:
     - kube-system
   selector:
     matchLabels:
-      app.kubernetes.io/name: kube-scheduler
+      component: kube-scheduler

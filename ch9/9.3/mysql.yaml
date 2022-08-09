@@ -5,7 +5,7 @@ metadata:
     app.kubernetes.io/component: mysql
     app.kubernetes.io/name: mysql
     app.kubernetes.io/part-of: mysql
-    app.kubernetes.io/version: 5.7.38
+    app.kubernetes.io/version: 8.0.30
   name: mysql
 spec:
   replicas: 1
@@ -14,17 +14,17 @@ spec:
       app.kubernetes.io/component: mysql
       app.kubernetes.io/name: mysql
       app.kubernetes.io/part-of: mysql
-      app.kubernetes.io/version: 5.7.38
+      app.kubernetes.io/version: 8.0.30
   template:
     metadata:
       labels:
         app.kubernetes.io/component: mysql
         app.kubernetes.io/name: mysql
         app.kubernetes.io/part-of: mysql
-        app.kubernetes.io/version: 5.7.38
+        app.kubernetes.io/version: 8.0.30
     spec:
       containers:
-      - image: mysql:5.7.38
+      - image: mysql:8.0.30
         name: mysql
         resources:
           limits:
@@ -34,7 +34,7 @@ spec:
         - containerPort: 3306
         env:
         - name: MYSQL_ROOT_PASSWORD
-          value: "1234"
+          value: "thisisunsafe"
       - image: prom/mysqld-exporter:v0.14.0
         name: mysqld-exporter
         env:
@@ -52,7 +52,7 @@ metadata:
     app.kubernetes.io/component: mysql
     app.kubernetes.io/name: mysql
     app.kubernetes.io/part-of: mysql
-    app.kubernetes.io/version: 5.7.38
+    app.kubernetes.io/version: 8.0.30
   name: mysql
 spec:
   type: ClusterIP
@@ -60,7 +60,7 @@ spec:
     app.kubernetes.io/component: mysql
     app.kubernetes.io/name: mysql
     app.kubernetes.io/part-of: mysql
-    app.kubernetes.io/version: 5.7.38
+    app.kubernetes.io/version: 8.0.30
   ports:
    - name: mysql
      port: 3306

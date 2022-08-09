@@ -5,7 +5,7 @@ metadata:
     app.kubernetes.io/component: redis
     app.kubernetes.io/name: redis
     app.kubernetes.io/part-of: redis
-    app.kubernetes.io/version: "6.0"
+    app.kubernetes.io/version: "7.0.4"
   name: redis
 spec:
   replicas: 1
@@ -14,7 +14,7 @@ spec:
       app.kubernetes.io/component: redis
       app.kubernetes.io/name: redis
       app.kubernetes.io/part-of: redis
-      app.kubernetes.io/version: "6.0"
+      app.kubernetes.io/version: "7.0.4"
   template:
     metadata:
       annotations:
@@ -23,15 +23,14 @@ spec:
         app.kubernetes.io/component: redis
         app.kubernetes.io/name: redis
         app.kubernetes.io/part-of: redis
-        app.kubernetes.io/version: "6.0"
+        app.kubernetes.io/version: "7.0.4"
     spec:
       containers:
-      - image: redis:6.0
+      - image: redis:7.0.4
         name: redis
         resources:
-          requests:
-            memory: 80Mi
           limits:
+            cpu: 120m
             memory: 80Mi
         ports:
         - containerPort: 6379
@@ -43,7 +42,7 @@ metadata:
     app.kubernetes.io/component: redis
     app.kubernetes.io/name: redis
     app.kubernetes.io/part-of: redis
-    app.kubernetes.io/version: "6.0"
+    app.kubernetes.io/version: "7.0.4"
   name: redis
 spec:
   type: ClusterIP
@@ -55,4 +54,4 @@ spec:
     app.kubernetes.io/component: redis
     app.kubernetes.io/name: redis
     app.kubernetes.io/part-of: redis
-    app.kubernetes.io/version: "6.0"    
+    app.kubernetes.io/version: "7.0.4"    

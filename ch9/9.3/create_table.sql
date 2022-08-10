@@ -1,1 +1,1 @@
-CREATE TABLE random_code (id int AUTO_INCREMENT,name text,label text,artist text, PRIMARY KEY (`id`));
+CREATE TABLE session_record (id int AUTO_INCREMENT,trace_id text,access_token text,user_uuid text, PRIMARY KEY (`id`))

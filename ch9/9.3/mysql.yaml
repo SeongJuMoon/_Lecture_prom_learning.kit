@@ -29,7 +29,7 @@ spec:
         resources:
           limits:
             cpu: "128m"
-            memory: 300Mi
+            memory: 400Mi
         ports:
         - containerPort: 3306
         env:
@@ -39,11 +39,11 @@ spec:
         name: mysqld-exporter
         env:
         - name: DATA_SOURCE_NAME
-          value: "root:1234@(mysql:3306)/"
+          value: "root:thisisunsafe@(mysql:3306)/"
         resources:
           limits:
             cpu: "256m"
-            memory: 250Mi
+            memory: 160Mi
 ---
 apiVersion: v1
 kind: Service

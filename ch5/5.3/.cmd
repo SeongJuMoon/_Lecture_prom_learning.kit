@@ -1,0 +1,1 @@
+kubectl patch configmap prometheus-server -n monitoring --patch-file  ~/_Lecture_prom_learning.kit/ch5/5.3/nodes.memory-percent.yaml

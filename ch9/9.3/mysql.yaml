@@ -29,7 +29,7 @@ spec:
         resources:
           limits:
             cpu: "128m"
-            memory: 225Mi
+            memory: 300Mi
         ports:
         - containerPort: 3306
         env:
@@ -42,8 +42,8 @@ spec:
           value: "root:1234@(mysql:3306)/"
         resources:
           limits:
-            cpu: "128m"
-            memory: 225Mi
+            cpu: "256m"
+            memory: 250Mi
 ---
 apiVersion: v1
 kind: Service

@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
 
-docker run --rm -d -p 9115:9115 --name blackbox_exporter -v `pwd`:/config prom/blackbox-exporter:master --config.file=/config/blackbox.yml
+docker run --rm -d --network=host --name blackbox_exporter -v \
+`pwd`:/config prom/blackbox-exporter:v0.22.0

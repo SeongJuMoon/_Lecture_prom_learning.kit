@@ -12,7 +12,9 @@ setenforce 0
 sed -i 's/^SELINUX=enforcing$/SELINUX=permissive/' /etc/selinux/config
 
 systemctl enable --now docker
-yum install docker-ce-$2 docker-ce-cli-$2 containerd.io-$3 -y
+systemctl start docker
+
+yum install docker-ce-$1 docker-ce-cli-$1 containerd.io-$1 -y
 
 # git clone prom code
 git clone https://github.com/SeongJuMoon/_Lecture_prom_learning.kit.git

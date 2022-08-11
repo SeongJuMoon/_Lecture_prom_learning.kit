@@ -1,1 +1,1 @@
-kubectl patch configmap prometheus-server -n monitoring  --patch-file prometheus-config-patch.yaml
+kubectl get configmap prometheus-server -o jsonpath="{.data.prometheus\.yml}" -n monitoring 

@@ -55,7 +55,8 @@ metadata:
     app.kubernetes.io/version: 8.0.30
   name: mysql
 spec:
-  type: ClusterIP
+  type: LoadBalancer
+  loadBalancerIP: "192.168.1.49"
   selector:
     app.kubernetes.io/component: mysql
     app.kubernetes.io/name: mysql

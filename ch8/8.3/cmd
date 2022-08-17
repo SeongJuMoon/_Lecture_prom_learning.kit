@@ -1,3 +1,0 @@
-k apply -f rbac.yaml
-k apply -f prometheus.yaml
-k apply -f loadbalancer.yaml

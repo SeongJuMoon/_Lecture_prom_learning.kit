@@ -33,7 +33,7 @@ spec:
             cpu: 120m
             memory: 80Mi
         args:
-        - --maxmemory 1Gi
+        - --maxmemory=80mb
         ports:
         - containerPort: 6379
 ---

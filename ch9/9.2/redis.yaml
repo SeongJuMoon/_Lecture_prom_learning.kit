@@ -32,6 +32,8 @@ spec:
           limits:
             cpu: 120m
             memory: 80Mi
+        args:
+        - --maxmemory 1Gi
         ports:
         - containerPort: 6379
 ---

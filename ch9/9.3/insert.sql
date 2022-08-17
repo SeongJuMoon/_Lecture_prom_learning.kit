@@ -1,0 +1,1 @@
+insert into session_record  ( trace_id, access_token, user_uuid ) values ( 'QWER' ,'dGVzdA==', 'e7925adc-9c9a-4453-b491-3cfb9f69644c');

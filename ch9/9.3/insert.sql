@@ -19,14 +19,11 @@ SET @old_autocommit=@@autocommit;
 --
 -- Current Database: `world`
 --
-
-/*!40000 DROP DATABASE IF EXISTS `world`*/;
-
-
---
 -- Dumping data for table `city`
 --
 -- ORDER BY:  `ID`
+
+use world;
 
 set autocommit=0;
 INSERT INTO `city` VALUES (1,'Kabul','AFG','Kabol',1780000),

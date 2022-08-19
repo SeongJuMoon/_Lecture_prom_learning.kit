@@ -56,7 +56,7 @@ metadata:
   name: mysql
 spec:
   type: LoadBalancer
-  loadBalancerIP: "192.168.1.49"
+  loadBalancerIP: "192.168.1.93"
   selector:
     app.kubernetes.io/component: mysql
     app.kubernetes.io/name: mysql

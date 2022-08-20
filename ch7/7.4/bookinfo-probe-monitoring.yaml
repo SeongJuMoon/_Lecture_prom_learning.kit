@@ -287,32 +287,28 @@ data:
         - __meta_kubernetes_pod_phase
       scrape_interval: 5m
       scrape_timeout: 30s
-    - job_name: "blackbox-kubernetes-ingresses"
+    - job_name: "blackbox-kubernetes-services"
       metrics_path: /probe
       params:
         module: [http_2xx]
       kubernetes_sd_configs:
-      - role: ingress
+      - role: service
       relabel_configs:
-        - source_labels:
-            [
-              __meta_kubernetes_ingress_scheme,
-              __address__,
-              __meta_kubernetes_ingress_path,
-            ]
-          regex: (.+);(.+);(.+)
-          replacement: ${1}://${2}${3}
+        - source_labels: [__meta_kubernetes_service_annotation_prometheus_io_should_be_probed]
+          action: keep
+          regex: true   
+        - source_labels: [__address__]
           target_label: __param_target
         - target_label: __address__
-          replacement: blackbox-exporter.monitoring.svc.cluster.local:9115
+          replacement:  blackbox-exporter.monitoring.svc.cluster.local:9115
         - source_labels: [__param_target]
           target_label: instance
         - action: labelmap
-          regex: __meta_kubernetes_ingress_label_(.+)
+          regex: __meta_kubernetes_service_label_(.+)
         - source_labels: [__meta_kubernetes_namespace]
           target_label: kubernetes_namespace
-        - source_labels: [__meta_kubernetes_ingress_name]
-          target_label: ingress_name
+        - source_labels: [__meta_kubernetes_service_name]
+          target_label: kubernetes_service_name
     alerting:
       alertmanagers:
       - kubernetes_sd_configs:

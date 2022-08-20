@@ -25,12 +25,12 @@ spec:
         - containerPort: 3306
         env:
         - name: MYSQL_ROOT_PASSWORD
-          value: "1234"
+          value: "thisisunsafe"
       - image: prom/mysqld-exporter:v0.14.0
         name: mysqld-exporter
         env:
         - name: DATA_SOURCE_NAME
-          value: "root:1234@(mysql:3306)/"
+          value: "root:thisisunsafe@(mysql:3306)/"
         resources:
           limits:
             cpu: "128m"
@@ -46,7 +46,8 @@ metadata:
     app: mysql
   name: mysql
 spec:
-  type: ClusterIP
+  type: LoadBalancer
+  loadBalancerIP: "192.168.1.73"
   selector:
     app: mysql
   ports:

@@ -5,6 +5,9 @@ metadata:
 spec:
   selector:
     app: redis
+  type: LoadBalancer
+  loadBalancerIP: "192.168.1.72"
   ports:
   - port: 6379
     targetPort: 6379
+    name: redis

@@ -8,6 +8,8 @@ metadata:
 spec:
   selector:
     app: redis-exporter
+  type: ClusterIP
   ports:
   - port: 9121
     targetPort: 9121
+    name: redis-exporter

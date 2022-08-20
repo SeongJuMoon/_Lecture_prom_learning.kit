@@ -2,25 +2,34 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: mysql
+    app.kubernetes.io/component: mysql
+    app.kubernetes.io/name: mysql
+    app.kubernetes.io/part-of: mysql
+    app.kubernetes.io/version: 8.0.30
   name: mysql
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: mysql
+      app.kubernetes.io/component: mysql
+      app.kubernetes.io/name: mysql
+      app.kubernetes.io/part-of: mysql
+      app.kubernetes.io/version: 8.0.30
   template:
     metadata:
       labels:
-        app: mysql
+        app.kubernetes.io/component: mysql
+        app.kubernetes.io/name: mysql
+        app.kubernetes.io/part-of: mysql
+        app.kubernetes.io/version: 8.0.30
     spec:
       containers:
-      - image: mysql:5.7.38
+      - image: mysql:8.0.30
         name: mysql
         resources:
           limits:
             cpu: "128m"
-            memory: 225Mi
+            memory: 500Mi
         ports:
         - containerPort: 3306
         env:
@@ -33,27 +42,5 @@ spec:
           value: "root:thisisunsafe@(mysql:3306)/"
         resources:
           limits:
-            cpu: "128m"
-            memory: 225Mi
----
-apiVersion: v1
-kind: Service
-metadata:
-  annotations:
-    prometheus.io/scrape: "true"
-    prometheus.io/port: "9104"
-  labels:
-    app: mysql
-  name: mysql
-spec:
-  type: LoadBalancer
-  loadBalancerIP: "192.168.1.73"
-  selector:
-    app: mysql
-  ports:
-   - name: mysql
-     port: 3306
-     targetPort: 3306
-   - name: metrics
-     port: 9104
-     targetPort: 9104
+            cpu: "256m"
+            memory: 160Mi

@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app.kubernetes.io/component: redis
+    app.kubernetes.io/name: redis
+    app.kubernetes.io/part-of: redis
+    app.kubernetes.io/version: "7.0.4"
+  name: redis
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/component: redis
+      app.kubernetes.io/name: redis
+      app.kubernetes.io/part-of: redis
+      app.kubernetes.io/version: "7.0.4"
+  template:
+    metadata:
+      annotations:
+        kubectl.kubernetes.io/default-container: redis
+      labels:
+        app.kubernetes.io/component: redis
+        app.kubernetes.io/name: redis
+        app.kubernetes.io/part-of: redis
+        app.kubernetes.io/version: "7.0.4"
+    spec:
+      containers:
+      - image: redis:7.0.4
+        name: redis
+        resources:
+          limits:
+            cpu: 120m
+            memory: 80Mi
+        args:
+        - --maxmemory 80mb
+        ports:
+        - containerPort: 6379

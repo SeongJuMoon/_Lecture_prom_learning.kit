@@ -44,28 +44,3 @@ spec:
           limits:
             cpu: "256m"
             memory: 160Mi
----
-apiVersion: v1
-kind: Service
-metadata:
-  labels:
-    app.kubernetes.io/component: mysql
-    app.kubernetes.io/name: mysql
-    app.kubernetes.io/part-of: mysql
-    app.kubernetes.io/version: 8.0.30
-  name: mysql
-spec:
-  type: LoadBalancer
-  loadBalancerIP: "192.168.1.93"
-  selector:
-    app.kubernetes.io/component: mysql
-    app.kubernetes.io/name: mysql
-    app.kubernetes.io/part-of: mysql
-    app.kubernetes.io/version: 8.0.30
-  ports:
-   - name: mysql
-     port: 3306
-     targetPort: 3306
-   - name: metrics
-     port: 9104
-     targetPort: 9104

@@ -34,6 +34,8 @@ kind: Service
 metadata:
   name: details
   namespace: bookinfo
+  annotations:
+    prometheus.io/should_be_probed: "true"
   labels:
     app: details
     service: details
@@ -90,6 +92,8 @@ kind: Service
 metadata:
   name: ratings
   namespace: bookinfo
+  annotations:
+    prometheus.io/should_be_probed: "true"
   labels:
     app: ratings
     service: ratings
@@ -146,6 +150,8 @@ kind: Service
 metadata:
   name: reviews
   namespace: bookinfo
+  annotations:
+    prometheus.io/should_be_probed: "true"
   labels:
     app: reviews
     service: reviews
@@ -301,6 +307,8 @@ kind: Service
 metadata:
   name: productpage
   namespace: bookinfo
+  annotations:
+    prometheus.io/should_be_probed: "true"
   labels:
     app: productpage
     service: productpage

@@ -37,6 +37,8 @@ spec:
           value: "root"
       - image: prom/mysqld-exporter:v0.14.0
         name: mysqld-exporter
+        ports:
+        - containerPort: 9104
         env:
         - name: DATA_SOURCE_NAME
           value: "root:root@(mysql:3306)/"

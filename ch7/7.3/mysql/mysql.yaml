@@ -34,12 +34,12 @@ spec:
         - containerPort: 3306
         env:
         - name: MYSQL_ROOT_PASSWORD
-          value: "thisisunsafe"
+          value: "root"
       - image: prom/mysqld-exporter:v0.14.0
         name: mysqld-exporter
         env:
         - name: DATA_SOURCE_NAME
-          value: "root:thisisunsafe@(mysql:3306)/"
+          value: "root:root@(mysql:3306)/"
         resources:
           limits:
             cpu: "256m"

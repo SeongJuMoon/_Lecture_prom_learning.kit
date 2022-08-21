@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: redis-exporter
   annotations:
-    prometheus.io/scape: "true"
+    prometheus.io/scrape: "true"
     prometheus.io/port: "9121"
 spec:
   selector:

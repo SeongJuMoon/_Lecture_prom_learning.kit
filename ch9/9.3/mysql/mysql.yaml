@@ -2,26 +2,17 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app.kubernetes.io/component: mysql
-    app.kubernetes.io/name: mysql
-    app.kubernetes.io/part-of: mysql
-    app.kubernetes.io/version: 8.0.30
+    app: mysql
   name: mysql
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app.kubernetes.io/component: mysql
-      app.kubernetes.io/name: mysql
-      app.kubernetes.io/part-of: mysql
-      app.kubernetes.io/version: 8.0.30
+      app: mysql
   template:
     metadata:
       labels:
-        app.kubernetes.io/component: mysql
-        app.kubernetes.io/name: mysql
-        app.kubernetes.io/part-of: mysql
-        app.kubernetes.io/version: 8.0.30
+        app: mysql
     spec:
       containers:
       - image: mysql:8.0.30

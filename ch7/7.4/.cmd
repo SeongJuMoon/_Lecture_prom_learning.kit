@@ -13,8 +13,8 @@ kubectl apply -f ~/_Lecture_prom_learning.kit/ch7/7.4/blackbox-exporter
 
 kubectl patch configmap -n monitoring prometheus-server --patch-file ~/_Lecture_prom_learning.kit/ch7/7.4/bookinfo-probe-monitoring.yaml
 
-kubectl scale -n bookinfo deployment details --replicas=0
-kubectl scale -n bookinfo deployment details --replicas=1
+kubectl scale -n bookinfo deployment details-v1 --replicas=0
+kubectl scale -n bookinfo deployment details-v1 --replicas=1
 
 kubectl delete -f ~/_Lecture_prom_learning.kit/ch7/7.4/samples/bookinfo
 kubectl delete -f ~/_Lecture_prom_learning.kit/ch7/7.4/samples/addon

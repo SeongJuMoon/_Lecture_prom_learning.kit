@@ -1,26 +1,31 @@
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: blackbox-exporter
+  name: prometheus-blackbox-exporter
   namespace: monitoring
   labels:
-    app: blackbox-exporter
+    app: prometheus-blackbox-exporter
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: blackbox-exporter
+      app: prometheus-blackbox-exporter
   template:
     metadata:
-      name: blackbox-exporter
+      name: prometheus-blackbox-exporter
       labels:
-        app: blackbox-exporter
+        app: prometheus-blackbox-exporter
     spec:
       containers:
       - name: blackbox-exporter
         image: prom/blackbox-exporter:v0.22.0
         args:
         - --web.listen-address=:9115
+        - --config.file=/etc/blackbox_exporter/config.yml
+        volumeMounts:
+          - mountPath: /etc/blackbox/
+            name: config
+            readOnly: true      
         resources:
           limits:
             cpu: 300m
@@ -28,3 +33,7 @@ spec:
         ports:
         - name: web
           containerPort: 9115
+      volumes:
+      - name: config
+        configMap:
+          name: prometheus-blackbox-exporter

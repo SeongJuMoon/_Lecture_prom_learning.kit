@@ -9,10 +9,9 @@ kubectl label namespace bookinfo istio-injection=enabled
 kubectl apply -f ~/_Lecture_prom_learning.kit/ch7/7.4/samples/bookinfo
 kubectl apply -f ~/_Lecture_prom_learning.kit/ch7/7.4/samples/addon
 
-kubectl apply ~/_Lecture_prom_learning.kit/ch7/7.4/blackbox-exporter.yaml
-kubectl apply ~/_Lecture_prom_learning.kit/ch7/7.4/blackbox-exporter-service.yaml
+kubectl apply -f ~/_Lecture_prom_learning.kit/ch7/7.4/blackbox-exporter
 
-kubectl patch configmap -n monitoring prometheus-server --patch-file bookinfo-probe-monitoring.yaml
+kubectl patch configmap -n monitoring prometheus-server --patch-file ~/_Lecture_prom_learning.kit/ch7/7.4/bookinfo-probe-monitoring.yaml
 
 kubectl scale -n bookinfo deployment details --replicas=0
 kubectl scale -n bookinfo deployment details --replicas=1

@@ -5,16 +5,16 @@ docker_V = '20.10.17-3.el7' # Docker
 ctrd_V = '1.6.6-3.1.el7'   # Containerd 
 
 Vagrant.configure("2") do |config|
-    config.vm.define "blackbox-exporter-console" do |cfg|
+    config.vm.define "harbor" do |cfg|
       cfg.vm.box = "sysnet4admin/CentOS-k8s"
       cfg.vm.provider "virtualbox" do |vb|
-        vb.name = "blackbox-exporter-console (github_SysNet4Admin)"
+        vb.name = "harbor (github_SysNet4Admin)"
         vb.cpus = 1
-        vb.memory = 1024
-        vb.customize ["modifyvm", :id, "--groups", "/Prometheus-k8s-blackbox-exporter-console (github_SysNet4Admin)"]
+        vb.memory = 2048
+        vb.customize ["modifyvm", :id, "--groups", "/Prometheus-k8s-harbor (github_SysNet4Admin)"]
       end
-      cfg.vm.host_name = "blackbox-exporter-console"
-      cfg.vm.network "private_network", ip: "192.168.1.99"
+      cfg.vm.host_name = "harbor"
+      cfg.vm.network "private_network", ip: "192.168.1.64"
       cfg.vm.network "forwarded_port", guest: 22, host: 60104, auto_correct: true, id: "ssh"
       cfg.vm.synced_folder "../data", "/vagrant", disabled: true 
       cfg.vm.provision "shell", path: "setup.sh", args: [ docker_V, ctrd_V ]

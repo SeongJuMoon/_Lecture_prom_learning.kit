@@ -19,3 +19,8 @@ spec:
    - name: metrics
      port: 9104
      targetPort: 9104
+  selector:
+    app.kubernetes.io/component: mysql
+    app.kubernetes.io/name: mysql
+    app.kubernetes.io/part-of: mysql
+    app.kubernetes.io/version: 8.0.30

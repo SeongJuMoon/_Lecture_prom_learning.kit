@@ -299,6 +299,8 @@ data:
         - source_labels: [__meta_kubernetes_service_annotation_prometheus_io_should_be_probed]
           action: keep
           regex: true   
+        - source_labels: [__address__]
+          target_label: __param_target
         - target_label: __address__
           replacement:  prometheus-blackbox-exporter.monitoring.svc.cluster.local:9115
         - source_labels: [__param_target]
@@ -309,7 +311,6 @@ data:
           target_label: kubernetes_namespace
         - source_labels: [__meta_kubernetes_service_name]
           target_label: kubernetes_service_name
-        - source_labels: []
     alerting:
       alertmanagers:
       - kubernetes_sd_configs:

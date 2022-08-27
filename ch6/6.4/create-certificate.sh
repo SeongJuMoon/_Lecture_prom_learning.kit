@@ -21,16 +21,6 @@ openssl x509 -req -sha512 -days 3650 \
     -in harbor.csr \
     -out harbor.crt
 
-mkdir /root/_Lecture_prom_learning.kit/ch6/6.4/tls/
-
-mv ca.key /root/_Lecture_prom_learning.kit/ch6/6.4/tls/
-mv ca.crt /root/_Lecture_prom_learning.kit/ch6/6.4/tls/
-mv ca.srl /root/_Lecture_prom_learning.kit/ch6/6.4/tls/
-
-mv harbor.csr /root/_Lecture_prom_learning.kit/ch6/6.4/tls/
-mv harbor.crt /root/_Lecture_prom_learning.kit/ch6/6.4/tls/
-mv harbor.key /root/_Lecture_prom_learning.kit/ch6/6.4/tls/
-
 yum install -y sshpass
 
 openssl x509 -inform PEM -in harbor.crt -out harbor.cert
@@ -46,3 +36,13 @@ for i in {1..3}
     sshpass -p $PASSWORD scp harbor.key root@192.168.1.10$i:$CERT_DIR
     sshpass -p $PASSWORD scp harbor.cert root@192.168.1.10$i:$CERT_DIR
 done
+
+mkdir /root/_Lecture_prom_learning.kit/ch6/6.4/tls/
+
+mv ca.key /root/_Lecture_prom_learning.kit/ch6/6.4/tls/
+mv ca.crt /root/_Lecture_prom_learning.kit/ch6/6.4/tls/
+mv ca.srl /root/_Lecture_prom_learning.kit/ch6/6.4/tls/
+
+mv harbor.csr /root/_Lecture_prom_learning.kit/ch6/6.4/tls/
+mv harbor.crt /root/_Lecture_prom_learning.kit/ch6/6.4/tls/
+mv harbor.key /root/_Lecture_prom_learning.kit/ch6/6.4/tls/

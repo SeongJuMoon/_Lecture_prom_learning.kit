@@ -25,6 +25,8 @@ git clone https://github.com/SeongJuMoon/_Lecture_prom_learning.kit.git
 mv /home/vagrant/_Lecture_prom_learning.kit $HOME
 find $HOME/_Lecture_prom_learning.kit -regex ".*\.\(sh\)" -exec chmod 700 {} \;
 
+systemctl enable --now docker
+
 # patch harbor prepare doesn't granted by find with exec.
 chmod +x $HOME/_Lecture_prom_learning.kit/ch6/6.4/harbor/prepare
 

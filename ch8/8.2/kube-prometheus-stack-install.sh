@@ -8,4 +8,4 @@ helm install prometheus edu/kube-prometheus-stack -n monitoring --create-namespa
 --set prometheus.storage.volumeClaimTemplate.spec.resources.requests.storage="8Gi" \
 --set prometheus.service.type="LoadBalancer" \
 --set prometheus.service.port="80"
--f settings.yaml
+-f ~/_Lecture_prometheus_learning.kit/ch8/8.2/settings.yaml

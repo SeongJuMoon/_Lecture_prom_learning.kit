@@ -30,7 +30,6 @@ systemctl enable --now docker
 # patch harbor prepare doesn't granted by find with exec.
 chmod +x $HOME/_Lecture_prom_learning.kit/ch6/6.4/harbor/prepare
 
-
 # make rerepo-prom_learning.kit and put permission
 cat <<EOF > /usr/local/bin/rerepo-prom_learning.kit
 #!/usr/bin/env bash

@@ -25,13 +25,14 @@ yum install -y sshpass
 
 openssl x509 -inform PEM -in harbor.crt -out harbor.cert
 
-sshpass -p $PASSWORD ssh -o StrictHostKeyChecking=no root@192.168.1.10
+sshpass -p $PASSWORD ssh -o StrictHostKeyChecking=no root@192.168.1.10 mkdir -p $CERT_DIR
 sshpass -p $PASSWORD scp ca.crt root@192.168.1.10:$CERT_DIR
 sshpass -p $PASSWORD scp harbor.key root@192.168.1.10:$CERT_DIR
 sshpass -p $PASSWORD scp harbor.cert root@192.168.1.10:$CERT_DIR
 
 for i in {1..3}
-    sshpass -p $PASSWORD ssh -o StrictHostKeyChecking=no root@192.168.1.10$i
+do
+    sshpass -p $PASSWORD ssh -o StrictHostKeyChecking=no root@192.168.1.10$i mkdir -p $CERT_DIR
     sshpass -p $PASSWORD scp ca.crt root@192.168.1.10$i:$CERT_DIR
     sshpass -p $PASSWORD scp harbor.key root@192.168.1.10$i:$CERT_DIR
     sshpass -p $PASSWORD scp harbor.cert root@192.168.1.10$i:$CERT_DIR

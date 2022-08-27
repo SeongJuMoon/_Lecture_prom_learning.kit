@@ -291,7 +291,7 @@ data:
       metrics_path: /metrics
       static_configs:
         - targets:
-            - http://192.168.1.64:9090
+            - 192.168.1.64:9090
     alerting:
       alertmanagers:
       - kubernetes_sd_configs:

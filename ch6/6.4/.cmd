@@ -19,4 +19,7 @@ kubectl patch configmap prometheus-server -n monitoring --patch-file ~/_Lecture_
 
 docker pull nginx
 docker tag nginx 192.168.1.64/library/nginx
+docker login 192.168.1.64 
+admin
+admin
 docker push 192.168.1.64/library/nginx

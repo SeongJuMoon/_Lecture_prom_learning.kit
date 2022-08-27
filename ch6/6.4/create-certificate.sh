@@ -45,5 +45,6 @@ mv ca.crt /root/_Lecture_prom_learning.kit/ch6/6.4/tls/
 mv ca.srl /root/_Lecture_prom_learning.kit/ch6/6.4/tls/
 
 mv harbor.csr /root/_Lecture_prom_learning.kit/ch6/6.4/tls/
+mv harbor.cert /root/_Lecture_prom_learning.kit/ch6/6.4/tls/
 mv harbor.crt /root/_Lecture_prom_learning.kit/ch6/6.4/tls/
 mv harbor.key /root/_Lecture_prom_learning.kit/ch6/6.4/tls/

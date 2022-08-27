@@ -291,9 +291,7 @@ data:
       metrics_path: /metrics
       static_configs:
         - targets:
-          - https://192.168.1.64:9090
-      tls_config:
-        insecure_skip_verify: true
+          - http://192.168.1.64:9090
     alerting:
       alertmanagers:
       - kubernetes_sd_configs:

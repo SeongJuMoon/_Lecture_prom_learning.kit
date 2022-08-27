@@ -2,22 +2,28 @@
 
 openssl genrsa -out ca.key 4096
 openssl req -x509 -new -nodes -sha512 -days 3650 \
- -subj "/C=KR/ST=Seoul/L=Seoul/O=example/OU=Personal/CN=192.168.1.64" \
+ -subj "/C=KR/ST=Seoul/L=Seoul/O=lecture/OU=prometheus/CN=192.168.1.64" \
  -key ca.key \
  -out ca.crt
 
-openssl genrsa -out local-harbor.key 4096
+openssl genrsa -out harbor.key 4096
 openssl req -sha512 -new \
-    -subj "/C=KR/ST=Seoul/L=Seoul/O=example/OU=Personal/CN=192.168.1.64" \
-    -key local-harbor.key \
-    -out local-harbor.csr
+    -subj "/C=KR/ST=Seoul/L=Seoul/O=lecture/OU=prometheus/CN=192.168.1.64" \
+    -key harbor.key \
+    -out harbor.csr
 
 openssl x509 -req -sha512 -days 3650 \
     -extfile csr-v3.ext \
     -CA ca.crt -CAkey ca.key -CAcreateserial \
-    -in local-harbor.csr \
-    -out local-harbor.crt
+    -in harbor.csr \
+    -out harbor.crt
 
-# data dir
-cp local-harbor.crt /data/cert/
-cp local-harbor.key /data/cert/
+mkdir /root/_Lecture_prom_learning.kit/ch6/6.4/tls/
+
+
+mv ca.key /root/_Lecture_prom_learning.kit/ch6/6.4/tls/
+mv ca.crt /root/_Lecture_prom_learning.kit/ch6/6.4/tls/
+mv harbor.csr /root/_Lecture_prom_learning.kit/ch6/6.4/tls/
+
+mv harbor.crt /root/_Lecture_prom_learning.kit/ch6/6.4/tls/
+mv harbor.key /root/_Lecture_prom_learning.kit/ch6/6.4/tls/

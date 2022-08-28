@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: nginx
+  name: nginx
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      annotations:
+        kubectl.kubernetes.io/default-container: nginx
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - image: nginx:1.21
+        name: nginx
+        resources:
+          limits:
+            memory: 80Mi
+            cpu: 200m
+        volumeMounts:
+        - name: site-vol
+          mountPath: /etc/nginx/templates
+        env:
+        - name: HOST_IP
+          valueFrom:
+            fieldRef:
+              fieldPath: status.hostIP
+        - name: PORT
+          value: '8080'
+      - image: nginx/nginx-prometheus-exporter:0.10.0
+        name: exporter
+        ports:
+        - containerPort: 9113
+        resources:
+          limits:
+            memory: 80Mi
+            cpu: 200m
+        args:
+        - -nginx.scrape-uri=http://localhost:8080/stub_status
+      volumes:
+      - name: site-vol
+        configMap:
+          name: site-config
+          items:
+          - key: site.conf.template
+            path: site.conf.template

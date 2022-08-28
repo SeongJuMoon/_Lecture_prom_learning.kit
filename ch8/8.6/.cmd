@@ -1,1 +1,0 @@
-kubectl apply -f ~/_Lecture_prom_learning.kit/ch8/8.6/podMonitorMetalLB.yaml

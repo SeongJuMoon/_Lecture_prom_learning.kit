@@ -2,7 +2,6 @@ apiVersion: monitoring.coreos.com/v1
 kind: PodMonitor
 metadata:
   labels:
-    monitoring: "true"
     app: metallb
   name: metallb
   namespace: monitoring

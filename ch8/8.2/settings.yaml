@@ -7,11 +7,4 @@ prometheus:
           - "ReadWriteOnce"
         resources:
           requests:
-            storage: "8Gi" 
-  prometheusSpec:
-    serviceMonitorSelector:
-      matchLabels:
-        monitoring: "true"
-    podMonitorSelector: 
-      matchLabels:
-        monitoring: "true"
+            storage: "8Gi"

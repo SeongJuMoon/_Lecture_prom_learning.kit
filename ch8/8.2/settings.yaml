@@ -11,7 +11,7 @@ prometheus:
   prometheusSpec:
     serviceMonitorSelector:
       matchLabels:
-        monitoring: true
+        monitoring: "true"
     podMonitorSelector: 
       matchLabels:
-        monitoring: true
+        monitoring: "true"

@@ -1,0 +1,1 @@
+ kubectl apply -f _Lecture_prom_learning.kit/ch4/4.6/nginx/

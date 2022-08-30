@@ -1,5 +1,5 @@
 # memory load : approx 50M consumed 
-stress --vm 5 --vm-bytes 10M --timeout 60s
+stress --vm 5 --vm-bytes 10M --timeout 120s
 
 # check node memory 
 node_memory_Active_bytes

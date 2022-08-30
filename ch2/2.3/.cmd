@@ -1,1 +1,3 @@
-~/_Lecture_prometheus_learning.kit/ch2/2.3/prometheus-installer.sh
+# deploy native prometheus thru helm which encap by shell
+./.prometheus-installer.sh
+

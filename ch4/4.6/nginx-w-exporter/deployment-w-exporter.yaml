@@ -24,7 +24,7 @@ spec:
             memory: 80Mi
             cpu: 200m
         volumeMounts:
-        - name: site-vol
+        - name: nginx-vol
           mountPath: /etc/nginx/templates
         env:
         - name: HOST_IP
@@ -44,9 +44,9 @@ spec:
         args:
         - -nginx.scrape-uri=http://localhost:8080/stub_status
       volumes:
-      - name: site-vol
+      - name: nginx-vol
         configMap:
-          name: site-config
+          name: nginx-config
           items:
           - key: site.conf.template
             path: site.conf.template

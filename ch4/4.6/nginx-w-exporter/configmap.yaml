@@ -7,7 +7,7 @@ metadata:
     app.kubernetes.io/instance: nginx
     app.kubernetes.io/part-of: nginx
     app.kubernetes.io/version: 1.21.0
-  name: site-config
+  name: nginx-config
 data:
   site.conf.template: |
       server {

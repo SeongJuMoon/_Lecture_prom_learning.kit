@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: deploy-chk-hn
+  name: deploy-chk-hn
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: deploy-chk-hn
+  template:
+    metadata:
+      labels:
+        app: deploy-chk-hn
+    spec:
+      containers:
+      - image: sysnet4admin/chk-hn
+        name: deploy-chk-hn 
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: lb-deploy-chk-hn
+  name: lb-deploy-chk-hn
+spec:
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 80
+  selector:
+    app: deploy-chk-hn
+  type: LoadBalancer

@@ -1,3 +1,9 @@
+# Aggregation operators
+node_cpu_seconds_total
+topk(3,node_cpu_seconds_total)
+bottomk(3,node_cpu_seconds_total) 
+bottomk(3,node_cpu_seconds_total > 0) 
+
 # Aggregation operators by 
 node_cpu_seconds_total
 avg(node_cpu_seconds_total)

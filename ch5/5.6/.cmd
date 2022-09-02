@@ -1,8 +1,6 @@
-# offset Modifier
-node_memory_Active_bytes offset 1m
-node_memory_Active_bytes offset 1h
+# check instant vector at current time 
+node_memory_Active_bytes
 
-# '@' Modifier
-# get current unix time 
-date +%s
-node_memory_Active_bytes @<uninx_time> 
+# check range vector during 5m 
+node_memory_Active_bytes[5m]
+

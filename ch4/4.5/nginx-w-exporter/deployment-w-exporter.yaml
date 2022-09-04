@@ -20,28 +20,16 @@ spec:
       containers:
       - image: nginx:1.21
         name: nginx
-        resources:
-          limits:
-            memory: 80Mi
-            cpu: 200m
         volumeMounts:
         - name: nginx-vol
           mountPath: /etc/nginx/templates
         env:
-        - name: HOST_IP
-          valueFrom:
-            fieldRef:
-              fieldPath: status.hostIP
         - name: PORT
           value: '8080'
       - image: nginx/nginx-prometheus-exporter:0.10.0
         name: exporter
         ports:
         - containerPort: 9113
-        resources:
-          limits:
-            memory: 80Mi
-            cpu: 200m
         args:
         - -nginx.scrape-uri=http://localhost:8080/stub_status
       volumes:

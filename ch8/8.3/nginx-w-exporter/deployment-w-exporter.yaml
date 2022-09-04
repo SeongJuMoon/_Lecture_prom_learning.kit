@@ -12,6 +12,7 @@ spec:
   template:
     metadata:
       annotations:
+        # config default exec/logs connectivity for main nginx 
         kubectl.kubernetes.io/default-container: nginx
       labels:
         app: nginx
@@ -19,34 +20,22 @@ spec:
       containers:
       - image: nginx:1.21
         name: nginx
-        resources:
-          limits:
-            memory: 80Mi
-            cpu: 200m
         volumeMounts:
-        - name: site-vol
+        - name: nginx-vol
           mountPath: /etc/nginx/templates
         env:
-        - name: HOST_IP
-          valueFrom:
-            fieldRef:
-              fieldPath: status.hostIP
         - name: PORT
           value: '8080'
       - image: nginx/nginx-prometheus-exporter:0.10.0
         name: exporter
         ports:
         - containerPort: 9113
-        resources:
-          limits:
-            memory: 80Mi
-            cpu: 200m
         args:
         - -nginx.scrape-uri=http://localhost:8080/stub_status
       volumes:
-      - name: site-vol
+      - name: nginx-vol
         configMap:
-          name: site-config
+          name: nginx-config
           items:
           - key: site.conf.template
             path: site.conf.template

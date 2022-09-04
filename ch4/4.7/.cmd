@@ -35,13 +35,14 @@ https://github.com/kubernetes/kubernetes/search?q=IptablesRulesTotal
 
 # 2-2.1 ????
 
+# 2-2-1 ~/_Lecture_prom_learning.kit/ch4/4.7/setup-metrics-kube-proxy.sh (setup metrics with prometheus)
 
-# 2-2-1.Configonfigure to expose kube-proxy's metrics from w3-k8s's Pod 
+# 2-2-1.Configonfigure to expose kube-proxy's metrics from w3-k8s's Pod  (outdated)
 kubectl edit cm kube-proxy -n kube-system
   metricsBindAddress: "" >> metricsBindAddress: "0.0.0.0:10249"
 kubectl rollout restart daemonset kube-proxy  -n kube-system  
 
-# 2-3-1.register prometheus service discovery 
+# 2-3-1.register prometheus service discovery (outdated)
 kubectl edit cm -n monitoring prometheus-server
 ```
     - job_name: kube-proxy
@@ -62,6 +63,7 @@ kubectl edit cm -n monitoring prometheus-server
         regex: (.+?)(\\:\\d+)?
         replacement: $1:10249
 ```
+
 
 # 2-4-1.check 'kubeproxy_sync_proxy_rules_iptables_total' on web ui
 

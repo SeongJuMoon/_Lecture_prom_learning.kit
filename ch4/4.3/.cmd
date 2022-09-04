@@ -2,10 +2,13 @@
 # check cgroup status 
   ll /sys/fs/cgroup
   https://www.slideshare.net/JoHoon1/systemd-cgroup
+
 # 2./proc
+  cat /proc/version
+  cat /proc/cpuinfo
+  cat /proc/meminfo 
 
-
-# 3.node* 
+# 3.node exporter  
 # memory load on w3-k8s > approx 50M consumed 
 stress --vm 5 --vm-bytes 10M --timeout 150s
 

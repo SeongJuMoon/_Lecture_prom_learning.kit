@@ -23,4 +23,3 @@ stress --cpu 2 --timeout 300s
 node_cpu_seconds_total
 node_cpu_seconds_total{node="w3-k8s"}g
 node_cpu_seconds_total{node="w3-k8s", mode="user"}
-

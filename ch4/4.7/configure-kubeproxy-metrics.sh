@@ -8,3 +8,5 @@ kubectl rollout restart daemonset -n kube-system kube-proxy
 
 # add scrape information for collecting kkube-proxy metrics 
 kubectl replace -f kubeproxy_scrape-updater.yaml 
+
+echo "successfully configure the metrics and scrape of kubeproxy!"

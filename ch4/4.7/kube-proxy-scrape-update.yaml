@@ -15,7 +15,11 @@ data:
     - /etc/config/rules
     - /etc/config/alerts
     scrape_configs:
-    # kube-proxy register
+    - job_name: prometheus
+      static_configs:
+      - targets:
+        - localhost:9090
+    # begin; kube-proxy register
     - job_name: kube-proxy
       honor_labels: true
       kubernetes_sd_configs:
@@ -33,10 +37,7 @@ data:
         target_label: __address__
         regex: (.+?)(\\:\\d+)?
         replacement: $1:10249
-    - job_name: prometheus
-      static_configs:
-      - targets:
-        - localhost:9090
+    # end;
     - bearer_token_file: /var/run/secrets/kubernetes.io/serviceaccount/token
       job_name: kubernetes-apiservers
       kubernetes_sd_configs:

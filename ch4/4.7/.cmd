@@ -1,7 +1,6 @@
 # search kubeproxy metrics 
 https://github.com/kubernetes/kubernetes/search?l=Go&q=kubeproxy+metrics 
-
-
+-=-=-=-=-=-=
 
 # scripts automatically for collect metrics and expose it
 # configure-kubeproxy-metrics.sh

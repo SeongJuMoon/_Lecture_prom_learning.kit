@@ -7,4 +7,4 @@ kubectl get configmap -n kube-system kube-proxy -o yaml  | sed -r "s/(metricsBin
 kubectl rollout restart daemonset -n kube-system kube-proxy
 
 # add scrape config to scrape kube-proxy metrics with replace update
-kubectl replace -f ~/_Lecture_prom_learning.kit/ch4/4.7/kube-proxy-scrape-update.yaml
+kubectl replace -f kubeproxy_scrape-updater.yaml 

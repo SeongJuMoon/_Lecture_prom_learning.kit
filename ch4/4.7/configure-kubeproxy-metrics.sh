@@ -7,6 +7,6 @@ kubectl get configmap -n kube-system kube-proxy -o yaml  | sed -r "s/(metricsBin
 kubectl rollout restart daemonset -n kube-system kube-proxy
 
 # add scrape information for collecting kkube-proxy metrics 
-kubectl replace -f kubeproxy_scrape-updater.yaml 
+kubectl replace -f kubeproxy-scrape/enabled-15s.yaml
 
 echo "successfully configure the metrics and scrape of kubeproxy!"

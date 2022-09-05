@@ -9,7 +9,6 @@ kube_deployment_status_replicas_available{deployment="deploy-httpd"}
 k scale deploy deploy-httpd --replicas 6
 
 # check replicas's number on web ui 
-kube_deployment_status_replicas_available
 kube_deployment_status_replicas_available{deployment="deploy-httpd"}
 
 # check to delete deployment 

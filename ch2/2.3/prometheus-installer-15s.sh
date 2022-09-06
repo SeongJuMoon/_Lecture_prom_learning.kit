@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
+# scrape default is 1m 
 
-helm install prometheus edu/prometheus \
+helm install native-prometheus edu/prometheus \
 --set pushgateway.enabled=false \
 --set alertmanager.enabled=false \
 --set nodeExporter.tolerations[0].key="node-role.kubernetes.io/master" \

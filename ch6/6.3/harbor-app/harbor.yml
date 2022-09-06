@@ -14,8 +14,8 @@ https:
   # https port for harbor, default is 443
   port: 443
   # The path of cert and key files for nginx
-  certificate: /root/_Lecture_prom_learning.kit/ch6/6.4/tls/harbor.crt
-  private_key: /root/_Lecture_prom_learning.kit/ch6/6.4/tls/harbor.key
+  certificate: /root/_Lecture_prom_learning.kit/ch6/6.4/harbor-certificate/tls/harbor.crt
+  private_key: /root/_Lecture_prom_learning.kit/ch6/6.4/harbor-certificate/tls/harbor.key
 
 # # Uncomment following will enable tls communication between all harbor components
 # internal_tls:

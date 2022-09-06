@@ -6,7 +6,7 @@ kubectl get configmap -n kube-system kube-proxy -o yaml  | sed -r "s/(metricsBin
 # restart daemonset for applying modified configmap  
 kubectl rollout restart daemonset -n kube-system kube-proxy
 
-# add scrape information for collecting kkube-proxy metrics 
-kubectl patch -n monitoring configmap prometheus-server --patch-file kubeproxy-scrape/enabled-15s.yaml
+# add annotation for collecting kkube-proxy metrics 
+kubectl patch daemonset -n kube-system kube-proxy --patch-file kubeproxy-template-annotations/enabled.yaml 
 
 echo "successfully configure the metrics and scrape for kubeproxy!"

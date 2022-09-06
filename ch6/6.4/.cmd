@@ -1,11 +1,10 @@
-# check 
-promtool check 
+# level:metric:operations
 
-# query 
-promtool query 
+# add node.rules on Rules menu
+kubectl patch configmap prometheus-server -n monitoring --patch-file node.rules.yaml
+# check rules and PromQL on prometheus web ui 
+node:node_memory:usage
 
-# debug 
-promtool debug
+# delete node.rules on Rules menu
+kubectl patch configmap prometheus-server -n monitoring --patch-file init-rules.yaml 
 
-# tsdb 
-promtool tsdb 

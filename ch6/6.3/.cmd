@@ -21,12 +21,9 @@ http://192.168.1.63:9090/metrics
 # run ON m-k8s 
 # confirm & add static address app 
 cat add-harbor-to-the-prometheus.yaml | grep harbor -A 5
-kubectl patch configmap prometheus-server -n monitoring --patch-file add-harbor-to-the-prometheus.yaml 
+kubectl patch configmap prometheus-server -n monitoring --patch-file 4.add-harbor-to-the-prometheus.yaml 
 # check register on prometheus web ui's target 
 
 # 5.validation for metrics value on harbor 
-docker pull nginx
-docker tag nginx 192.168.1.63/library/nginx
-# ID/Password: admin/admin 
-docker login 192.168.1.63 
-docker push 192.168.1.63/library/nginx
+./5.docker-image-pullpush-to-harbor.sh
+# check harbor's library status thru web browse (192.168.1.63) i.e. nginx uploaded?

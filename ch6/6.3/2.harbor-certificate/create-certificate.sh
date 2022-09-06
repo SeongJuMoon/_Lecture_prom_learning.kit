@@ -16,7 +16,7 @@ openssl req -sha512 -new \
     -out harbor.csr
 
 openssl x509 -req -sha512 -days 3650 \
-    -extfile /root/_Lecture_prom_learning.kit/ch6/6.3/harbor-certificate/csr-v3.ext \
+    -extfile /root/_Lecture_prom_learning.kit/ch6/6.3/2.harbor-certificate/csr-v3.ext \
     -CA ca.crt -CAkey ca.key -CAcreateserial \
     -in harbor.csr \
     -out harbor.crt

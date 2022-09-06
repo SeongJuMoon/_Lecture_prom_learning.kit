@@ -1,19 +1,19 @@
 # 1.vagrantup for new harbor VM on HOST machine(windows,MacOS)
-cd ~/_Lecture_prom_learning.kit/ch6/6.3/vagrantup-harbor 
+cd ~/_Lecture_prom_learning.kit/ch6/6.3/1.vagrantup-harbor 
 vagrant up
 
 # 2.harbor install ON NEW harbor VM (192.168.1.63)
 ssh 192.168.1.63 / password is 'vagrant' 
 # generate certificate 
-~/_Lecture_prom_learning.kit/ch6/6.3/harbor-certificate/create-certificate.sh
+~/_Lecture_prom_learning.kit/ch6/6.3/2.harbor-certificate/create-certificate.sh
 # install harbor docker-compose 
-~/_Lecture_prom_learning.kit/ch6/6.3/harbor-app/install.sh
+~/_Lecture_prom_learning.kit/ch6/6.3/3.harbor-app/install.sh
 
 # 3.harbor status check 
 # check harbor status thru web browse (192.168.1.63)
 
 # check exposed metrics by harbor app   
-cat ~/_Lecture_prom_learning.kit/ch6/6.3/harbor-app/harbor.yml | grep metric: -A 4
+cat ~/_Lecture_prom_learning.kit/ch6/6.3/3.harbor-app/harbor.yml | grep metric: -A 4
 # double-check exposed metrics by web browse 
 http://192.168.1.63:9090/metrics
 

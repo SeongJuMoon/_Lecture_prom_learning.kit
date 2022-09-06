@@ -6,4 +6,4 @@ subjectAltName = @alt_names
 
 [alt_names]
 DNS.0=harbor
-IP.0=192.168.1.64
+IP.0=192.168.1.63

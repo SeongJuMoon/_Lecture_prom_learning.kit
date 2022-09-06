@@ -15,7 +15,7 @@ data:
       - targets:
         - localhost:9090
     # begin; external app harbor 
-    - job_name: 'harbor'
+    - job_name: harbor
       metrics_path: /metrics
       static_configs:
       - targets:

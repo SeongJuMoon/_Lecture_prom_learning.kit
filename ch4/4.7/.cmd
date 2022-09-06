@@ -11,26 +11,28 @@ kubectl edit cm kube-proxy -n kube-system
   metricsBindAddress: "" >> metricsBindAddress: "0.0.0.0:10249"
 kubectl rollout restart daemonset kube-proxy  -n kube-system  
 
-# 2.register prometheus service discovery
-kubectl edit cm -n monitoring prometheus-server
+# 2.add annotations on kube-proxy daemonset 
+kubectl edit daemonset -n kube-system kube-proxy  
 ```
-    - job_name: kube-proxy
-      honor_labels: true
-      kubernetes_sd_configs:
-      - role: pod
-      relabel_configs:
-      - action: keep
-        source_labels:
-        - __meta_kubernetes_namespace
-        - __meta_kubernetes_pod_name
-        separator: '/'
-        regex: 'kube-system/kube-proxy.+'
-      - source_labels:
-        - __address__
-        action: replace
-        target_label: __address__
-        regex: (.+?)(\\:\\d+)?
-        replacement: $1:10249
+spec:
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      k8s-app: kube-proxy
+  template:
+    metadata:
+      annotations:
+        prometheus.io/port: "10249"      <<<
+        prometheus.io/scrape: "true"     <<<
+      creationTimestamp: null
+      labels:
+        k8s-app: kube-proxy
+    spec:
+      containers:
+      - command:
+        - /usr/local/bin/kube-proxy
+        - --config=/var/lib/kube-proxy/config.conf
+        - --hostname-override=$(NODE_NAME)
 ```
 
 

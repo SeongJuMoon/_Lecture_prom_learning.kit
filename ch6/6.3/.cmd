@@ -28,3 +28,9 @@ kubectl patch configmap prometheus-server -n monitoring --patch-file 4.add-harbo
 ./5.docker-image-pullpush-to-harbor.sh
 # check harbor's library status thru web browse (192.168.1.63) i.e. nginx uploaded?
 PromQL: harbor_project_repo_total
+
+# 6.remove harbor-app & delete static register harbor in prometheus 
+kubectl patch configmap prometheus-server -n monitoring --patch-file 6.del-harbor-from-the-prometheus.yaml 
+# turn off harbor VM 
+# remove harbor VM 
+

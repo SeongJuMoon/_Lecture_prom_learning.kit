@@ -1,3 +1,5 @@
+# vagrantup for new harbor VM 
+cd ~/_Lecture_prom_learning.kit/ch6/6.4/create-certificate.sh
 vagrant up
 
 # harbor

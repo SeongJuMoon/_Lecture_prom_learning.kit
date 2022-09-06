@@ -1,2 +1,3 @@
 data:
-  recording_rules.yml: {}
+  recording_rules.yml: |
+    {}

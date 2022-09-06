@@ -9,4 +9,4 @@ kubectl rollout restart daemonset -n kube-system kube-proxy
 # add scrape information for collecting kkube-proxy metrics 
 kubectl patch -n monitoring configmap prometheus-server --patch-file kubeproxy-scrape/enabled-15s.yaml
 
-echo "successfully configure the metrics and scrape of kubeproxy!"
+echo "successfully configure the metrics and scrape for kubeproxy!"

@@ -11,6 +11,7 @@ ssh 192.168.1.63 / password is 'vagrant'
 
 # 3.harbor status check 
 # check harbor status thru web browse (192.168.1.63)
+# ID: admin / Password: admin
 
 # check exposed metrics by harbor app   
 cat ~/_Lecture_prom_learning.kit/ch6/6.3/3.harbor-app/harbor.yml | grep metric: -A 4

@@ -21,7 +21,8 @@ http://192.168.1.63:9090/metrics
 # 4.add exposed metrics to the prometheus(SD/service discovery)
 # run ON m-k8s 
 # confirm & add static address app 
-cat ~/_Lecture_prom_learning.kit/ch6/6.3/4.add-harbor-to-the-prometheus.yaml | grep harbor -A 5
+cd ~/_Lecture_prom_learning.kit/ch6/6.3/
+cat 4.add-harbor-to-the-prometheus.yaml | grep harbor -A 5
 kubectl patch configmap prometheus-server -n monitoring --patch-file 4.add-harbor-to-the-prometheus.yaml 
 # check register on prometheus web ui's target 
 

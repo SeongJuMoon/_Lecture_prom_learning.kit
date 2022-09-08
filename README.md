@@ -2,7 +2,7 @@
 
 <a href="https://www.inflearn.com/course/쿠버네티스-쉽게시작?inst=cf657a9d">
 <img src="https://user-images.githubusercontent.com/29163931/189245493-17c284e8-3cfc-42bf-8cf4-9697250baed8.png" width="400">
-</a>!
+</a>
 
 
 

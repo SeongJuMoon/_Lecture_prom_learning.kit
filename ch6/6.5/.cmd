@@ -15,7 +15,7 @@ sed -i \
 4.MUST-Change-alertmanager-add-slack-receivers.yaml 
 
 # apply changed slack receiver on prometheus's alertmanager 
-kubectl patch configmap prometheus-server -n monitoring --patch-file 4.MUST-Change-alertmanager-add-slack-receivers.yaml
+kubectl patch configmap prometheus-alertmanager -n monitoring --patch-file 4.MUST-Change-alertmanager-add-slack-receivers.yaml
 
 
 #5.change replicas for triggering nginx alert

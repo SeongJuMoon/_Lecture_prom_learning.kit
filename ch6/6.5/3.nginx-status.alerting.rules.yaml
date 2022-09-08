@@ -10,5 +10,5 @@ data:
           description: '{{ $labels.namespace }} 에 배포된 Nginx가 비정상 종료되었습니다.'
           summary: '[P2, warnning]: Nginx pod has been shutdown unexpectedly.'
         expr: |
-          sum(nginx_up) OR vector(0) == 0
+          (sum(nginx_up) OR vector(0)) == 0
         

@@ -7,7 +7,7 @@ data:
         for: 30s
         annotations:
           title: 'Nginx pod down unexpectedly'
-          description: '{{ $labels.namespace }} 에 배포된 Nginx가 비정상 종료되었습니다.'
+          description: 'Nginx가 비정상 종료됨. 빠른 조치 필요!'
           summary: '[P2, warnning]: Nginx pod has been shutdown unexpectedly.'
         expr: |
           (sum(nginx_up) OR vector(0)) == 0

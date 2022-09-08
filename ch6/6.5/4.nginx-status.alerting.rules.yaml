@@ -3,7 +3,7 @@ data:
     groups:
     - name: nginx-status.alert
       rules:
-      - alert: [P2] NginxDown
+      - alert: '[P2] NginxDown'
         for: 30s
         annotations:
           title: 'Nginx pod {{ $labels.pod }} down'

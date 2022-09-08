@@ -1,7 +1,7 @@
 data:
   alertmanager.yml: |
     global:
-      resolve_timeout: 1m
+      resolve_timeout: 10m
       slack_api_url: Slack-URL
     receivers:
     - name: default-receiver

@@ -1,5 +1,5 @@
 # install prometheus-alertmanager 
-./1.prometheus-alertmanager-installer.sh 
+./1.prometheus-alertmanager-updater.sh 
 
 # deploy nginx and nginx exporter to collect nginx app metrics 
 kubectl apply -f 2.nginx-w-exporter

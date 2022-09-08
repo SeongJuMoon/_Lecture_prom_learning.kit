@@ -10,6 +10,6 @@ kubectl patch configmap prometheus-server -n monitoring --patch-file prometheus-
 # check rules and PromQL on prometheus web ui 
 node:node_memory:usage
 
-# delete node.rules on Rules menu
+# delete all recording rules at Rules menu
 kubectl patch configmap prometheus-server -n monitoring --patch-file init-rules.yaml 
 

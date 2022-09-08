@@ -10,6 +10,9 @@ helm upgrade prometheus edu/prometheus \
 --set nodeExporter.tolerations[1].operator="Exists" \
 --set server.service.type="LoadBalancer" \
 --set alertmanager.service.type="LoadBalancer" \
+--set alertmanager.service.loadBalancerIP="192.168.1.65"
+--set server.global.scrape_interval="15s" \
+--set server.global.evaluation_interval="15s" \
 --set server.extraFlags[0]="web.enable-lifecycle" \
 --set server.extraFlags[1]="storage.tsdb.no-lockfile" \
 --namespace=monitoring 

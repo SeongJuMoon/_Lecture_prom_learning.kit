@@ -1,7 +1,7 @@
 data:
   recording_rules.yml: |
     groups:
-      - name: node.rules
+      - name: prometheus-recording.rules
         interval: 10s
         rules:
           - record: node:node_memory:usage
@@ -16,3 +16,5 @@ data:
                  /
                  node_memory_MemTotal_bytes
               )
+          - record: container:memory:topk3
+            expr: topk(3,sum(container_memory_working_set_bytes{pod!=""}/1024/1024) by (pod))

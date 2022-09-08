@@ -22,6 +22,7 @@ kubectl patch configmap prometheus-alertmanager -n monitoring --patch-file 4.MUS
 kubectl scale deployment nginx --replicas 0
 # wait wait wait ....
 # confirm message in slack channel 
+kubectl scale deployment nginx --replicas 3
 
 # if you want to init alert rules all 
 # run this 

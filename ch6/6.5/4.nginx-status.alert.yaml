@@ -1,14 +1,14 @@
 data:
   alerting_rules.yml: |
     groups:
-    - name: nginx
+    - name: nginx-status.alert
       rules:
-      - alert: NginxDown
+      - alert: [P2] NginxDown
         for: 30s
         annotations:
           title: 'Nginx pod {{ $labels.pod }} down'
           description: '{{ $labels.namespace }} 에 배포된 {{ $labels.pod }}이 종료되었습니다.'
-          summary: '[P2, warnning]: nginx pod has been shutdown.'
+          summary: '[P2, warnning]: Nginx pod has been shutdown.'
         expr: |
-          nginx_up == 0
+          sum(nginx_up) OR vector(0) == 0
         

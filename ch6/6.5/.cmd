@@ -1,13 +1,19 @@
 # install prometheus-alertmanager 
-./prometheus-alertmanager-installer.sh
+./1.prometheus-alertmanager-installer.sh 
 
-#
-kubectl patch configmap prometheus-alertmanager --patch-file ~/_Lecture_prom_learning.kit/ch6/6.6/server-binding-alertmanager.yaml
-sed s,Slack-URL,<yourslackurl>,gi ~/_Lecture_prom_learning.kit/ch6/6.6/alertmanager-config.yaml
-kubectl patch configmap prometheus-server --patch-file ~/_Lecture_prom_learning.kit/ch6/6.6/alertmanager-config.yaml
+# deploy nginx and nginx exporter to collect nginx app metrics 
+kubectl apply -f 2.nginx-w-exporter
 
-kubectl apply -f ~/_Lecture_prom_learning.kit/ch6/6.6/nginx
+# register slack receiver on alertmanager 
+# change slack API Address ()
+sed -i \
+'s,Slack-URL,<MUST Change> https://hooks.slack.com/services/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,g' \
+3.MUST-Change-alertmanager-add-slack-receivers.yaml 
 
-kubectl scale deployment nginx --replicas=0
+# apply changed slack receiver on prometheus's alertmanager 
+kubectl patch configmap prometheus-server --patch-file 3.MUST-Change-alertmanager-add-slack-receivers.yaml
 
-kubectl delete -f ~/_Lecture_prom_learning.kit/ch6/6.6/nginx
+# apply alert configuration for prometheus's alert trigger  
+kubectl patch configmap prometheus-server --patch-file 4.nginx-status.alert.yaml
+
+# check alert tab(192.168.1.11) and alertmanager(192.168.1.65) 

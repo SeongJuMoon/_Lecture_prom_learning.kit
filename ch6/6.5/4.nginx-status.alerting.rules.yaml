@@ -6,9 +6,9 @@ data:
       - alert: '[P2] NginxDown'
         for: 30s
         annotations:
-          title: 'Nginx pod {{ $labels.pod }} down'
-          description: '{{ $labels.namespace }} 에 배포된 {{ $labels.pod }}이 종료되었습니다.'
-          summary: '[P2, warnning]: Nginx pod has been shutdown.'
+          title: 'Nginx pod down unexpectedly'
+          description: '{{ $labels.namespace }} 에 배포된 Nginx가 비정상 종료되었습니다.'
+          summary: '[P2, warnning]: Nginx pod has been shutdown unexpectedly.'
         expr: |
           sum(nginx_up) OR vector(0) == 0
         

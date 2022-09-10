@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: mysql
+  name: mysql
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mysql
+  template:
+    metadata:
+      labels:
+        app: mysql
+    spec:
+      containers:
+      - image: mysql:8.0.30
+        name: mysql
+        ports:
+        - containerPort: 3306
+        env:
+        - name: MYSQL_ROOT_PASSWORD
+          value: "root"
+      - image: prom/mysqld-exporter:v0.14.0
+        name: mysqld-exporter
+        ports:
+        - containerPort: 9104
+        env:
+        - name: DATA_SOURCE_NAME
+          value: "root:root@(mysql:3306)/"
+

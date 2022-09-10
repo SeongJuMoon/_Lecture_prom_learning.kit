@@ -11,4 +11,4 @@ kubectl patch configmap prometheus-server -n monitoring --patch-file prometheus-
 node:node_memory:usage
 
 # delete all recording rules at Rules menu
-kubectl patch configmap prometheus-server -n monitoring --patch-file init-rules.yaml 
+kubectl patch configmap prometheus-server -n monitoring --patch-file init-recording.rules.yaml 

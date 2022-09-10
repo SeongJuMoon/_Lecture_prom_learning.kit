@@ -1,5 +1,4 @@
 data:
   alertmanager.yml: |
     {}
-  alerting_rules.yml: |
-    {}
+

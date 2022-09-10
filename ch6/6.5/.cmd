@@ -18,12 +18,12 @@ sed -i \
 kubectl patch configmap prometheus-alertmanager -n monitoring --patch-file 4.MUST-Change-alertmanager-add-slack-receivers.yaml
 
 
-#5.change replicas for triggering nginx alert
+# 5.change replicas for triggering nginx alert
 kubectl scale deployment nginx --replicas 0
 # wait wait wait ....
 # confirm message in slack channel 
 kubectl scale deployment nginx --replicas 3
 
-# if you want to init alert rules all 
-# run this 
-# kubectl patch configmap prometheus-server -n monitoring --patch-file 5.init.alertmanager-alerting.rules.yaml
+# 6.init rules all  
+kubectl patch configmap prometheus-server -n monitoring --patch-file 5.1.init-prometheus-server-alerting.rules.yaml
+kubectl patch configmap prometheus-alertmanager -n monitoring --patch-file 5.2.init-prometheus-alertmanager.rules.yaml

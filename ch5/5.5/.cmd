@@ -13,5 +13,5 @@ avg(node_cpu_seconds_total{mode="user"}) by (node)
 # Aggregation operators without
 kubelet_http_requests_total
 sum(kubelet_http_requests_total) without(path)
-sum(kubelet_http_requests_total) without(path,service)
+
 

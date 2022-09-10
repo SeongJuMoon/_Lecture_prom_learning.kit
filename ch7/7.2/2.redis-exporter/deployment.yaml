@@ -21,7 +21,4 @@ spec:
         - containerPort: 9121
         args:
         - "--redis.addr=redis.default.svc.cluster.local"
-        resources:
-          limits:
-            cpu: "128m"
-            memory: 128Mi
+        

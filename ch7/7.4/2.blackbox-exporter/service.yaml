@@ -12,3 +12,4 @@ spec:
     targetPort: web
   selector:
     app: prometheus-blackbox-exporter
+    

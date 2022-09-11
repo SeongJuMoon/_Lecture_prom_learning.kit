@@ -2,7 +2,7 @@
 
 # check istioctl is installed.
 if (command -v istioctl > /dev/null); then
-  echo 
+  echo 'istioctl installed already.'
 else
   echo 'install istioctl'
   source ~/_Lecture_prom_learning.kit/ch7/7.4/install-istio.sh

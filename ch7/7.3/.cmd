@@ -16,6 +16,14 @@ kubectl apply -f 2.mysql/
 # 4. check mysql and mysql exporter.
 kubectl get service,deployment mysql
 
+# result
+NAME            TYPE           CLUSTER-IP      EXTERNAL-IP    PORT(S)                         AGE
+service/mysql   LoadBalancer   10.99.154.164   192.168.1.73   3306:30935/TCP,9104:30828/TCP   11m
+
+NAME                    READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/mysql   1/1     1            1           11m
+
+
 # 5. check mysql service annotations
 kubectl get services mysql -o yaml | nl
 7  prometheus.io/port: "9104"
@@ -24,7 +32,7 @@ kubectl get services mysql -o yaml | nl
 # 6. check target ui on prometheus ui(http://192.168.1.11/targets)
 search CTRL + F enter mysql
 
-# 7. prometheus ui(http://192.168.1.11/targets) below query.
+# 7. prometheus ui(http://192.168.1.11/graph) below query.
 mysql_global_variables_max_allowed_packet
 # result
 mysql_global_variables_max_allowed_packet 67108864
@@ -38,7 +46,7 @@ show variables like 'max_allowed_packet';
 max_allowed_packet | 67108864 
 
 # 8. add database
->> source ./db_scripts/1.setup.sql
+source ./db_scripts/1.setup.sql;
 
 # 9. check `world` database added.
 show databases;
@@ -51,7 +59,7 @@ world
 # 10. change mysql variables `max_allowed_packet` to 1024. 
 set global max_allowed_packet=1024;
 
-# 11. check browser on 192.168.1.11/graph enter the below query.
+# 11. check browser on prometheus ui(http://192.168.1.11/graph) enter the below query.
 mysql_global_variables_max_allowed_packet 
 # result mysql_global_variables_max_allowed_packet 1024
 
@@ -59,7 +67,7 @@ mysql_global_variables_max_allowed_packet
 show variables like 'max_allowed_packet';
 max_allowed_packet | 67108864 
 
-# 13. reconnect mysql pod 
+# 13. reconnect mysql to max_allowed_packet variable has been updated. 
 CTRL + d
 # result
 mysql> ^DBye
@@ -71,6 +79,8 @@ show variables like 'max_allowed_packet';
 max_allowed_packet | 1024 
 
 # 15. running data migration below command in mysql client.
+source db_scripts/2.insert.sql
+...
 Reading table information for completion of table and column names
 You can turn off this feature to get a quicker startup with -A
 

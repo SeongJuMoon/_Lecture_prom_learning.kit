@@ -1,7 +1,6 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  namespace: redis
   name: redis
 spec:
   replicas: 1

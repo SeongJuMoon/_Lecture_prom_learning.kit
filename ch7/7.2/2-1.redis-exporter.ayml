@@ -21,4 +21,19 @@ spec:
         - containerPort: 9121
         args:
         - "--redis.addr=redis.default.svc.cluster.local"
-        
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: redis-exporter
+  annotations:
+    prometheus.io/scrape: "true"
+    prometheus.io/port: "9121"
+spec:
+  selector:
+    app: redis-exporter
+  type: ClusterIP
+  ports:
+  - port: 9121
+    targetPort: 9121
+    name: redis-exporter

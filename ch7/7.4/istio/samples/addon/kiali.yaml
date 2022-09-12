@@ -416,7 +416,7 @@ spec:
     app.kubernetes.io/name: kiali
     app.kubernetes.io/instance: kiali
   type: LoadBalancer                   # Change from clusterIP to LoadBalancer
-  loadBalancerIP: 192.168.1.20         # Static IP
+  loadBalancerIP: 192.168.1.74         # Static IP
 ...
 ---
 # Source: kiali-server/templates/deployment.yaml

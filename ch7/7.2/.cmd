@@ -5,7 +5,7 @@ kubectl apply -f 1.redis-w-exporter.yaml
 redis_uptime_in_seconds
 redis_memory_max_bytes # 0
 
-# 1-3.delete deployed redis 
+# 1-2.delete deployed redis 
 kubectl delete -f 1.redis-w-exporter.yaml 
 
 

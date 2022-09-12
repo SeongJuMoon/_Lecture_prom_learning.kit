@@ -20,5 +20,5 @@ kubectl scale -n bookinfo deployment details-v1 --replicas=0
 probe_http_status_code
 
 # 5 delete blackbox configmap & uninstall all of applications 
-kubectl patch -n monitoring configmap prometheus-server --patch-file ./3.abort-blackbox-exporter-target.yaml
+kubectl patch -n monitoring configmap prometheus-server --patch-file ./3.del-blackbox-exporter-target.yaml
 ./uninstall-all.sh 

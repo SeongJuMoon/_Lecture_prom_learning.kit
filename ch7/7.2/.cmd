@@ -1,4 +1,4 @@
-# 1-1.deply at a once for redis 
+# 1-1.deploy at a once for redis 
 kubectl apply -f 1.redis-w-exporter.yaml
 
 # check to add the target and promql 

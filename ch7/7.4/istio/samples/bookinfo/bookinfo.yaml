@@ -36,7 +36,7 @@ metadata:
   namespace: bookinfo
   annotations:
     prometheus.io/healthcheck_path: "/health"
-    prometheus.io/should_be_probed: "true"
+    prometheus.io/blackbox: "true"
   labels:
     app: details
     service: details
@@ -95,7 +95,7 @@ metadata:
   namespace: bookinfo
   annotations:
     prometheus.io/healthcheck_path: "/health"
-    prometheus.io/should_be_probed: "true"
+    prometheus.io/blackbox: "true"
   labels:
     app: ratings
     service: ratings
@@ -154,7 +154,7 @@ metadata:
   namespace: bookinfo
   annotations:
     prometheus.io/healthcheck_path: "/health"
-    prometheus.io/should_be_probed: "true"
+    prometheus.io/blackbox: "true"
   labels:
     app: reviews
     service: reviews
@@ -312,7 +312,7 @@ metadata:
   namespace: bookinfo
   annotations:
     prometheus.io/healthcheck_path: "/health"
-    prometheus.io/should_be_probed: "true"
+    prometheus.io/blackbox: "true"
   labels:
     app: productpage
     service: productpage

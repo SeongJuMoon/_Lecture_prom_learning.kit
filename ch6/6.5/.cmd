@@ -24,6 +24,5 @@ kubectl scale deployment nginx --replicas 0
 # confirm message in slack channel 
 kubectl scale deployment nginx --replicas 3
 
-# 5.init rules all  
-kubectl patch configmap prometheus-server -n monitoring --patch-file 5-1.init-prometheus-server-alerting.rules.yaml
-kubectl patch configmap prometheus-alertmanager -n monitoring --patch-file 5-2.init-prometheus-alertmanager.rules.yaml
+# 5.rollback configuration to delete prometheus-alertmanager
+./5.prometheus-alertmanager-rollback.sh

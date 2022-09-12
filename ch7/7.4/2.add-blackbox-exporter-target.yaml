@@ -55,7 +55,7 @@ data:
         - __meta_kubernetes_namespace
         - __meta_kubernetes_pod_name
         separator: '/'
-          regex: 'kube-system/kube-proxy.+'
+        regex: 'kube-system/kube-proxy.+'
       - source_labels:
         - __address__
         action: replace

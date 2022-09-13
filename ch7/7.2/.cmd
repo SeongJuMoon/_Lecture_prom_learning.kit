@@ -23,7 +23,7 @@ kubectl apply -f 2-1.redis-exporter.yaml
 redis_memory_max_bytes # 83886080
 
 # 2-4.install redis-cli for benchmark
-yum install -y redis
+./redis-install.sh
 
 # 2-5.run awesome querys with benchmark 
 redis-benchmark -h 192.168.1.72

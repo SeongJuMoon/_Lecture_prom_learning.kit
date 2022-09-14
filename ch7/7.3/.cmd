@@ -1,17 +1,18 @@
-# 0.install mssql client binary 
+# 0.install mssql-client binary 
 0.mysql-client-installer.sh
 
 # 1-1.deploy at a once for mysql 
 kubectl apply -f 1.mysql-w-exporter.yaml
 
 # check to add the target and promql 
+mysql_up 
 mysql_global_status_uptime
 
 # 1-2.delete deployed mysql 
 kubectl delete -f 1.mysql-w-exporter.yaml 
 
 
-# 2.actual enviroment 
+# 2.practical senario  
 # 2-1.deploy mysql only 
 kubectl apply -f 2-0.mysql.yaml
 
@@ -27,17 +28,14 @@ mysql_global_variables_open_files_limit - mysql_global_variables_innodb_open_fil
 
 
 # 3.mysql DEMO
-# 3-1.max_allowed_packet
-# 3-1-1.check value on prometheus web ui 
+# 3-1-1.check max_allowed_packet on prometheus web ui 
 mysql_global_variables_max_allowed_packet
-# 3-1-2.change max_allowed_packet to '1GB' from default(64MB).
-./3-1-2.change-max-allowed-packet.sh
-# 3-1-3.check changed value on prometheus web ui 
-mysql_global_variables_max_allowed_packet
-# 3-1-4.restore max_allowed_packet from 1GB to default(64MB).
-./3-1-4.rollback-max-allowed-packet.sh
-# 3-1-5.check value on prometheus web ui 
-mysql_global_variables_max_allowed_packet
+# change max_allowed_packet from default(64MB) to 1GB 
+# and check which is changed 
+./3-1-1.change-max-allowed-packet.sh
+# 3-1-2.restore max_allowed_packet from 1GB to default(64MB).
+# and check which is changed 
+./3-1-2.rollback-max-allowed-packet.sh
 
 3-2.connectivity
 # check current metrics value in prometheus ui

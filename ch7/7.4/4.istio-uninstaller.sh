@@ -7,8 +7,8 @@ kubectl delete -f ./istio/samples/addon
 kubectl delete namespace bookinfo
 
 istioctl x uninstall --purge -y
-echo "============================"
-echo "successfully eleted istio all components"
+echo "============================="
+echo "Successfully deleted istio all components"
 
 # kill load-generator-10s.sh 
-kill -9 `ps aux | grep load-generator | awk '{print $2}'`
+kill -9 `ps aux | grep load-gen | awk '{print $2}'` > /dev/null 2>&1

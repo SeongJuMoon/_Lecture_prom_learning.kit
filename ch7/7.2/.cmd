@@ -1,5 +1,5 @@
 # 0.install redis-cli for benchmark
-./0.redis-installer.sh 
+./0.redis-cli-installer.sh 
 
 # 1-1.deploy at a once for redis 
 kubectl apply -f 1.redis-w-exporter.yaml

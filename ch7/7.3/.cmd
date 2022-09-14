@@ -28,6 +28,7 @@ mysql_global_variables_open_files_limit - mysql_global_variables_innodb_open_fil
 
 
 # 3.mysql DEMO
+# 3-1 max_allowed_packet
 # 3-1-1.check max_allowed_packet on prometheus web ui 
 mysql_global_variables_max_allowed_packet
 # change max_allowed_packet from default(64MB) to 1GB 
@@ -37,16 +38,14 @@ mysql_global_variables_max_allowed_packet
 # and check which is changed 
 ./3-1-2.rollback-max-allowed-packet.sh
 
-3-2.connectivity
+# 3-2.connectivity
 # check current metrics value in prometheus ui
 # metrics describe 'The number of connection attempts (successful or not) to the MySQL server.'
-mysql_global_status_connections x
-# call bulk-connect.sh for metrics value increased
-./3-2-bulk-connect.sh
-# connection view global status connection
-# check metrics value in prometheus ui, the value + 50 increased.
-mysql_global_status_connections x + 50
-
+mysql_global_status_connections 
+# call bulk-connect.sh so that increase the metrics of connections
+./3-2.mysql-connetion-sustainer.sh
+# check again 
+mysql_global_status_connections 
 
 
 # 4. cleanup resource to next lecture.

@@ -11,4 +11,4 @@ echo "============================"
 echo "successfully eleted istio all components"
 
 # kill load-generator-10s.sh 
-kill $!
+kill -9 `ps aux | grep load-generator | awk '{print $2}'`

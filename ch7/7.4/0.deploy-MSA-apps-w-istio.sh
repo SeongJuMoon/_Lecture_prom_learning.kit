@@ -19,4 +19,4 @@ echo "========================================"
 echo "istio's dashboard(kiali) is deploying.."
 echo "kiali graph URL is http://192.168.1.74:20001/kiali/console/graph/"
 # load-generator for drawing graph on kiali
-./istio/load-generator-10s.sh& 2>&1 >/dev/null 
+./istio/load-generator-10s.sh > /dev/null 2>&1 &

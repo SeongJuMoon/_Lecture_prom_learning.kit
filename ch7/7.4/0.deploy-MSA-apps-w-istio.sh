@@ -7,8 +7,8 @@ else
   source ~/_Lecture_prom_learning.kit/ch7/7.4/istio/install.sh
 fi
 
-echo "Begin to install for istio"
-echo "=========================="
+echo "Begin to install for istio components"
+echo "====================================="
 istioctl install --set profile=demo -y
 
 kubectl create namespace bookinfo

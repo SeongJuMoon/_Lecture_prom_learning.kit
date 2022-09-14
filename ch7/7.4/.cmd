@@ -25,7 +25,11 @@ sum(probe_success) by (instance) != 1
 # check details-v1 service value is 0
 probe_http_status_code
 
-# 3.delete blackbox & configmap, uninstall all of istio applications 
+# 2-3.chagne prometheus configmap to be default 
 kubectl patch -n monitoring configmap prometheus-server --patch-file ./3.del-blackbox-exporter-target.yaml
+
+# 3.delete blackbox & configmap, uninstall all of istio applications, prometheus itself too
 kubectl delete -f 1.prometheus-blackbox-exporter 
-./uninstall-all.sh 
+./4.istio-uninstaller.sh
+./5.prometheus-uninstaller.sh
+

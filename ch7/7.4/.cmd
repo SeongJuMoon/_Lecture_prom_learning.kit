@@ -1,10 +1,6 @@
-# 0-1.deploy istio and sample application.
+# 0.deploy istio and sample application.
 ./0.deploy-MSA-apps-w-istio.sh 
 
-# 0-2.run 'load-generator.sh' to view service related diagram.
-./istio/load-generator-5s.sh
-
-##### new terminal #####
 # 1.deploy prometheus-blackbox-exporter 
 kubectl apply -f 1.prometheus-blackbox-exporter
 

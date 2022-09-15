@@ -36,8 +36,6 @@ metadata:
   annotations:
     prometheus.io/scrape: "true"
     prometheus.io/port: "9104"
-  labels:
-    app: mysql
   name: mysql
 spec:
   type: LoadBalancer

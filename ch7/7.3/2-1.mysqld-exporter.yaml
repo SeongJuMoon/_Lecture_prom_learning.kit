@@ -29,8 +29,6 @@ metadata:
   annotations:
     prometheus.io/scrape: "true"
     prometheus.io/port: "9104"
-  labels:
-    app: mysqld-exporter
   name: mysqld-exporter
 spec:
   selector:

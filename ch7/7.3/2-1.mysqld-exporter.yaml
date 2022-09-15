@@ -26,10 +26,10 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
+  name: mysqld-exporter
   annotations:
     prometheus.io/scrape: "true"
     prometheus.io/port: "9104"
-  name: mysqld-exporter
 spec:
   selector:
     app: mysqld-exporter

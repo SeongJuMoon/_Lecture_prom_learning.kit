@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: Service
 metadata:
-  labels:
-    app: prometheus-blackbox-exporter
   name: prometheus-blackbox-exporter
   namespace: monitoring
+  labels:
+    app: prometheus-blackbox-exporter
 spec:
   ports:
   - name: web

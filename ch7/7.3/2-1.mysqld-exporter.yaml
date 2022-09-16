@@ -1,9 +1,9 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
+  name: mysqld-exporter
   labels:
     app: mysqld-exporter
-  name: mysqld-exporter
 spec:
   replicas: 1
   selector:

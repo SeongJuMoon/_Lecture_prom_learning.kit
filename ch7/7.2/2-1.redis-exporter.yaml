@@ -1,9 +1,9 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
+  name: redis-exporter
   labels:
     app: redis-exporter
-  name: redis-exporter
 spec:
   replicas: 1
   selector:

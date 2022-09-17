@@ -49,6 +49,7 @@ mysql_global_status_connections
 # optional 
 # rate(mysql_global_status_connections[2m])
 
-# 4. cleanup resource to next lecture.
+
+# 4.deleted resources for next lab
 kubectl delete -f ./2-1.mysqld-exporter.yaml
 kubectl delete -f ./2-0.mysql.yaml

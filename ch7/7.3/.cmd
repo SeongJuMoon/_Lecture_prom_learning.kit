@@ -46,7 +46,8 @@ mysql_global_status_connections
 ./3-2.mysql-connetion-sustainer.sh
 # check again 
 mysql_global_status_connections 
-
+# optional 
+# rate(mysql_global_status_connections[2m])
 
 # 4. cleanup resource to next lecture.
 kubectl delete -f ./2-1.mysqld-exporter.yaml

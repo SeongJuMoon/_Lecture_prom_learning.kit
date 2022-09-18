@@ -1,5 +1,12 @@
 # deploy nginx with exporter to collect metrics from nginx to prometheus operator 
-kubectl apply -f nginx-w-exporter 
+kubectl apply -f 1.nginx-w-exporter 
+
+# check nginx resources.
+kubectl get deployment nginx
+kubectl get service nginx
+
+# check nginx service exposed prometheus metric via curl
+curl http://192.168.1.83/metrics
 
 # configure ServiceMonitor which is the operator of prometheus
-kubectl apply -f ServiceMonitor.yaml 
+kubectl apply -f 2.serviceMonitor.yaml 

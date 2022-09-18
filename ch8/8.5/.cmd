@@ -1,1 +1,3 @@
-kubectl apply -f ~/_Lecture_prom_learning.kit/ch8/8.6/podMonitorMetalLB.yaml
+kubectl apply ./1.podMonintor.yaml
+
+kubectl -n monitoring get podMonintor

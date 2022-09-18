@@ -5,6 +5,7 @@
 kubectl apply -f 1.mysql-w-exporter.yaml
 
 # check to add the target and promql 
+# if promQL is not working properly, please run './3-1-1.change-max-allowed-packet.sh' first
 mysql_up 
 mysql_global_status_uptime
 

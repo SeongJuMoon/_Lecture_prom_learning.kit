@@ -3,6 +3,8 @@ kind: PrometheusRule
 metadata:
   name: kubernetes-node-metric
   namespace: monitoring
+  labels:
+    release: prometheus-stack
 spec:
   groups:
     - name: kubernetes-node-metric

@@ -38,3 +38,7 @@ git clone https://github.com/seongjumoon/_Lecture_prom_learning.kit.git $HOME/_L
 find $HOME/_Lecture_prom_learning.kit -regex ".*\.\(sh\)" -exec chmod 700 {} \;
 EOF
 chmod 700 /usr/local/bin/rerepo-prom_learning.kit
+
+# harbor install automatically. 6.3 redirection
+source $HOME/_Lecture_prom_learning.kit/ch8/8.6/2.harbor-certificate/create-certificate.sh
+source $HOME/_Lecture_prom_learning.kit/ch8/8.6/3.harbor-app/install.sh

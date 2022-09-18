@@ -8,4 +8,4 @@ helm upgrade -i prometheus edu/kube-prometheus-stack -n monitoring --create-name
 --set prometheus.service.port="80" \
 --set prometheus.prometheusSpec.scrapeInterval="1m" \
 --set prometheus.prometheusSpec.evaluationInterval="1m" \
--f ~/_Lecture_prom_learning.kit/ch8/8.6/settings.yaml
+-f ~/_Lecture_prom_learning.kit/ch8/8.6/extra-config.yaml

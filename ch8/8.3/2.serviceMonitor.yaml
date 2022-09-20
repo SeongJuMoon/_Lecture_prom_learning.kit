@@ -8,8 +8,7 @@ metadata:
   namespace: monitoring
 spec:
   endpoints:
-  - interval: 30s
-    port: metrics
+  -  port: metrics
   namespaceSelector:
     any: true
   selector:

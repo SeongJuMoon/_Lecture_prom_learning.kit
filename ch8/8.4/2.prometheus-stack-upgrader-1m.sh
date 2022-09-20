@@ -2,7 +2,7 @@
 # create namespace again so that user could start from here 
 # scrape default is 30s 
 
-helm install prometheus-stack edu/kube-prometheus-stack  \
+helm upgrade prometheus-stack edu/kube-prometheus-stack  \
 --set defaultRules.create="false" \
 --set grafana.enabled="false" \
 --set prometheus.service.type="LoadBalancer" \

@@ -10,5 +10,4 @@ helm upgrade -i prometheus-stack edu/kube-prometheus-stack  \
 --set prometheus.prometheusSpec.scrapeInterval="1m" \
 --set prometheus.prometheusSpec.evaluationInterval="1m" \
 --namespace=monitoring \
---create-namespace \
 -f ~/_Lecture_prom_learning.kit/ch8/8.4/extra-config.yaml 

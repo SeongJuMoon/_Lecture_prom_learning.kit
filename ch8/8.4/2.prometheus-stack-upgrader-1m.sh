@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-# create namespace again so that user could start from here 
 
 helm upgrade prometheus-stack edu/kube-prometheus-stack  \
 --set defaultRules.create="false" \

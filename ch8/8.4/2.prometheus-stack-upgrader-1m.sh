@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 # create namespace again so that user could start from here 
-# scrape default is 30s 
 
 helm upgrade prometheus-stack edu/kube-prometheus-stack  \
 --set defaultRules.create="false" \

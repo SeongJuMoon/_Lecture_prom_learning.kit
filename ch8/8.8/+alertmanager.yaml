@@ -1,15 +1,3 @@
-prometheus:
-  prometheusSpec:
-    storageSpec: 
-      volumeClaimTemplate:
-      spec:
-        storageClassName: "managed-nfs-storage"
-        accessModes:
-          - "ReadWriteOnce"
-        resources:
-          requests:
-            storage: "8Gi"
-    
 alertmanager:
   enabled: true
   service:
@@ -35,4 +23,15 @@ alertmanager:
       receiver: slack
       repeat_interval: 5m
 
-  
+prometheus:
+  prometheusSpec:
+    storageSpec: 
+      volumeClaimTemplate:
+      spec:
+        storageClassName: "managed-nfs-storage"
+        accessModes:
+        - "ReadWriteOnce"
+        resources:
+          requests:
+            storage: "8Gi"
+    

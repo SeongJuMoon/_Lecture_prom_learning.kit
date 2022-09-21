@@ -5,7 +5,7 @@ prometheus:
         spec:
           storageClassName: "managed-nfs-storage"
           accessModes:
-            - "ReadWriteOnce"
+          - "ReadWriteOnce"
           resources:
             requests:
               storage: "8Gi"

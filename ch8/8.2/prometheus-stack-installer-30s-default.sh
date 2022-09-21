@@ -3,8 +3,8 @@
 
 helm install prometheus-stack edu/kube-prometheus-stack  \
 --set defaultRules.create="false" \
---set grafana.enabled="false" \
 --set alertmanager.enabled="false" \
+--set grafana.enabled="false" \
 --set prometheus.service.type="LoadBalancer" \
 --set prometheus.service.port="80" \
 --namespace=monitoring \

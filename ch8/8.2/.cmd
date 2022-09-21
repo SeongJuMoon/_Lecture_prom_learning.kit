@@ -1,3 +1,7 @@
+
+# decode secret for prometheus-operator which is same as cm on native-prometheus 
+k get -n monitoring secrets prometheus-prometheus-stack-kube-prom-prometheus -o jsonpath='{.data.prometheus\.yaml\.gz}' | base64 -d | gunzip
+
 # install kube-prometheus-stack
 # it operate by prometheus operator
 

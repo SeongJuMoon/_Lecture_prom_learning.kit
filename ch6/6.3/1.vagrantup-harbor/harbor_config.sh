@@ -27,7 +27,7 @@ find $HOME/_Lecture_prom_learning.kit -regex ".*\.\(sh\)" -exec chmod 700 {} \;
 
 systemctl enable --now docker
 
-# patch harbor prepare doesn't granted by find with exec.
+# add execution for prepare script
 chmod +x $HOME/_Lecture_prom_learning.kit/ch6/6.3/3.harbor-app/prepare
 
 # make rerepo-prom_learning.kit and put permission

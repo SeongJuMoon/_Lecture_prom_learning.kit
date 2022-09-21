@@ -1,11 +1,12 @@
+# deploy nginx with exporter to collect metrics from nginx to prometheus operator 
+kubectl apply -f 1.nginx-w-exporter 
 
-1. 시스템 컴포넌트 메트릭을 수집하는 방법을 알기 위해서 서비스를 확인합니다.
-kubectl get service -n kube-system
+# check nginx resources.
+kubectl get deployment nginx
+kubectl get service nginx
 
-2.
+# check nginx service exposed prometheus metric via curl
+curl http://192.168.1.83/metrics
 
-# https://sysdig.com/blog/monitor-etcd/
-# https://sysdig.com/blog/how-to-monitor-kube-controller-manager/
-# https://sysdig.com/blog/how-to-monitor-coredns/
-# https://sysdig.com/blog/how-to-monitor-kubelet/
-# https://sysdig.com/blog/monitor-kubernetes-api-server/
+# configure ServiceMonitor which is the operator of prometheus
+kubectl apply -f 2.serviceMonitor.yaml 

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # scrape default is 30s for kube-prometheus-stack
 
-helm install prometheus-stack edu/kube-prometheus-stack  \
+helm install prometheus-stack edu/kube-prometheus-stack \
 --set defaultRules.create="false" \
 --set alertmanager.enabled="false" \
 --set grafana.enabled="false" \

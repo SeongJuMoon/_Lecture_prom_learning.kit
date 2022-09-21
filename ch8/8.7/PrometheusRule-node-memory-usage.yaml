@@ -1,16 +1,16 @@
 apiVersion: monitoring.coreos.com/v1 
 kind: PrometheusRule
 metadata:
-  name: kubernetes-node-metric
+  name: kubernetes-node-metrics
   namespace: monitoring
   labels:
     release: prometheus-stack
 spec:
   groups:
-    - name: kubernetes-node-metric
+    - name: kubernetes-node-metrics
       interval: 10s
       rules:
-        - record: instance:node_cpu_seconds_userspace:rate2m
+        - record: instance:node_user_cpu:rate2m
           expr: sum(rate(node_cpu_seconds_total{mode="user"}[2m])) by (instance)
         - record: node:node_memory:usage
           expr: |-

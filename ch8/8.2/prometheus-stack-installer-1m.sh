@@ -10,4 +10,4 @@ helm install prometheus-stack edu/kube-prometheus-stack  \
 --set prometheus.prometheusSpec.evaluationInterval="1m" \
 --namespace=monitoring \
 --create-namespace \
--f ~/_Lecture_prom_learning.kit/ch8/8.2/extra-config.yaml 
+-f ~/_Lecture_prom_learning.kit/ch8/8.2/set-sc-8Gi.yaml

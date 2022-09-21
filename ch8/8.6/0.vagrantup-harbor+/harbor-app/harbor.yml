@@ -2,7 +2,7 @@
 
 # The IP address or hostname to access admin UI and registry service.
 # DO NOT use localhost or 127.0.0.1, because Harbor needs to be accessed by external clients.
-hostname: 192.168.1.63
+hostname: 192.168.1.86
 
 # http related config
 http:
@@ -14,8 +14,8 @@ https:
   # https port for harbor, default is 443
   port: 443
   # The path of cert and key files for nginx
-  certificate: /root/_Lecture_prom_learning.kit/ch6/6.3/tls/harbor.crt
-  private_key: /root/_Lecture_prom_learning.kit/ch6/6.3/tls/harbor.key
+  certificate: /root/_Lecture_prom_learning.kit/ch8/8.6/tls/harbor.crt
+  private_key: /root/_Lecture_prom_learning.kit/ch8/8.6/tls/harbor.key
 
 # # Uncomment following will enable tls communication between all harbor components
 # internal_tls:

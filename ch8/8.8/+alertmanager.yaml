@@ -27,11 +27,11 @@ prometheus:
   prometheusSpec:
     storageSpec: 
       volumeClaimTemplate:
-      spec:
-        storageClassName: "managed-nfs-storage"
-        accessModes:
-        - "ReadWriteOnce"
-        resources:
-          requests:
-            storage: "8Gi"
+        spec:
+          storageClassName: "managed-nfs-storage"
+          accessModes:
+          - "ReadWriteOnce"
+          resources:
+            requests:
+              storage: "8Gi"
     

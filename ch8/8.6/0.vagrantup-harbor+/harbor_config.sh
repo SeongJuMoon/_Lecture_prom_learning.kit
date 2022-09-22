@@ -41,4 +41,5 @@ chmod 700 /usr/local/bin/rerepo-prom_learning.kit
 
 # harbor automatically installed. this source came from 6.3
 source $HOME/_Lecture_prom_learning.kit/ch8/8.6/0.vagrantup-harbor+/harbor-certificate/create-certificate.sh
-source $HOME/_Lecture_prom_learning.kit/ch8/8.6/0.vagrantup-harbor+/harbor-app/install.sh
+pushd  $HOME/_Lecture_prom_learning.kit/ch8/8.6/0.vagrantup-harbor+/harbor-app
+./install.sh

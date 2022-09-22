@@ -9,4 +9,4 @@ helm install prometheus-stack edu/kube-prometheus-stack \
 --set prometheus.service.port="80" \
 --namespace=monitoring \
 --create-namespace \
--f ~/_Lecture_prom_learning.kit/ch8/8.2/set-sc-8Gi.yaml
+-f ~/_Lecture_prom_learning.kit/ch8/8.2/prom-operator-config/set-sc-8Gi.yaml

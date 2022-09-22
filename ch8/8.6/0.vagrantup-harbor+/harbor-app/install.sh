@@ -2,7 +2,7 @@
 
 set -e
 
-DIR="$(cd "$(dirname "$0")" && pwd)"
+DIR="/root/_Lecture_prom_learning.kit/ch8/8.6/0.vagrantup-harbor+/harbor-app"
 source $DIR/common.sh
 
 set +o noglob

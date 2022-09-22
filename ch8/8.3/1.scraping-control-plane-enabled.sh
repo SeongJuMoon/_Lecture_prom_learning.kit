@@ -16,11 +16,11 @@ sed s,"- --bind-address=127.0.0.1","- --bind-address=0.0.0.0",g \
 sed s,"- --listen-metrics-urls=http://127.0.0.1:2381","- --listen-metrics-urls=http://0.0.0.0:2381",g \
     -i /etc/kubernetes/manifests/etcd.yaml
 
-echo 'etcd is rolled out!'
+echo 'etcd is rolling out!'
 echo 'the kubectl result will be slow or not response.'
 
 while [ "$(crictl ps | grep etcd-m-k8s)" == "" ]
 do
 echo "etcd rollout in progress "
 done
-echo "etcd was rollout finish"
+echo "etcd rolled out successfully!"

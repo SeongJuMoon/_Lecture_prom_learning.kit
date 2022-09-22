@@ -3,7 +3,6 @@
 set -e
 
 DIR="$(cd "$(dirname "$0")" && pwd)"
-source $DIR/common.sh
 
 set +o noglob
 

@@ -2,7 +2,7 @@
 
 set -e
 
-DIR="/root/_Lecture_prom_learning.kit/ch8/8.6"
+DIR="/root/_Lecture_prom_learning.kit/ch8/8.6/harbor-app"
 source $DIR/common.sh
 
 set +o noglob

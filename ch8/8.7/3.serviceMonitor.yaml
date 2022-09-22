@@ -1,0 +1,20 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  labels:
+    monitoring: "true"
+    app.kubernetes.io/component: exporter
+    app.kubernetes.io/name: mysqld-exporter
+    app.kubernetes.io/part-of: prometheus-stack
+    app.kubernetes.io/version: 0.14.0
+  namespace: monitoring
+  name: mysql
+spec:
+  endpoints:
+  - interval: 30s
+    port: metrics
+  namespaceSelector:
+    any: true
+  selector:
+    matchLabels:
+      app.kubernetes.io/component: mysql

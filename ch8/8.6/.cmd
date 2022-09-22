@@ -1,5 +1,3 @@
-# phase 1, vagrant harbor setting
-cd 1.vagrantup-harbor
-vagrant up
+kubectl apply ./1.podMonintor.yaml
 
-# m-k8s
+kubectl -n monitoring get podMonintor

@@ -1,0 +1,24 @@
+prometheus:
+  prometheusSpec:
+    additionalScrapeConfigs:
+    - job_name: 'harbor'
+      metrics_path: /metrics
+      static_configs:
+      - targets:
+        - 192.168.1.86:9090
+    storageSpec:
+      volumeClaimTemplate:
+        spec:
+          storageClassName: "managed-nfs-storage"
+          accessModes:
+          - "ReadWriteOnce"
+          resources:
+            requests:
+              storage: "8Gi"
+
+kubeEtcd:
+  service:
+    enabled: true  
+    port: 2381
+    targetPort: 2381  
+

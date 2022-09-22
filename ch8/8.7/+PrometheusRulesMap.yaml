@@ -25,6 +25,7 @@ additionalPrometheusRulesMap:
               /
               node_memory_MemTotal_bytes
           )
+
 prometheus:
   prometheusSpec:
     storageSpec: 
@@ -36,6 +37,7 @@ prometheus:
           resources:
             requests:
               storage: "8Gi"
+
 kubeEtcd:
   service:
     enabled: true  

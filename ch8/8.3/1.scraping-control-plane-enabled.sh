@@ -7,10 +7,10 @@ kubectl get configmap -n kube-system kube-proxy -o yaml       \
 kubectl rollout restart daemonset kube-proxy -n kube-system
 
 # bind-address for kube-controller-manager's metrics 
-sed s,"- --bind-address=127.0.0.1","- --bind-address=0.0.0.0",g  \
+sed s,"- --bind-address=127.0.0.1","- --bind-address=0.0.0.0",g \
     -i /etc/kubernetes/manifests/kube-controller-manager.yaml
 # bind-address for kube-controller-manager's metrics 
-sed s,"- --bind-address=127.0.0.1","- --bind-address=0.0.0.0,",g \
+sed s,"- --bind-address=127.0.0.1","- --bind-address=0.0.0.0",g \
     -i /etc/kubernetes/manifests/kube-scheduler.yaml
 # bind-address for kube-controller-manager's metrics 
 sed s,"- --listen-metrics-urls=http://127.0.0.1:2381","- --listen-metrics-urls=http://0.0.0.0:2381",g \

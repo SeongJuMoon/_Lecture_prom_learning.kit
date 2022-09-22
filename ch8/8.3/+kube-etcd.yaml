@@ -9,6 +9,7 @@ prometheus:
           resources:
             requests:
               storage: "8Gi"
+
 kubeEtcd:
   service:
     enabled: true  

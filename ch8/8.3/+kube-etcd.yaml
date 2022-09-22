@@ -1,9 +1,3 @@
-kubeEtcd:
-  service:
-    enabled: true  
-    port: 2381
-    targetPort: 2381
-
 prometheus:
   prometheusSpec:
     storageSpec:
@@ -15,4 +9,9 @@ prometheus:
           resources:
             requests:
               storage: "8Gi"
+kubeEtcd:
+  service:
+    enabled: true  
+    port: 2381
+    targetPort: 2381
 

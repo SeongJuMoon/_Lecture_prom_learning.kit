@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: mysql
+spec:
+  selector:
+    matchLabels:
+      app: mysql
+  serviceName: mysql
+  template:
+    metadata:
+      labels:
+        app: mysql
+    spec:
+      containers:
+      - name: mysql
+        image: mysql:8.0.30
+        ports:
+        - name: mysql
+          containerPort: 3306
+        env:
+         - name: MYSQL_ROOT_PASSWORD
+           value: root
+      - name: mysqld-exporter
+        image: prom/mysqld-exporter:v0.14.0
+        ports:
+        - name: metrics
+          containerPort: 9104
+        env:
+         - name: DATA_SOURCE_NAME
+           value: "root:root@(mysql:3306)/"
+  volumeClaimTemplates:
+  - metadata:
+      name: data
+    spec:
+      accessModes: ["ReadWriteOnce"]
+      resources:
+        requests:
+          storage: 10Gi

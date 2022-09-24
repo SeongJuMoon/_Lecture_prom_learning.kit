@@ -1,6 +1,10 @@
 # deploy nginx with exporter to collect metrics from nginx to prometheus operator 
 kubectl apply -f 1.nginx-w-exporter 
 
+
+# deploy nginx for explain monitoring
+
+
 # check nginx resources.
 kubectl get deployment nginx
 kubectl get service nginx

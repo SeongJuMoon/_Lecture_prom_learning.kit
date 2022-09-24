@@ -12,7 +12,7 @@ data:
   site.conf.template: |
       server {
         charset utf-8;
-        listen ${PORT} ;
+        listen 8080;
         location / {
           add_header Content-Type text/html;
 

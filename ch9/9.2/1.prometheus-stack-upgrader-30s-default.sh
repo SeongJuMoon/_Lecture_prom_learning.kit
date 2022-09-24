@@ -8,6 +8,6 @@ helm upgrade prometheus-stack edu/kube-prometheus-stack \
 --set prometheus.service.type="LoadBalancer" \
 --set prometheus.service.port="80" \
 --namespace=monitoring \
--f ~/_Lecture_prom_learning.kit/ch9/9.2/prom-operator-config/set-sc-8Gi.yaml
--f ~/_Lecture_prom_learning.kit/ch9/9.2/prom-operator-config/upt-kube-etcd.yaml
+-f ~/_Lecture_prom_learning.kit/ch9/9.2/prom-operator-config/set-sc-8Gi.yaml \
+-f ~/_Lecture_prom_learning.kit/ch9/9.2/prom-operator-config/upt-kube-etcd.yaml \
 -f ~/_Lecture_prom_learning.kit/ch9/9.2/prom-operator-config/add-harbor.yaml

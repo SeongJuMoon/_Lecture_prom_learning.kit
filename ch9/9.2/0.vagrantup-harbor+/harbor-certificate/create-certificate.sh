@@ -1,22 +1,22 @@
 #!/usr/bin/env bash
 
 PASSWORD="vagrant"
-CERT_DIR="/etc/docker/certs.d/192.168.1.86"
+CERT_DIR="/etc/docker/certs.d/192.168.1.92"
 
 openssl genrsa -out ca.key 4096
 openssl req -x509 -new -nodes -sha512 -days 3650 \
- -subj "/C=KR/ST=Seoul/L=Seoul/O=lecture/OU=prometheus/CN=192.168.1.86" \
+ -subj "/C=KR/ST=Seoul/L=Seoul/O=lecture/OU=prometheus/CN=192.168.1.92" \
  -key ca.key \
  -out ca.crt
 
 openssl genrsa -out harbor.key 4096
 openssl req -sha512 -new \
-    -subj "/C=KR/ST=Seoul/L=Seoul/O=lecture/OU=prometheus/CN=192.168.1.86" \
+    -subj "/C=KR/ST=Seoul/L=Seoul/O=lecture/OU=prometheus/CN=192.168.1.92" \
     -key harbor.key \
     -out harbor.csr
 
 openssl x509 -req -sha512 -days 3650 \
-    -extfile /root/_Lecture_prom_learning.kit/ch8/8.6/0.vagrantup-harbor+/harbor-certificate/csr-v3.ext \
+    -extfile /root/_Lecture_prom_learning.kit/ch9/9.2/0.vagrantup-harbor+/harbor-certificate/csr-v3.ext \
     -CA ca.crt -CAkey ca.key -CAcreateserial \
     -in harbor.csr \
     -out harbor.crt
@@ -38,13 +38,13 @@ do
     sshpass -p $PASSWORD scp harbor.cert root@192.168.1.10$i:$CERT_DIR
 done
 
-mkdir /root/_Lecture_prom_learning.kit/ch8/8.6/tls/
+mkdir /root/_Lecture_prom_learning.kit/ch9/9.2/tls/
 
-mv ca.key /root/_Lecture_prom_learning.kit/ch8/8.6/tls/
-mv ca.crt /root/_Lecture_prom_learning.kit/ch8/8.6/tls/
-mv ca.srl /root/_Lecture_prom_learning.kit/ch8/8.6/tls/
+mv ca.key /root/_Lecture_prom_learning.kit/ch9/9.2/tls/
+mv ca.crt /root/_Lecture_prom_learning.kit/ch9/9.2/tls/
+mv ca.srl /root/_Lecture_prom_learning.kit/ch9/9.2/tls/
 
-mv harbor.csr /root/_Lecture_prom_learning.kit/ch8/8.6/tls/
-mv harbor.cert /root/_Lecture_prom_learning.kit/ch8/8.6/tls/
-mv harbor.crt /root/_Lecture_prom_learning.kit/ch8/8.6/tls/
-mv harbor.key /root/_Lecture_prom_learning.kit/ch8/8.6/tls/
+mv harbor.csr /root/_Lecture_prom_learning.kit/ch9/9.2/tls/
+mv harbor.cert /root/_Lecture_prom_learning.kit/ch9/9.2/tls/
+mv harbor.crt /root/_Lecture_prom_learning.kit/ch9/9.2/tls/
+mv harbor.key /root/_Lecture_prom_learning.kit/ch9/9.2/tls/

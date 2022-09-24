@@ -28,7 +28,7 @@ find $HOME/_Lecture_prom_learning.kit -regex ".*\.\(sh\)" -exec chmod 700 {} \;
 systemctl enable --now docker
 
 # add execution for prepare script 
-chmod +x $HOME/_Lecture_prom_learning.kit/ch8/8.6/0.vagrantup-harbor+/harbor-app/prepare
+chmod +x $HOME/_Lecture_prom_learning.kit/ch9/9.2/0.vagrantup-harbor+/harbor-app/prepare
 
 # make rerepo-prom_learning.kit and put permission
 cat <<EOF > /usr/local/bin/rerepo-prom_learning.kit
@@ -40,8 +40,8 @@ EOF
 chmod 700 /usr/local/bin/rerepo-prom_learning.kit
 
 # harbor automatically installed. this source came from 6.3
-source $HOME/_Lecture_prom_learning.kit/ch8/8.6/0.vagrantup-harbor+/harbor-certificate/create-certificate.sh
+source $HOME/_Lecture_prom_learning.kit/ch9/9.2/0.vagrantup-harbor+/harbor-certificate/create-certificate.sh
 # save previos location  
-pushd  $HOME/_Lecture_prom_learning.kit/ch8/8.6/0.vagrantup-harbor+/harbor-app
+pushd  $HOME/_Lecture_prom_learning.kit/ch9/9.2/0.vagrantup-harbor+/harbor-app
 # start to install for harbor itself 
 ./install.sh

@@ -1,0 +1,24 @@
+alertmanager:
+  enabled: true
+  service:
+    type: "LoadBalancer"
+    loadBalancerIP: "192.168.1.88"
+  config: 
+    global:
+      resolve_timeout: 10m
+      slack_api_url: Slack-URL
+    receivers:
+    - name: default-receiver
+    - name: slack
+      slack_configs:
+      - channel: "#development"
+        send_resolved: true
+        title: '[{{.Status | toUpper}}] {{ .CommonLabels.alertname }}'
+        text: |
+          *Description:* 
+          {{ .CommonAnnotations.description }}
+    route:
+      group_interval: 1m
+      group_wait: 10s
+      receiver: slack
+      repeat_interval: 5m

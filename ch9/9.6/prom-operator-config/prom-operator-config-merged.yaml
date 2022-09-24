@@ -1,0 +1,70 @@
+prometheus:
+  prometheusSpec:
+    storageSpec: 
+      volumeClaimTemplate:
+        spec:
+          storageClassName: "managed-nfs-storage"
+          accessModes:
+          - "ReadWriteOnce"
+          resources:
+            requests:
+              storage: "8Gi"
+
+kubeEtcd:
+  service:
+    enabled: true  
+    port: 2381
+    targetPort: 2381
+
+additionalPrometheusRulesMap: 
+  container-metrics:
+    groups:
+    - name: kubernetes-containers-metric
+      interval: 10s
+      rules:
+      - record: container:memory_working_set:topk3
+        expr: topk(3,sum(container_memory_working_set_bytes{pod!=""}/1024/1024) by (pod))
+  node-metrics:
+    groups:
+    - name: kubernetes-node-metric
+      interval: 10s
+      rules:
+      - record: instance:node_cpu_seconds_userspace:rate2m
+        expr: sum(rate(node_cpu_seconds_total{mode="user"}[2m])) by (instance)
+      - record: node:node_memory:usage
+        expr: |-
+          100 - 100 * (
+            (node_memory_MemTotal_bytes
+              - node_memory_MemFree_bytes
+              - node_memory_Buffers_bytes
+              - node_memory_Cached_bytes
+              - node_memory_SReclaimable_bytes
+            )
+              /
+              node_memory_MemTotal_bytes
+          )
+
+alertmanager:
+  enabled: true
+  service:
+    type: "LoadBalancer"
+    loadBalancerIP: "192.168.1.88"
+  config: 
+    global:
+      resolve_timeout: 10m
+      slack_api_url: Slack-URL
+    receivers:
+    - name: default-receiver
+    - name: slack
+      slack_configs:
+      - channel: "#development"
+        send_resolved: true
+        title: '[{{.Status | toUpper}}] {{ .CommonLabels.alertname }}'
+        text: |
+          *Description:* 
+          {{ .CommonAnnotations.description }}
+    route:
+      group_interval: 1m
+      group_wait: 10s
+      receiver: slack
+      repeat_interval: 5m

@@ -8,7 +8,4 @@ helm upgrade prometheus-stack edu/kube-prometheus-stack \
 --set prometheus.prometheusSpec.scrapeInterval="15s" \
 --set prometheus.prometheusSpec.evaluationInterval="15s" \
 --namespace=monitoring \
--f ~/_Lecture_prom_learning.kit/ch9/9.5/prom-operator-config/set-sc-8Gi.yaml \
--f ~/_Lecture_prom_learning.kit/ch9/9.5/prom-operator-config/upt-kube-etcd.yaml \
--f ~/_Lecture_prom_learning.kit/ch9/9.5/prom-operator-config/add-alertmanager.yaml \
--f ~/_Lecture_prom_learning.kit/ch9/9.5/prom-operator-config/add-prometheus-rules-map.yaml
+-f ~/_Lecture_prom_learning.kit/ch9/9.6/prom-operator-config/prom-operator-config-merged.yaml

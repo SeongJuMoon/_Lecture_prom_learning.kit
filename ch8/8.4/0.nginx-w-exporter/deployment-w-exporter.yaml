@@ -5,7 +5,7 @@ metadata:
     app: nginx
   name: nginx
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: nginx
@@ -23,6 +23,9 @@ spec:
         volumeMounts:
         - name: nginx-vol
           mountPath: /etc/nginx/templates
+        env:
+        - name: PORT
+          value: '8080'
       - image: nginx/nginx-prometheus-exporter:0.10.0
         name: exporter
         ports:

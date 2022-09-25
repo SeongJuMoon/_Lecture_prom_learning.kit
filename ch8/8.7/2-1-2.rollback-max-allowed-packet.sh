@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
-mysql -h 192.168.1.87 -uroot -proot < db_scripts/max_allowed_packet/default > /dev/null
+MYSQL_HOST=$(kubectl get service mysql -o jsonpath="{.spec.clusterIP}")
+
+mysql -h $MYSQL_HOST -uroot -proot < db_scripts/max_allowed_packet/default > /dev/null
 echo "mysql max_allowed_packet restore to default(64MB)!"
 

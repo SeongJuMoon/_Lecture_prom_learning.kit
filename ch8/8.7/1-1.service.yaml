@@ -4,12 +4,10 @@ metadata:
   name: mysql
   labels:
     app: mysql
-    app.kubernetes.io/name: mysql
+  
 spec:
   ports:
   - name: mysql
     port: 3306
-  type: LoadBalancer
-  loadBalancerIP: 192.168.1.87
   selector:
     app: mysql

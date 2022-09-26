@@ -2,6 +2,8 @@
 kubectl get pods -n metallb-system -o wide
 
 # 2.find metrics port information which assign already on metallb components 
+# it looks like 'not enough'
+# so kubectl get edit or other need to clarify port name mapping
 ./1.grep-metallb-ports.sh
 
 # 3.configure podmonitor to scrape metallb metrics 

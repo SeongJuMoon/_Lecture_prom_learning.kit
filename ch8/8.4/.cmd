@@ -13,6 +13,23 @@ nginx_up
 # configure ServiceMonitor which is the operator of prometheus
 kubectl apply -f 1.servicemonitor-nginx.yaml
 
+# check ServiceMonitor which is deployed and explain finally now. 
+kubectl get servicemonitors.monitoring.coreos.com -n monitoring 
+```
+NAME                                                 AGE
+nginx                                                37s
+prometheus-stack-kube-prom-apiserver                 88m
+prometheus-stack-kube-prom-coredns                   88m
+prometheus-stack-kube-prom-kube-controller-manager   88m
+prometheus-stack-kube-prom-kube-etcd                 88m
+prometheus-stack-kube-prom-kube-proxy                88m
+prometheus-stack-kube-prom-kube-scheduler            88m
+prometheus-stack-kube-prom-kubelet                   88m
+prometheus-stack-kube-prom-operator                  88m
+prometheus-stack-kube-prom-prometheus                88m
+prometheus-stack-kube-state-metrics                  88m
+prometheus-stack-prometheus-node-exporter            88m
+```
 # check again promql on prometheus web ui(https://192.168.1.11/graph).
 nginx_up
 

@@ -47,3 +47,4 @@ kubectl get endpoints nginx -o yaml
 # delete nginx resources and servicemonitor
 kubectl delete -f 0.nginx-w-exporter/
 kubectl delete -f 1.servicemonitor-nginx.yaml
+

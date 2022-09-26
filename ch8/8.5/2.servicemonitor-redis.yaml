@@ -7,10 +7,10 @@ metadata:
   name: redis
   namespace: monitoring
 spec:
-  endpoints:
-  - port: metrics
   namespaceSelector:
     any: true
   selector:
     matchLabels:
       app: redis-exporter
+  endpoints:
+  - port: metrics

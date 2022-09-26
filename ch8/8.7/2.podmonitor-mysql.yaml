@@ -5,10 +5,10 @@ metadata:
   namespace: monitoring
   name: mysql
 spec:
-  podMetricsEndpoints:
-  -  port: metrics
   namespaceSelector:
     any: true
   selector:
     matchLabels:
       app: mysql
+  podMetricsEndpoints:
+  -  port: metrics

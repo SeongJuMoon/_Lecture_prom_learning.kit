@@ -7,10 +7,10 @@ metadata:
   name: nginx
   namespace: monitoring
 spec:
-  endpoints:
-  -  port: metrics
   namespaceSelector:
     any: true
   selector:
     matchLabels:
       app: nginx
+  endpoints:
+  -  port: metrics

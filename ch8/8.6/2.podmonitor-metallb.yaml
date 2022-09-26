@@ -9,8 +9,8 @@ metadata:
 spec:
   namespaceSelector:
     any: true
-  podMetricsEndpoints:
-    - port: monitoring
   selector:
     matchLabels:
       app: metallb
+  podMetricsEndpoints:
+    - port: monitoring

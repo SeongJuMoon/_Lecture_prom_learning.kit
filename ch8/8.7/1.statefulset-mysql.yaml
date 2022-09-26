@@ -37,3 +37,17 @@ spec:
       resources:
         requests:
           storage: 10Gi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mysql
+  labels:
+    app: mysql
+  
+spec:
+  ports:
+  - name: mysql
+    port: 3306
+  selector:
+    app: mysql

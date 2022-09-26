@@ -2,19 +2,19 @@
 ./0.redis-cli-installer.sh
 
 # 1.deploy redis
-kubectl apply -f 1.redis.yaml
+kubectl apply -f 1-1.redis.yaml
 
 # 2.check to deploy redis resource
  kubectl get service,deployment -l app=redis
 
 # 3.deploy redis-exporter
-kubectl apply -f 2.redis-exporter.yaml 
+kubectl apply -f 1-2.redis-exporter.yaml 
 
 # 4.check to deploy redis-exporter resource
 kubectl get service,deployment -l app=redis-exporter
 
 # 5.configure ServiceMonitor to scrape prometheus's redis metrics
-kubectl apply -f 3.servicemonitor-redis.yaml
+kubectl apply -f 2.servicemonitor-redis.yaml
 
 # 6.check this promql on http://192.168.1.11/graph 
 redis_connect_clients
@@ -45,3 +45,4 @@ redis_allocator_active_bytes # <graph>
 # clear all resources for next lecture 
 kubectl delete -f 1.redis/
 kubectl delete -f 2.redis-exporter/
+kubectl delete -f 2.servicemonitor-redis.yaml

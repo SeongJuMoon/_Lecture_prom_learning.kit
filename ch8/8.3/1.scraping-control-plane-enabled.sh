@@ -22,10 +22,10 @@ echo "Configure metrics-binder for etcd"
 sed s,"- --listen-metrics-urls=http://127.0.0.1:2381","- --listen-metrics-urls=http://0.0.0.0:2381",g \
     -i /etc/kubernetes/manifests/etcd.yaml
 echo "===================================================="
-echo "Wait for rolling out the control plane in few Seconds"
+echo "Wait for rolling out the control plane in few Seconds"; sleep 2 
 while [ -z "$(crictl ps | grep etcd | grep Running)" ]
 do
-  sleep 2 
   echo "controller plane is rolling out in progress."
+  sleep 2 
 done
   echo "controller plane rolled out successfully!"

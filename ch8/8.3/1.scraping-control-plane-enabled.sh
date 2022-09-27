@@ -23,7 +23,7 @@ sed s,"- --listen-metrics-urls=http://127.0.0.1:2381","- --listen-metrics-urls=h
     -i /etc/kubernetes/manifests/etcd.yaml
 echo "===================================================="
 echo "Wait for rolling out the control plane in few Seconds"
-while [ -z "$(crictl ps | grep etcd-m-k8s)" ]
+while [ -z "$(crictl ps | grep etcd | grep Running)" ]
 do
   echo "controller plane is rolling out in progress."
   sleep 2 

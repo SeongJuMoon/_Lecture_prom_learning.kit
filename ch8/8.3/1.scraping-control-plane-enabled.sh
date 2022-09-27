@@ -25,7 +25,7 @@ echo "===================================================="
 echo "Wait for rolling out the control plane in few Seconds"
 while [ -z "$(crictl ps | grep etcd | grep Running)" ]
 do
-  echo "controller plane is rolling out in progress."
   sleep 2 
+  echo "controller plane is rolling out in progress."
 done
   echo "controller plane rolled out successfully!"

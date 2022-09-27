@@ -1,5 +1,5 @@
 # 1. configure slack webhook url.
-./1.MUST-Run-to-change-Slack-URL.sh https://hooks.slack.com/services/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
+./1.MUST-Run-to-change-Slack-URL.sh <your slack webhookurl>
 # 2. configure alertmanager 
 ./2.prometheus-stack-upgrader-15s.sh
 # 3. add alerting rule. to monitor prometheus operator.

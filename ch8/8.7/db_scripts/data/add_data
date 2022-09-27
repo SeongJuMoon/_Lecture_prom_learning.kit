@@ -1,0 +1,7 @@
+CREATE DATABASE `services` IF NOT EXISTS character set 'utf8mb4' collate 'utf8mb4_unicode_ci';
+SHOW databases;
+USE services;
+CREATE TABLE MEMBERS (id int not null auto_increment primary key, name text);
+INSERT INTO MEMBERS(name) VALUES ('martin');
+INSERT INTO MEMBERS(name) VALUES ('anthon');
+SELECT * FROM MEMBERS;

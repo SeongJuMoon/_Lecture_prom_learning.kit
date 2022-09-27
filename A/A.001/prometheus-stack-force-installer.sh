@@ -13,7 +13,6 @@ sh ~/_Lecture_prom_learning.kit/ch8/8.2/prometheus-stack-installer-15s.sh
 echo "--------------------------------------------------------------"
 echo "Enable to srape control-plane componentes"
 sh ~/_Lecture_prom_learning.kit/ch8/8.3/1.scraping-control-plane-enabled.sh
-echo "Waiting for enabling prometheus componentes in 15 Seconds"; sleep 15
 echo "--------------------------------------------------------------"
 echo "Change etcd exposed port for insecure mode"
 sh ~/_Lecture_prom_learning.kit/ch8/8.3/2.prometheus-stack-upgrader-15s.sh

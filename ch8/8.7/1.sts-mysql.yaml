@@ -21,6 +21,9 @@ spec:
         env:
          - name: MYSQL_ROOT_PASSWORD
            value: root
+        volumeMounts:
+          - name: data
+            mountPath: /var/lib/mysql
   volumeClaimTemplates:
   - metadata:
       name: data

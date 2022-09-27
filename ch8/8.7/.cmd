@@ -69,5 +69,7 @@ mysql_global_status_connections
 # rate(mysql_global_status_connections[2m])
 
 # 5.deleted resources for next lab
+kubectl delete -f 2.podmonitor-mysql.yaml
 kubectl delete -f 3.sts-mysql-w-exporter.yaml
 kubectl delete pvc data-mysql-0
+

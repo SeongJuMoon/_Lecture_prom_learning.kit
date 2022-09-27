@@ -3,12 +3,12 @@ cd 1.vagrantup-harbor
 vagrant up
 
 # check harbor ui,
-# shortcut http://192.168.1.92, admin / admin
+# shortcut https://192.168.1.92
+# credential: admin / admin
 # view harbor portal
 
 # m-k8s
-
-# upgrade prometheus-stack to prometheus scraping harbor metrics.
+# upgrade prometheus-stack to scrape harbor metrics.
 ./1.prometheus-stack-upgrader-15s.sh
 
 # container pull / push to harbor.

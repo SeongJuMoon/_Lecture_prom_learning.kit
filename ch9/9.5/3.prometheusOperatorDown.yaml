@@ -3,6 +3,8 @@ kind: PrometheusRule
 metadata:
   name: prometheus-operator-down
   namespace: monitoring
+  labels:
+    release: prometheus-stack
 spec:
   groups:
   - name: prometheus-operator

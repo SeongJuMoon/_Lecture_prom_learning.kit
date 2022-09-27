@@ -25,7 +25,7 @@ sum(kubeproxy_sync_proxy_rules_iptables_total) by (table, pod)
 #   so we will change insecure port to collect metrics from etcd 
 ./2.prometheus-stack-upgrader-15s.sh
 
-# 5.check below promql on your browser(http://192.168.1.11/graph) so that collect metrics properly
+# 5.check promql on your browser so that confirm to collect metrics properly
 # etcd
 etcd_server_is_leader
 histogram_quantile(0.99, rate(etcd_disk_backend_commit_duration_seconds_bucket[2m]))

@@ -11,9 +11,9 @@ spec:
     rules:
     - alert: PrometheusOperatorDown
       annotations:
-        title: "Prometheus operator down in current."
-        description: "prometheus-operator workload was down."
-        summary: "[P1, Critical]: Promtheus operator has been shutdown or evicted now."
+        title: "Prometheus operator DOWN!!!"
+        description: "prometheus-operator is out of service status"
+        summary: "[P1, Critical]: Promtheus operator has been shutdown or evicted status unexpectedly."
       expr: |
         ((sum(prometheus_operator_ready)) or vector(0)) == 0
       for: 30s

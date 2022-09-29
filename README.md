@@ -1,14 +1,12 @@
 ## prometheus learning kit / 실습으로 배우는 프로메테우스
 
-<a href="https://www.inflearn.com/course/쿠버네티스-쉽게시작?inst=cf657a9d">
+<a href="https://inf.run/2qXU">
 <img src="https://user-images.githubusercontent.com/29163931/189245493-17c284e8-3cfc-42bf-8cf4-9697250baed8.png" width="400">
 </a>
 
-
-
 ***
 ## 목차
-### Part-1 프로메테우스에 대한 이해  
+### Part-1 프로메테우스에 대한 이해 및 구성
 - ch1: 모니터링이란?
 - ch2: 프로메테우스 실습 환경 구성 
 ### Part-2 네이티브 프로메테우스     
@@ -18,8 +16,8 @@
 - ch6: 프로메테우스 설정 변경 및 유용한 기능 추가
 - ch7: 실무에서 사용하는 애플리케이션 모니터링 구현하기  
 ### Part-3 프로메테우스 오퍼레이터  
-- ch8: 프로메테우스 오퍼레이터 
-- ch9: 프로메테우스 오퍼레이터를 활용한 애플리케이션 모니터링
+- ch8: 프로메테우스 오퍼레이터 사용법 
+- ch9: 프로메테우스 오퍼레이터 응용법 
 
 ### 보강강의 
 - A: 보강 수업 

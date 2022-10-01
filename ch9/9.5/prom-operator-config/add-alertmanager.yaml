@@ -12,8 +12,7 @@ alertmanager:
     - name: default-receiver
     - name: slack
       slack_configs:
-      - channel: "#development"
-        send_resolved: true
+      - send_resolved: true
         title: '[{{.Status | toUpper}}] {{ .CommonLabels.alertname }}'
         text: |
           *Description:*

@@ -1,5 +1,5 @@
 # 1.install kube-prometheus-stack
-./1.prometheus-stack-installer-15s.sh
+./prometheus-stack-installer-15s.sh
 
 # 2.check resource kubernete
 kubectl get pods -n monitoring

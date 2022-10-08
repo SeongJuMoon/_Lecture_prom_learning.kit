@@ -1,0 +1,18 @@
+apiVersion: monitoring.coreos.com/v1
+kind: Probe
+metadata:
+  labels:
+    app: bookinfo
+    release: prometheus-stack
+  name: bookinfo
+  namespace: monitoring
+spec:
+  targets:
+    staticConfig:
+      static:
+        - http://details.bookinfo.svc.cluster.local:9080/health
+        - http://productpage.bookinfo.svc.cluster.local:9080/health
+        - http://ratings.bookinfo.svc.cluster.local:9080/health
+        - http://reviews.bookinfo.svc.cluster.local:9080/health
+  prober:
+    url: prometheus-blackbox-exporter.monitoring.svc.cluster.local:9115

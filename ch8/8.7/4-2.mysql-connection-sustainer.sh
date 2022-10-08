@@ -7,3 +7,4 @@ do
   mysql -h $MYSQL_HOST -uroot -proot -e 'select sleep(298);' > /dev/null &
   sleep 2
 done
+

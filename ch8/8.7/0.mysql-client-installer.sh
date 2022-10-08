@@ -9,3 +9,4 @@ else
     yum install --nogpgcheck mysql-community-client -y
     echo "mysql client installed."
 fi
+

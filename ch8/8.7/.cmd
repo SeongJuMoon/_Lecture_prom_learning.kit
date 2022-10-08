@@ -28,8 +28,8 @@ kubectl apply -f 3-3.sts-mysql-w-exporter.yaml
 # shortcut (http://192.168.1.10/targets).
 # chceck podmonitor registered successfully. let's check promql metrics is available.
 
-# 3-3.check promql 
-mysql_global_variables_max_connections - mysql_global_status_threads_connected
+# promql 
+mysql_up
 mysql_global_variables_open_files_limit - mysql_global_variables_innodb_open_files
 
 # 4.mysql DEMO
@@ -47,6 +47,8 @@ mysql_global_variables_max_allowed_packet
 # check current metrics value in prometheus ui
 # metrics describe 'The number of connection attempts (successful or not) to the MySQL server.'
 mysql_global_status_connections 
+# connectivity check 
+mysql_global_variables_max_connections - mysql_global_status_threads_connected
 # call mysql-connection-sustainer.sh so that increase the metrics of connections
 ./4-2.mysql-connection-sustainer.sh
 # check again 

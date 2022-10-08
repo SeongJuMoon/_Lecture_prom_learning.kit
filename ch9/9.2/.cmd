@@ -7,6 +7,8 @@ vagrant up
 # credential: admin / admin
 # view harbor portal
 
+k get -n monitoring secret prometheus-prometheus-stack-kube-prom-prometheus -o yaml
+
 # m-k8s
 # upgrade prometheus-stack to scrape harbor metrics.
 ./1.prometheus-stack-upgrader-15s.sh

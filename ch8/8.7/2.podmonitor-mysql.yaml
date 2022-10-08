@@ -13,3 +13,4 @@ spec:
       app: mysql
   podMetricsEndpoints:
   -  port: metrics
+

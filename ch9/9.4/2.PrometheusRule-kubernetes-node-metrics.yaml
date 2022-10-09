@@ -1,0 +1,24 @@
+apiVersion: monitoring.coreos.com/v1 
+kind: PrometheusRule
+metadata:
+  name: kubernetes-node-metrics
+  namespace: monitoring
+  labels:
+    release: prometheus-stack
+spec:
+  groups:
+    - name: kubernetes-node-metrics
+      interval: 10s
+      rules:
+        - record: node:node_memory:usage
+          expr: |-
+            100 - 100 * (
+              (node_memory_MemTotal_bytes
+                - node_memory_MemFree_bytes
+                - node_memory_Buffers_bytes
+                - node_memory_Cached_bytes
+                - node_memory_SReclaimable_bytes
+              )
+                /
+                node_memory_MemTotal_bytes
+            )

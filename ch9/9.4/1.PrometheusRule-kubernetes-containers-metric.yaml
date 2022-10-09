@@ -1,0 +1,17 @@
+apiVersion: monitoring.coreos.com/v1 
+kind: PrometheusRule
+metadata:
+  name: kubernetes-containers-metric
+  namespace: monitoring
+  labels:
+    release: prometheus-stack
+spec:
+  groups:
+    - name: kubernetes-containers-metric
+      interval: 10s
+      rules:
+        - name: kubernetes-containers-metric
+          interval: 10s
+          rules:
+          - record: container:memory_working_set:topk3
+            expr: topk(3,sum(container_memory_working_set_bytes{pod!=""}/1024/1024) by (pod))

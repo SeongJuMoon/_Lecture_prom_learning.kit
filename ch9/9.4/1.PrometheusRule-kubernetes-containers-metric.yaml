@@ -10,8 +10,5 @@ spec:
     - name: kubernetes-containers-metric
       interval: 10s
       rules:
-        - name: kubernetes-containers-metric
-          interval: 10s
-          rules:
-          - record: container:memory_working_set:topk3
-            expr: topk(3,sum(container_memory_working_set_bytes{pod!=""}/1024/1024) by (pod))
+      - record: container:memory_working_set:topk3
+        expr: topk(3,sum(container_memory_working_set_bytes{pod!=""}/1024/1024) by (pod))

@@ -16,4 +16,4 @@ spec:
         - http://reviews.bookinfo.svc.cluster.local:9080/health
   prober:
     url: prometheus-blackbox-exporter.monitoring.svc.cluster.local:9115
-    
+  module: http_2xx

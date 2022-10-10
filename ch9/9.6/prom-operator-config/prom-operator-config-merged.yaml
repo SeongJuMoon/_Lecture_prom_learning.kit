@@ -43,12 +43,25 @@ additionalPrometheusRulesMap:
               /
               node_memory_MemTotal_bytes
           )
+  alert:
+    groups:
+    - name: prometheus-operator
+      rules:
+      - alert: PrometheusOperatorDown
+        annotations:
+          title: "Prometheus operator DOWN!!!"
+          description: "prometheus-operator is out of service status"
+          summary: "[P1, Critical]: Prometheus operator has been shutdown or evicted status unexpectedly."
+        expr: |
+          ((sum(prometheus_operator_ready)) or vector(0)) == 0
+        for: 30s
+
 
 alertmanager:
   enabled: true
   service:
     type: "LoadBalancer"
-    loadBalancerIP: "192.168.1.88"
+    loadBalancerIP: "192.168.1.96"
   config: 
     global:
       resolve_timeout: 10m
@@ -57,8 +70,7 @@ alertmanager:
     - name: default-receiver
     - name: slack
       slack_configs:
-      - channel: "#development"
-        send_resolved: true
+      - send_resolved: true
         title: '[{{.Status | toUpper}}] {{ .CommonLabels.alertname }}'
         text: |
           *Description:* 

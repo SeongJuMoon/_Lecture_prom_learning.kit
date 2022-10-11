@@ -1,7 +1,7 @@
 ### 다루는 내용 
-- 8.2: 헬름으로 배포하는 프로메테우스 오퍼레이터
-- 8.3: 수집되지 않은 컨트롤플레인 에러 고치기
-- 8.4: 서비스모니터(serviceMonitor) nginx-exporter  
-- 8.5: 서비스모니터(serviceMonitor) redis 
-- 8.6: 파드모니터 (PodMonitor) metallb 
-- 8.7: 파드모니터 (PodMonitor) mysql 
+- 8.2: 헬름으로 프로메테우스 오퍼레이터와 관련된 익스포터들을 한번에 구성하기
+- 8.3: 프로메테우스 오퍼레이터에서 컨트롤 플레인의 메트릭을 수집하도록 설정하기
+- 8.4: 서비스모니터(ServiceMonitor) - NGINX 익스포터
+- 8.5: 서비스모니터(ServiceMonitor) - 레디스(Redis) 익스포터
+- 8.6: 파드모니터 (PodMonitor) - MetalLB
+- 8.7: 파드모니터 (PodMonitor) - 스테이트풀셋 마이에스큐엘(MySQL)

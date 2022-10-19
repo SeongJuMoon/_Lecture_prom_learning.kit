@@ -16,6 +16,35 @@ kubeEtcd:
     port: 2381
     targetPort: 2381
 
+alertmanager:
+  enabled: true
+  service:
+    type: "LoadBalancer"
+    loadBalancerIP: "192.168.1.96"
+  config:
+    global:
+      resolve_timeout: 10m
+      slack_api_url: Slack-URL
+    inhibit_rules:
+    receivers:
+    - name: default-receiver
+    - name: slack
+      slack_configs:
+      - send_resolved: true
+        title: '[{{.Status | toUpper}}] {{ .CommonLabels.alertname }}'
+        text: |
+          *Description:*
+          {{ .CommonAnnotations.description }}
+    route:
+      group_by:
+      group_interval: 1m
+      group_wait: 10s
+      receiver: slack
+      repeat_interval: 5m
+      routes:
+      - receiver: slack
+
+
 additionalPrometheusRulesMap: 
   container-metrics:
     groups:
@@ -56,31 +85,3 @@ additionalPrometheusRulesMap:
           ((sum(prometheus_operator_ready)) or vector(0)) == 0
         for: 30s
 
-
-alertmanager:
-  enabled: true
-  service:
-    type: "LoadBalancer"
-    loadBalancerIP: "192.168.1.96"
-  config:
-    global:
-      resolve_timeout: 10m
-      slack_api_url: Slack-URL
-    inhibit_rules:
-    receivers:
-    - name: default-receiver
-    - name: slack
-      slack_configs:
-      - send_resolved: true
-        title: '[{{.Status | toUpper}}] {{ .CommonLabels.alertname }}'
-        text: |
-          *Description:*
-          {{ .CommonAnnotations.description }}
-    route:
-      group_by:
-      group_interval: 1m
-      group_wait: 10s
-      receiver: slack
-      repeat_interval: 5m
-      routes:
-      - receiver: slack

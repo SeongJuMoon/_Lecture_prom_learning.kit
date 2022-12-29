@@ -24,5 +24,6 @@ Bringing machine 'demo-prom-darksite' up with 'virtualbox' provider...
 192.168.1.231:30000 으로 접속하면 프로메테우스 그래프 대시보드가 나옴 
 
 ## 주의할 점 
-dockershim을 이용하기 때문에 쿠버네티스 버전 1.24로 넘어가야 할 경우에는 
-docker-cri 또는 다른 런타임으로 변경이 필요함 
+- dockershim을 이용하기 때문에 쿠버네티스 버전 1.24로 넘어가야 할 경우에는 docker-cri 또는 다른 런타임으로 변경이 필요함 
+- minikube 베이스로 동작하기 때문에 VM을 종료하는 경우에는 모든 설정이 사라짐 
+- 만약 VM을 종료한 경우에는 startup-prom.sh로 초기 상태로 복원 가능 

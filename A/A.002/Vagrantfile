@@ -9,20 +9,24 @@ minikube_V = 'v1.25.2'
 ## /configuration variables ##
 
 Vagrant.configure("2") do |config|
-  config.vm.define "mk-demo-prom-darksite" do |cfg|
+  config.vm.define "mk-prom-4-darksite" do |cfg|
     cfg.vm.box = "sysnet4admin/Ubuntu-k8s"
     cfg.vm.provider "virtualbox" do |vb|
-      vb.name = "mk-demo-prom-darksite"
+      vb.name = "mk-prom-4-darksite"
       vb.cpus = 2
       vb.memory = 2048 # the required 1800MiB for Kubernetes
       vb.customize ["modifyvm", :id, "--groups", "/k8s-demo-set(github_SysNet4Admin)"]
     end
-    cfg.vm.host_name = "mk-demo-prom-darksite"
+    cfg.vm.host_name = "mk-prom-4-darksite"
     cfg.vm.network "private_network", ip: "192.168.1.231"
     cfg.vm.network "forwarded_port", guest: 22, host: 60231, auto_correct: true, id: "ssh"
     cfg.vm.synced_folder "../data", "/vagrant", disabled: true 
     cfg.vm.provision "shell", path: "minikube-build.sh", args: [ k8s_V, docker_V, minikube_V ]
     cfg.vm.provision "shell", path: "prom.sh", env: { "PATH" => "$PATH:/usr/local/bin" }
-    cfg.vm.provision "file", source: "startup-prom.sh", destination: "$HOME"
+    cfg.vm.provision "file", source: "minikube.service", destination: "/tmp/minikube.service"
+    cfg.vm.provision "shell", inline: "install /tmp/minikube.service /etc/systemd/system/"
+    cfg.vm.provision "shell", inline: "systemctl enable minikube"
+#    cfg.vm.provision "file", source: "startup-prom.sh", destination: "/tmp/startup-prom.sh"
+#    cfg.vm.provision "shell", inline: "install /tmp/startup-prom.sh /root"
   end
 end

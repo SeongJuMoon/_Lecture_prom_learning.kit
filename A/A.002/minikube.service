@@ -5,6 +5,8 @@ After=docker.service
 [Service]
 Type=oneshot
 ExecStart=/usr/local/bin/minikube start --driver=none 
+# storageclass path to avoid permission issue for prometheus 
+ExecStartPost=/usr/bin/chmod 777 -R /tmp/hostpath-provisioner
 RemainAfterExit=true
 ExecStop=/usr/local/bin/minikube stop
 StandardOutput=journal

@@ -6,8 +6,8 @@ offline에서 promql을 조회하고 테스트하기 위해 만들었습니다. 
 - Mem 2048 Mi 이상 
 
 # 버전 
-- Kuberentes: 1.23.14
 - minikube: 1.25.2
+- Kubectl: 1.23.14
 - Prometheus: 2.37.0 LTS
 
 ## 사용법

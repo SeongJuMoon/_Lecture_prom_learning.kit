@@ -1,0 +1,28 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  labels:
+    app: nginx
+    release: prometheus-stack
+  name: nginx-relabling
+  namespace: monitoring
+spec:
+  namespaceSelector:
+    any: true
+  endpoints:
+  - port: metrics
+    relabelings:
+    - action: keep
+      regex: "true"
+      replacement: $1
+      separator: ;
+      sourceLabels:
+      - __meta_kubernetes_service_annotation_prometheus_io_scrape
+    - action: labelmap
+      regex: __meta_kubernetes_service_label_(.+)
+      replacement: $1
+      separator: ;
+    scheme: http
+  selector:
+    matchLabels:
+      app: nginx

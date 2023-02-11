@@ -19,7 +19,6 @@ data:
       static_configs:
       - targets:
         - localhost:9090
-    # start;
     - bearer_token_file: /var/run/secrets/kubernetes.io/serviceaccount/token
       job_name: kubernetes-endpoints
       kubernetes_sd_configs:
@@ -35,7 +34,6 @@ data:
       tls_config:
         ca_file: /var/run/secrets/kubernetes.io/serviceaccount/ca.crt
         insecure_skip_verify: true
-    # end;
     - bearer_token_file: /var/run/secrets/kubernetes.io/serviceaccount/token
       job_name: kubernetes-apiservers
       kubernetes_sd_configs:
@@ -88,6 +86,7 @@ data:
         ca_file: /var/run/secrets/kubernetes.io/serviceaccount/ca.crt
         insecure_skip_verify: true
     - honor_labels: true
+    # start;
       job_name: kubernetes-service-endpoints
       kubernetes_sd_configs:
       - role: endpoints
@@ -134,6 +133,7 @@ data:
         source_labels:
         - __meta_kubernetes_pod_node_name
         target_label: node
+      # end;
     - honor_labels: true
       job_name: kubernetes-service-endpoints-slow
       kubernetes_sd_configs:

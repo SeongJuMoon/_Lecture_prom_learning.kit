@@ -85,7 +85,6 @@ data:
       tls_config:
         ca_file: /var/run/secrets/kubernetes.io/serviceaccount/ca.crt
         insecure_skip_verify: true
-    # start;
     - honor_labels: true
       job_name: kubernetes-service-endpoints
       kubernetes_sd_configs:

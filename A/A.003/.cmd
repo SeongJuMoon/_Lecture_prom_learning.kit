@@ -26,8 +26,8 @@ node_uname_info offset 10m
 node_procs_running offset 10m
 kube_configmap_info offset 10m
 
-# restore prometheus configmap
-./2.restore-drop-label-patch.sh
+# rollback prometheus configmap
+./2.rollback-drop-label-patch.sh
 
 # check prometheus configuration 
 shortcut http://192.168.1.11/config

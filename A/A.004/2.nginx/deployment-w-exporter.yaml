@@ -12,6 +12,8 @@ spec:
   template:
     metadata:
       annotations:
+        # scrape condition
+        promehteus.io/scrape: "true"
         # config default exec/logs connectivity for main nginx 
         kubectl.kubernetes.io/default-container: nginx
       labels:

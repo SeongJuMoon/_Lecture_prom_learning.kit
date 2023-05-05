@@ -14,8 +14,7 @@ metadata:
 spec:
   selector:
     matchLabels:      
-      app.kubernetes.io/name: kube-state-metrics
-      app.kubernetes.io/instance: prometheus
+      app: kube-state-metrics
   replicas: 1
   template:
     metadata:

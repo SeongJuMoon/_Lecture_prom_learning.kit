@@ -11,7 +11,6 @@ spec:
     matchLabels:
       component: "node-exporter"
       app: prometheus
-      release: prometheus
   updateStrategy:
     type: RollingUpdate
   template:

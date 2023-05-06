@@ -4,7 +4,7 @@ metadata:
   labels:
     app: nginx
     release: prometheus-stack
-  name: nginx-relabling
+  name: nginx-relabeling
   namespace: monitoring
 spec:
   namespaceSelector:

@@ -33,8 +33,6 @@ spec:
             - name: metrics
               containerPort: 9100
               hostPort: 9100
-          resources:
-            {}
           securityContext:
             allowPrivilegeEscalation: false          
           volumeMounts:
@@ -72,3 +70,4 @@ spec:
         - name: root
           hostPath:
             path: /
+            

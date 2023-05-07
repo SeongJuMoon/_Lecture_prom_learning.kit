@@ -4,9 +4,6 @@ metadata:
   labels:
     component: "server"
     app: prometheus
-    release: prometheus
-    chart: prometheus-15.8.5
-    heritage: Helm
   name: prometheus-server
   namespace: monitoring
 spec:
@@ -18,7 +15,7 @@ spec:
   selector:
     component: "server"
     app: prometheus
-    release: prometheus
   sessionAffinity: None
   type: "LoadBalancer"
+  loadBalancerIP: 192.168.1.11
   

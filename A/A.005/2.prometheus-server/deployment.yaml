@@ -4,9 +4,6 @@ metadata:
   labels:
     component: "server"
     app: prometheus
-    release: prometheus
-    chart: prometheus-15.8.5
-    heritage: Helm
   name: prometheus-server
   namespace: monitoring
 spec:
@@ -14,16 +11,12 @@ spec:
     matchLabels:
       component: "server"
       app: prometheus
-      release: prometheus
   replicas: 1
   template:
     metadata:
       labels:
         component: "server"
         app: prometheus
-        release: prometheus
-        chart: prometheus-15.8.5
-        heritage: Helm
     spec:
       enableServiceLinks: true
       serviceAccountName: prometheus-server

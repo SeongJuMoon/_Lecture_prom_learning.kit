@@ -4,22 +4,19 @@ metadata:
   name: prometheus-kube-state-metrics
   namespace: monitoring
   labels:    
-    helm.sh/chart: kube-state-metrics-4.7.0
-    app.kubernetes.io/managed-by: Helm
-    app.kubernetes.io/component: metrics
-    app.kubernetes.io/part-of: kube-state-metrics
-    app.kubernetes.io/name: kube-state-metrics
-    app.kubernetes.io/instance: prometheus
-    app.kubernetes.io/version: "2.4.1"
+    component: "kube-state-metrics"
+    app: prometheus
 spec:
   selector:
     matchLabels:      
-      app: kube-state-metrics
+      component: "kube-state-metrics"
+      app: prometheus
   replicas: 1
   template:
     metadata:
       labels:        
-        app: kube-state-metrics
+        component: "kube-state-metrics"
+        app: prometheus
     spec:
       hostNetwork: false
       serviceAccountName: prometheus-kube-state-metrics

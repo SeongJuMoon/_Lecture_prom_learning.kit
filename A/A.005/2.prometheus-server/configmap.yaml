@@ -5,6 +5,7 @@ metadata:
     component: "server"
     app: prometheus
   name: prometheus-server
+  namespace: monitoring
 data:
   alerting_rules.yml: |
     {}

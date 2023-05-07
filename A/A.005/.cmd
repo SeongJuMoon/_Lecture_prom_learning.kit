@@ -18,3 +18,6 @@ k get po,svc -n monitoring -l component=kube-state-metrics
 
 # 6. deploy server
 k apply -f 2.prometheus-server
+
+# 7. check prometheus-server via kubectl
+k get po,svc -n monitoring -l component=server

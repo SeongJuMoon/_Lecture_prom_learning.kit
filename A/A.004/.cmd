@@ -7,7 +7,7 @@ vi 1.smon-nginx-relabeling.yaml
 k apply -f 1.smon-nginx-relabeling.yaml
 
 # 1-3. check servicemonitor deployed on k8s cluster.
-k get servicemonitor-n monitoring
+k get servicemonitor -n monitoring
 
 # 2-1. check directory 2.nginx before apply via kubectl.
 ls 2.nginx
@@ -47,4 +47,4 @@ k get po,svc
 k delete -f 1.smon-nginx-relabeling.yaml
 
 # 4-4. check servicemonitor deleted on k8s cluster.
-k get servicemonitor-n monitoring
+k get servicemonitor -n monitoring

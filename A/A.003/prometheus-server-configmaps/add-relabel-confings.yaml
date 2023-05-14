@@ -129,10 +129,10 @@ data:
       # /start: replace action
       - action: replace
         source_labels:
-        - __meta_kubernetes_service_type
+        - __meta_kubernetes_endpoint_port_name
         regex: (.*)
         replacement: $1
-        target_label: service_type
+        target_label: portname
       # /end: replace action
       - action: replace
         source_labels:

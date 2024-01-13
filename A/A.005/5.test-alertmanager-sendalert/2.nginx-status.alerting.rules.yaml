@@ -1,0 +1,14 @@
+data:
+  alerting_rules.yml: |
+    groups:
+    - name: nginx-status.alert
+      rules:
+      - alert: '[P2] NginxDown'
+        for: 30s
+        annotations:
+          title: 'Nginx pod down unexpectedly'
+          description: 'Nginx가 비정상 종료됨. 빠른 조치 필요!'
+          summary: '[P2, warnning]: Nginx pod has been shutdown unexpectedly.'
+        expr: |
+          (sum(nginx_up) OR vector(0)) == 0
+        

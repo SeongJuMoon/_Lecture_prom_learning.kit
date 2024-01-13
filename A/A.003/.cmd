@@ -1,6 +1,6 @@
 # 0-1. move prometheus to via web browser.
 <shortcut> http://192.168.1.11
-# search metrics node_uname_info
+# search metrics node_cpu_seconds_total
  
 # 0-2. Move to prometheus configuration ui to find configuration.
 <shoutcut> http://192.168.1.11/config
@@ -22,22 +22,25 @@
 
 # 1-1. Move to prometheus graph ui.
 <shortcut> http://192.168.1.11
-# Search metrics: node_uname_info
+# Search metrics: node_cpu_seconds_total
 # Check prometheus label monitoring, node, service.
-# Check duplicate purpose label helm used.
-# Helm v2 (heritage)
-# Helm v3 (app_kubernetes_io/managed_by)
-# Move superputty to drop duplicate purpose label.
 
-# 1-2. Check apply labeldrop relabel action shell script.
-cat 1.add-drop-label-patch.yaml
+# 1-2. Check apply drop and replace relabel action shell script.
+cat 1.add-relabel-configs.sh
 
-# Check configmap vi vi editor.
+# Check configmap vi editor.
 # Search /start;
-# Check labeldrop action and regex heritage.
+# Check drop action.
+# Check replace action.
 
 # 1-3. Apply labeldrop relabel action shell script.
-./1.add-drop-label-patch.yaml
+./1.add-relabel-confings.yaml
+
+# check drop action.
+k annotate -n monitoring svc prometheus-node-exporter prometheus.io/exclude="true"
+
+# revert annotate action.
+k annotate -n monitoring svc prometheus-node-exporter prometheus.io/exclude-
 
 # 1-4. Check labeldrop action has applied.
 # Move to prometheus configruation ui.
@@ -46,17 +49,17 @@ cat 1.add-drop-label-patch.yaml
 # Check labeldrop action and regex heritage.
 # Move to prometheus graph ui.
 # search metrics node_uname_info
-# check heritage label not found.
+# check metrics  not found.
 # search node_procs_running
-# check heritage label not found.
+# check metrics not found.
 
-# 2-1. Check rollback labeldrop action from shell script.
-vi 2.rollback-drop-label-patch.sh
-# vim search <esc> /heritage
-# heritage not found.
+# 2-1. Check rollback config from shell script.
+vi 2.rollback-basic-config.sh
+# vim search <esc> /start
+# drop, replace not found.
 
 # 2-2. Rollback labeldrop action from shell script
-./2.rollback-drop-label-patch.sh
+2.rollback-basic-config.sh
 
 # 2-3. Check labeldrop action has deleted.
 # Move to prometheus configruation ui.
@@ -64,7 +67,3 @@ vi 2.rollback-drop-label-patch.sh
 # Enter Ctrl + F, search heritage
 # Check heritage not found.
 # Move to prometheus graph ui.
-# search metrics node_uname_info
-# check heritage label.
-# search node_procs_running
-# check heritage label.

@@ -1,0 +1,91 @@
+apiVersion: v1
+kind: List
+metadata:
+  name: prometheus-stack-kube-prom-additional-prometheus-rules
+  namespace: monitoring
+items:
+  - apiVersion: monitoring.coreos.com/v1
+    kind: PrometheusRule
+    metadata:
+      name: kube-prometheus-stack-alert
+      namespace: monitoring
+      labels:
+        app: kube-prometheus-stack
+        
+        app.kubernetes.io/managed-by: Helm
+        app.kubernetes.io/instance: prometheus-stack
+        app.kubernetes.io/version: "39.9.0"
+        app.kubernetes.io/part-of: kube-prometheus-stack
+        chart: kube-prometheus-stack-39.9.0
+        release: "prometheus-stack"
+        heritage: "Helm"
+    spec:
+      groups:
+        - name: prometheus-operator
+          rules:
+          - alert: PrometheusOperatorDown
+            annotations:
+              description: prometheus-operator is out of service status
+              summary: '[P1, Critical]: Prometheus operator has been shutdown or evicted status
+                unexpectedly.'
+              title: Prometheus operator DOWN!!!
+            expr: |
+              ((sum(prometheus_operator_ready)) or vector(0)) == 0
+            for: 30s
+  - apiVersion: monitoring.coreos.com/v1
+    kind: PrometheusRule
+    metadata:
+      name: kube-prometheus-stack-container-metrics
+      namespace: monitoring
+      labels:
+        app: kube-prometheus-stack
+        
+        app.kubernetes.io/managed-by: Helm
+        app.kubernetes.io/instance: prometheus-stack
+        app.kubernetes.io/version: "39.9.0"
+        app.kubernetes.io/part-of: kube-prometheus-stack
+        chart: kube-prometheus-stack-39.9.0
+        release: "prometheus-stack"
+        heritage: "Helm"
+    spec:
+      groups:
+        - interval: 10s
+          name: kubernetes-containers-metric
+          rules:
+          - expr: topk(3,sum(container_memory_working_set_bytes{pod!=""}/1024/1024) by (pod))
+            record: container:memory_working_set:topk3
+  - apiVersion: monitoring.coreos.com/v1
+    kind: PrometheusRule
+    metadata:
+      name: kube-prometheus-stack-node-metrics
+      namespace: monitoring
+      labels:
+        app: kube-prometheus-stack
+        
+        app.kubernetes.io/managed-by: Helm
+        app.kubernetes.io/instance: prometheus-stack
+        app.kubernetes.io/version: "39.9.0"
+        app.kubernetes.io/part-of: kube-prometheus-stack
+        chart: kube-prometheus-stack-39.9.0
+        release: "prometheus-stack"
+        heritage: "Helm"
+    spec:
+      groups:
+        - interval: 10s
+          name: kubernetes-node-metric
+          rules:
+          - expr: sum(rate(node_cpu_seconds_total{mode="user"}[2m])) by (instance)
+            record: instance:node_cpu_seconds_userspace:rate2m
+          - expr: |-
+              100 - 100 * (
+                (node_memory_MemTotal_bytes
+                  - node_memory_MemFree_bytes
+                  - node_memory_Buffers_bytes
+                  - node_memory_Cached_bytes
+                  - node_memory_SReclaimable_bytes
+                )
+                  /
+                  node_memory_MemTotal_bytes
+              )
+            record: node:node_memory:usage
+---

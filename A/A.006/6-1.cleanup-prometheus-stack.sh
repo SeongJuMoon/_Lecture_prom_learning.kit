@@ -28,7 +28,7 @@ echo "Delete prometheus server."
 kubectl delete -f $BASE_DIR/2-1.prometheus-server.yaml
 
 echo "Delete prometheus-operator"
-kubectl delete -f $BASE_DIR/1-3-prometheus-operator.yaml
+kubectl delete -f $BASE_DIR/1-3.prometheus-operator.yaml
 
 echo "Delete prometheus-operator-admission-controller"
 kubectl delete -f $BASE_DIR/1-2.prometheus-operator-admission-controller.yaml

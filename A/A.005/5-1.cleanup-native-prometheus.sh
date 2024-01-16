@@ -15,6 +15,7 @@ echo "Delete node-exporter"
 kubectl delete -f $BASE_DIR/2-1.prometheus-server.yaml
 
 echo "Delete prometheus-server and config also namespace."
+kubectl delete configmap -n monitoring prometheus-server
 kubectl delete -f $BASE_DIR/1.prometheus-server.yaml
 
 echo "delete success all native-prometheus apps."

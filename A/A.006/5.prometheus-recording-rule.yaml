@@ -1,10 +1,10 @@
 apiVersion: monitoring.coreos.com/v1
-kind: ServiceMonitor
+kind: PrometheusRule
 metadata:
-  name: prometheus-stack-kube-prom-alertmanager
+  name: kube-prometheus-stack-container-metrics
   namespace: monitoring
   labels:
-    app: kube-prometheus-stack-alertmanager
+    app: kube-prometheus-stack
     
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/instance: prometheus-stack
@@ -14,14 +14,9 @@ metadata:
     release: "prometheus-stack"
     heritage: "Helm"
 spec:
-  selector:
-    matchLabels:
-      app: kube-prometheus-stack-alertmanager
-      release: "prometheus-stack"
-      self-monitor: "true"
-  namespaceSelector:
-    matchNames:
-      - "monitoring"
-  endpoints:
-  - port: http-web
-    path: "/metrics"
+  groups:
+    - interval: 10s
+      name: kubernetes-containers-metric
+      rules:
+      - expr: topk(3,sum(container_memory_working_set_bytes{pod!=""}/1024/1024) by (pod))
+        record: container:memory_working_set:topk3

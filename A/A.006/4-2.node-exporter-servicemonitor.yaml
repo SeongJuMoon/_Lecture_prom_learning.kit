@@ -1,10 +1,10 @@
-apiVersion: v1
-kind: Service
+---
+# ServiceMonitor
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
 metadata:
   name: prometheus-stack-prometheus-node-exporter
   namespace: monitoring
-  annotations:
-    prometheus.io/scrape: "true"
   labels:     
     app: prometheus-node-exporter
     heritage: Helm
@@ -12,12 +12,11 @@ metadata:
     chart: prometheus-node-exporter-3.3.1
     jobLabel: node-exporter
 spec:
-  type: ClusterIP
-  ports:
-    - port: 9100
-      targetPort: 9100
-      protocol: TCP
-      name: http-metrics
+  jobLabel: jobLabel
   selector:
-    app: prometheus-node-exporter
-    release: prometheus-stack
+    matchLabels:
+      app: prometheus-node-exporter
+      release: prometheus-stack
+  endpoints:
+    - port: http-metrics
+      scheme: http

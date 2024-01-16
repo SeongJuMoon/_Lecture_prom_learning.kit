@@ -19,6 +19,7 @@ subjects:
 - kind: ServiceAccount
   name: prometheus-kube-state-metrics
   namespace: monitoring
+---
 # ClusterRole
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
@@ -167,6 +168,7 @@ rules:
   resources:
     - volumeattachments
   verbs: ["list", "watch"]
+---
 # Deployment
 apiVersion: apps/v1
 kind: Deployment
@@ -227,6 +229,7 @@ spec:
             port: 8080
           initialDelaySeconds: 5
           timeoutSeconds: 5
+---
 # ServiceAccount
 apiVersion: v1
 kind: ServiceAccount
@@ -243,6 +246,7 @@ metadata:
   namespace: monitoring
 imagePullSecrets:
   []
+---
 # Service
 apiVersion: v1
 kind: Service

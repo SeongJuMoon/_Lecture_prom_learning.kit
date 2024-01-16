@@ -1,3 +1,9 @@
+# 0. uninstall prometheus && related matters. 
+ ~/_Lecture_prom_learning.kit/A/A.001/prometheus-uninstaller.sh
+ ~/_Lecture_prom_learning.kit/A/A.001/prometheus-stack-uninstaller.sh
+
+
+
 # 0. run script to initialize control-plane metric scape enabled.
 # this script need to a lot of time.
 # please stay moment for processing.

@@ -231,7 +231,7 @@ metadata:
   namespace: monitoring
   annotations:
     {}
-    apiVersion: v1
+apiVersion: v1
 # Service
 kind: Service
 metadata:

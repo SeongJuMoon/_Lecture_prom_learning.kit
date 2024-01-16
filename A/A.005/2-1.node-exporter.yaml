@@ -1,3 +1,4 @@
+# DaemonSet
 apiVersion: apps/v1
 kind: DaemonSet
 metadata:
@@ -79,3 +80,43 @@ spec:
         - name: root
           hostPath:
             path: /
+# ServiceAccount
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  labels:
+    component: "node-exporter"
+    app: prometheus
+    release: prometheus
+    chart: prometheus-15.8.5
+    heritage: Helm
+  name: prometheus-node-exporter
+  namespace: monitoring
+  annotations:
+    {}
+# Service
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    prometheus.io/scrape: "true"
+  labels:
+    component: "node-exporter"
+    app: prometheus
+    release: prometheus
+    chart: prometheus-15.8.5
+    heritage: Helm
+  name: prometheus-node-exporter
+  namespace: monitoring
+spec:
+  clusterIP: None
+  ports:
+    - name: metrics
+      port: 9100
+      protocol: TCP
+      targetPort: 9100
+  selector:
+    component: "node-exporter"
+    app: prometheus
+    release: prometheus
+  type: "ClusterIP"

@@ -35,7 +35,7 @@ k apply -f 2-2.prometheus-servicemonitor.yaml
 # search metrics: up
 
 # 2-8. deploy servicemonitor for add targets for prometheus-operator
-k apply -f 2-2.prometheus-servicemonitor.yaml
+k apply -f 2-3.prom-operator-servicemonitor.yaml
 
 # 2-10. check the targets status on your browser(http://192.168.1.11/targets).
 

@@ -1,3 +1,7 @@
+# 0. uninstall prometheus && related matters. 
+ ~/_Lecture_prom_learning.kit/A/A.001/prometheus-uninstaller.sh
+ ~/_Lecture_prom_learning.kit/A/A.001/prometheus-stack-uninstaller.sh
+
 # 1-1. deploy crd for prometheus-operator.
 k create -f 1-1.prometheus-operator-crd
 

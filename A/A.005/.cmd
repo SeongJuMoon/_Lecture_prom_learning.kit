@@ -2,10 +2,6 @@
  ~/_Lecture_prom_learning.kit/A/A.001/prometheus-uninstaller.sh
  ~/_Lecture_prom_learning.kit/A/A.001/prometheus-stack-uninstaller.sh
 
-
-
-# 0. run script to initialize control-plane metric scape enabled.
-
 # 1-1 deploy prometheus-server
 k apply -f 1-1.prometheus-server.yaml
 

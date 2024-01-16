@@ -1,0 +1,8 @@
+data:
+  recording_rules.yml: |
+    groups:
+      - name: prometheus-recording.rules
+        interval: 10s
+        rules:
+          - record: container:memory_working_set:topk3
+            expr: topk(3,sum(container_memory_working_set_bytes{pod!=""}/1024/1024) by (pod))

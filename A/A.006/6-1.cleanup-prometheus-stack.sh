@@ -19,7 +19,7 @@ kubectl delete -f $BASE_DIR/4-1.node-exporter.yaml
 
 echo "Delete control-plane servicemonitor and disable scrape control-plane metrics."
 kubectl delete -f $BASE_DIR/3-1.control-plane -R
-source $BASE_DIR/8-2.scraping-control-plane-disabled.sh
+source $BASE_DIR/6-2.scraping-control-plane-disabled.sh
 
 echo "Delete prometheus server servicemonitor."
 kubectl delete -f $BASE_DIR/2-2.prometheus-servicemonitor.yaml

@@ -55,6 +55,7 @@ rules:
   verbs: ["get", "list", "watch"]
 - nonResourceURLs: ["/metrics", "/metrics/cadvisor"]
   verbs: ["get"]
+---
 # Prometheus
 apiVersion: monitoring.coreos.com/v1
 kind: Prometheus

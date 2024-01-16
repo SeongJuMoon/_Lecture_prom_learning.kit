@@ -1,8 +1,8 @@
 # Namespace
+apiVersion: v1
 kind: Namespace
 metadata:
   name: monitoring
-apiVersion: v1
 ---
 # ClusterRoleBinding
 apiVersion: rbac.authorization.k8s.io/v1
@@ -203,9 +203,9 @@ spec:
         - name: storage-volume
           persistentVolumeClaim:
             claimName: prometheus-server
-            apiVersion: v1
 ---
 # PersistentVolumeClaim
+apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   labels:
@@ -222,9 +222,9 @@ spec:
   resources:
     requests:
       storage: "8Gi"
-apiVersion: v1
 ---
 # ServiceAccount
+apiVersion: v1
 kind: ServiceAccount
 metadata:
   labels:
@@ -238,8 +238,8 @@ metadata:
   annotations:
     {}
 ---
-apiVersion: v1
 # Service
+apiVersion: v1
 kind: Service
 metadata:
   labels:

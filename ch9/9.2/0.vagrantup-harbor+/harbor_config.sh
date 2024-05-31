@@ -25,7 +25,7 @@ chmod +x docker-compose
 mv docker-compose /usr/local/bin
 
 # git clone prom code
-git clone https://github.com/SeongJuMoon/_Lecture_prom_learning.kit.git
+git clone -b v1.30 https://github.com/SeongJuMoon/_Lecture_prom_learning.kit.git
 mv /home/vagrant/_Lecture_prom_learning.kit $HOME
 find $HOME/_Lecture_prom_learning.kit -regex ".*\.\(sh\)" -exec chmod 700 {} \;
 

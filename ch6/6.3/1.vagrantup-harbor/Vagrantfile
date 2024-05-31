@@ -8,7 +8,7 @@ Vagrant.configure("2") do |config|
     config.vm.define "harbor" do |cfg|
       cfg.vm.box = "sysnet4admin/Ubuntu-k8s"
       cfg.vm.provider "virtualbox" do |vb|
-        vb.name = "harbor(github_SysNet4Admin)"
+        vb.name = "6.3.harbor(github_SysNet4Admin)"
         vb.cpus = 1
         vb.memory = 2048
         vb.customize ["modifyvm", :id, "--groups", "/Prometheus-ext-node(github_SysNet4Admin)"]

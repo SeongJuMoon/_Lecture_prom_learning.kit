@@ -21,7 +21,7 @@ openssl x509 -req -sha512 -days 3650 \
     -in harbor.csr \
     -out harbor.crt
 
-yum install -y sshpass
+apt-get install sshpass -y 
 
 openssl x509 -inform PEM -in harbor.crt -out harbor.cert
 

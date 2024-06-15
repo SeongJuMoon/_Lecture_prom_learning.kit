@@ -21,8 +21,6 @@ openssl x509 -req -sha512 -days 3650 \
     -in harbor.csr \
     -out harbor.crt
 
-yum install -y sshpass
-
 openssl x509 -inform PEM -in harbor.crt -out harbor.cert
 
 sshpass -p $PASSWORD ssh -o StrictHostKeyChecking=no root@192.168.1.10 mkdir -p $CERT_DIR

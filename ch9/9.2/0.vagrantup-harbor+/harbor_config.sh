@@ -39,7 +39,7 @@ EOF
 chmod 700 /usr/local/bin/rerepo-prom_learning.kit
 
 # add execution for prepare script
-chmod +x $HOME/_Lecture_prom_learning.kit/ch6/6.3/3.harbor-app/prepare
+chmod +x $HOME/_Lecture_prom_learning.kit/ch9/9.2/0.vagrantup-harbor+/harbor-app/prepare
 
 # harbor automatically installed. this source came from 6.3
 source $HOME/_Lecture_prom_learning.kit/ch9/9.2/0.vagrantup-harbor+/harbor-certificate/create-certificate.sh

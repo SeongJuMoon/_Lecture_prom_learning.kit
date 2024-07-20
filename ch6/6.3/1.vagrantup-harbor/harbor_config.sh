@@ -29,6 +29,15 @@ git clone https://github.com/SeongJuMoon/_Lecture_prom_learning.kit.git
 mv /home/vagrant/_Lecture_prom_learning.kit $HOME
 find $HOME/_Lecture_prom_learning.kit -regex ".*\.\(sh\)" -exec chmod 700 {} \;
 
+# for arm64/aarch harbor build.
+if [ "$(uname -m)" == "aarch64" ]; then
+  sed -i 's,goharbor/prepare:v2.4.3,seongjumoon/prepare:v2.4.3-arm64,gi' $HOME/_Lecture_prom_learning.kit/ch6/6.3/3.harbor-app/prepare
+echo '
+sed -i "s,goharbor/,seongjumoon/,gi" $HOME/_Lecture_prom_learning.kit/ch6/6.3/3.harbor-app/docker-compose.yml
+sed -i "s,:dev-arm,:v2.4.3-arm64,gi" $HOME/_Lecture_prom_learning.kit/ch6/6.3/3.harbor-app/docker-compose.yml
+' >> $HOME/_Lecture_prom_learning.kit/ch6/6.3/3.harbor-app/prepare
+fi
+
 # make rerepo-prom_learning.kit and put permission
 cat <<EOF > /usr/local/bin/rerepo-prom_learning.kit
 #!/usr/bin/env bash

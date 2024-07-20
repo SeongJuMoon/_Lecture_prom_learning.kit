@@ -20,7 +20,7 @@ apt-get update
 apt-get install docker-ce=$1 docker-ce-cli=$1 -y
 
 # install docker-compose 
-curl -L https://github.com/docker/compose/releases/download/v2.10.0/docker-compose-linux-x86_64 -o docker-compose
+curl -L "https://github.com/docker/compose/releases/download/v2.10.0/docker-compose-linux-$(uname -m)" -o docker-compose
 chmod +x docker-compose
 mv docker-compose /usr/local/bin
 

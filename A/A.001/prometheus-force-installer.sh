@@ -9,4 +9,4 @@ echo "----------------------------------------------"
 
 echo "Start to deploy native prometheus with scraping 15s interval"
 echo "============================================================"
-sh ~/_Lecture_prom_learning.kit/ch2/2.2/prometheus-installer-15s.sh
+sh ~/_Lecture_prom_learning.kit/ch2/2.11/prometheus-installer-15s.sh

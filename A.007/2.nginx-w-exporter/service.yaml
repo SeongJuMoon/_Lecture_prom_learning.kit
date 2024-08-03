@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    prometheus.io/scrape: "true"
+  labels:
+    app: nginx
+    duty: DevOps
+    tier: frontend
+  name: nginx
+spec:
+  type: LoadBalancer
+  loadBalancerIP: "192.168.1.99"
+  ports:
+  - name: web
+    port: 80
+    targetPort: 8080
+  - name: metrics
+    port: 9113
+    targetPort: 9113
+  selector:
+    app: nginx

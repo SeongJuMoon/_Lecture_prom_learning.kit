@@ -20,7 +20,7 @@ apt-get update
 apt-get install docker-ce=$1 docker-ce-cli=$1 -y
 
 # install docker-compose 
-curl -L https://github.com/docker/compose/releases/download/v2.10.0/docker-compose-linux-x86_64 -o docker-compose
+curl -L "https://github.com/docker/compose/releases/download/v2.10.0/docker-compose-linux-$(uname -m)" -o docker-compose
 chmod +x docker-compose
 mv docker-compose /usr/local/bin
 
@@ -37,6 +37,15 @@ git clone https://github.com/seongjumoon/_Lecture_prom_learning.kit.git $HOME/_L
 find $HOME/_Lecture_prom_learning.kit -regex ".*\.\(sh\)" -exec chmod 700 {} \;
 EOF
 chmod 700 /usr/local/bin/rerepo-prom_learning.kit
+
+# for arm64/aarch harbor build.
+if [ "$(uname -m)" == "aarch64" ]; then
+  sed -i 's,goharbor/prepare:v2.4.3,seongjumoon/prepare:v2.4.3-arm64,gi' $HOME/_Lecture_prom_learning.kit/ch9/9.2/0.vagrantup-harbor+/harbor-app/prepare
+echo '
+sed -i "s,goharbor/,seongjumoon/,gi" $HOME/_Lecture_prom_learning.kit/ch9/9.2/0.vagrantup-harbor+/harbor-app/docker-compose.yml
+sed -i "s,:dev-arm,:v2.4.3-arm64,gi" $HOME/_Lecture_prom_learning.kit/ch9/9.2/0.vagrantup-harbor+/harbor-app/docker-compose.yml
+' >> $HOME/_Lecture_prom_learning.kit/ch9/9.2/0.vagrantup-harbor+/harbor-app/prepare
+fi
 
 # add execution for prepare script
 chmod +x $HOME/_Lecture_prom_learning.kit/ch9/9.2/0.vagrantup-harbor+/harbor-app/prepare

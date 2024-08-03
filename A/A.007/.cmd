@@ -50,10 +50,10 @@ kubectl patch configmap prometheus-server -n monitoring --patch-file 3.nginx-sta
 kubectl patch configmap prometheus-alertmanager -n monitoring --patch-file 4-2.opsgenie-notifier.yaml
 
 # 5. Trigger on-call to opsgenie via kubectl scale command.
-kubectl scale deployment nginx -n monitoring --replicas=0
+kubectl scale deployment nginx --replicas=0
 # 5-1. Confirm alert on opsgenie.
 shoutcut: https://<youropsgenie>.app.opsgenie.com/alert/list
 Or
 Opsgenie app on your phone.
 # 5-2. Resolve triggered alert via kubectl scale command.
-kubectl scale deployment nginx -n monitoring --replicas=2
+kubectl scale deployment nginx --replicas=2

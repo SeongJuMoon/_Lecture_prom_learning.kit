@@ -1,0 +1,14 @@
+data:
+  alertmanager.yml: |
+    global:
+      resolve_timeout: 3m
+    receivers:
+    - name: default-receiver
+    - name: pagerduty
+      opsgenie_configs:
+      - service_key: api-key
+    route:
+      group_interval: 30s
+      group_wait: 10s
+      receiver: pagerduty
+      repeat_interval: 2m

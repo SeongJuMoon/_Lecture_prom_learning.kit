@@ -16,4 +16,4 @@ helm upgrade --install prometheus edu/prometheus \
 --set server.extraFlags[0]="web.enable-lifecycle" \
 --set server.extraFlags[1]="storage.tsdb.no-lockfile" \
 --namespace=monitoring \
---create-namespace--create-namespace
+--create-namespace

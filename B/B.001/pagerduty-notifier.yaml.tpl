@@ -5,7 +5,7 @@ data:
     receivers:
     - name: default-receiver
     - name: pagerduty
-      opsgenie_configs:
+      pagerduty_configs:
       - service_key: api-key
     route:
       group_interval: 30s

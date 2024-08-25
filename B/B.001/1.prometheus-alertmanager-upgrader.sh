@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-helm upgrade prometheus edu/prometheus \
+helm upgrade --install prometheus edu/prometheus \
 --set pushgateway.enabled=false \
 --set nodeExporter.tolerations[0].key="node-role.kubernetes.io/master" \
 --set nodeExporter.tolerations[0].effect="NoSchedule" \

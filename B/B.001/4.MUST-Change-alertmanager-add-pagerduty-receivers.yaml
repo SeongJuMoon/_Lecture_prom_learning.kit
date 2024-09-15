@@ -6,7 +6,7 @@ data:
     - name: default-receiver
     - name: pagerduty
       pagerduty_configs:
-      - service_key: API-KEY
+      - service_key: OG-API-KEY
     route:
       group_interval: 30s
       group_wait: 10s

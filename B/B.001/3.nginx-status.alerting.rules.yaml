@@ -3,8 +3,8 @@ data:
     groups:
     - name: nginx-status.alert
       rules:
-      - alert: '[High Urgency] need to handle replicas below 0 over to 1m'
-        for: 3s
+      - alert: '[P2] NginxDown'
+        for: 30s
         annotations:
           title: 'Nginx pod down unexpectedly'
           description: 'Nginx가 비정상 종료됨. 빠른 조치 필요!'

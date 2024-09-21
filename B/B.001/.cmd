@@ -44,7 +44,7 @@ k get po,svc
 kubectl patch configmap prometheus-server -n monitoring --patch-file 3.nginx-status.alerting.rules.yaml
 
 # 4.register pagerduty receiver on alertmanager 
-# change pagerduty API Address
+# change pagerduty API Key
 sed -i \
 's,PD-API-KEY,<MUST Change> cea410b7d36045a1b0cd88cd8db02a82/g' \
 4.MUST-Change-alertmanager-add-pagerduty-receivers.yaml 
@@ -53,7 +53,7 @@ sed -i \
 kubectl patch configmap prometheus-alertmanager -n monitoring --patch-file 4.MUST-Change-alertmanager-add-pagerduty-receivers.yaml
 
 # 4.register opsgenie receiver on alertmanager 
-# change opsgenie API Address
+# change opsgenie API Key
 sed -i \
 's,OG-API-KEY,<MUST Change> cea410b7d36045a1b0cd88cd8db02a83/g' \
 4.MUST-Change-alertmanager-add-opsgenie-receivers.yaml 

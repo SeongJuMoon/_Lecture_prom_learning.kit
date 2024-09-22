@@ -1,16 +1,15 @@
 apiVersion: v1
 kind: Service
 metadata:
-  annotations:
-    prometheus.io/scrape: "true"
   labels:
     app: nginx
-    duty: DevOps
-    tier: frontend
   name: nginx
+  annotations:
+    prometheus.io/scrape: "true"
+    prometheus.io/port: "9113"
 spec:
   type: LoadBalancer
-  loadBalancerIP: "192.168.1.97"
+  loadBalancerIP: "192.168.1.45"
   ports:
   - name: web
     port: 80

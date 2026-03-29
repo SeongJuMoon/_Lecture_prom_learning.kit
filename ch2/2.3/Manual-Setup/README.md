@@ -242,30 +242,43 @@ ssh -p 60010 vagrant@127.0.0.1
 각 스크립트는 독립적으로 실행 가능하므로, 에러 발생 시 해당 명령만 수동으로 실행할 수 있습니다.
 
 **k8s_env_build.sh 주요 작업:**
-- swap 비활성화
-- kubernetes/docker 저장소 추가
-- /etc/hosts 설정
+- swap 비활성화 (swapoff -a, /etc/fstab 주석 처리)
+- kubernetes apt 저장소 추가 (pkgs.k8s.io)
+- docker-ce apt 저장소 추가 (containerd용)
+- ip_forward 활성화, br_netfilter 모듈 로드
+- /etc/hosts 설정 (cp-k8s, w1~w3-k8s)
 
 **k8s_pkg_cfg.sh 주요 작업:**
-- NFS 패키지 설치
-- kubelet, kubectl, kubeadm, containerd 설치
-- containerd 설정
+- apt-get update
+- NFS 패키지 설치 (CP: nfs-server+nfs-common, W: nfs-common)
+- kubelet, kubectl, kubeadm, containerd.io 설치
+- containerd 설정 (SystemdCgroup=true)
+- crictl.yaml 생성 (runtime/image endpoint)
+- containerd, kubelet 서비스 활성화
 
 **controlplane_node.sh 주요 작업:**
 - kubeadm init (토큰: 123456.1234567890123456)
-- kubectl 설정
-- Calico CNI 설치
-- 인증서 10년 연장
+- kubeconfig 설정 (~/.kube/config)
+- Calico CNI v3.31.2 설치
+- kubectl bash-completion 설정
+- kubectl 별칭 설정 (k, kg, ka, kd)
+- _Lecture_prom_learning.kit 저장소 클론
+- rerepo-prom_learning.kit 스크립트 생성
+- 인증서 10년 연장 (update-kube-cert)
 
 **worker_nodes.sh 주요 작업:**
-- kubeadm join
+- kubeadm join (토큰으로 클러스터 조인)
 
 **extra_k8s_pkgs.sh 주요 작업:**
-- Helm 설치
-- MetalLB 설치 및 설정
-- Nginx Ingress Controller 설치
-- Metrics Server 설치
-- NFS Provisioner 설치
+- Helm v3.14.0 설치
+- helm bash-completion, 별칭(h) 설정
+- helm repo 추가 (edu - prom 차트용)
+- MetalLB v0.14.4 설치 (L2 모드, IP 범위 설정)
+- Nginx Ingress Controller v1.10.1 설치 (LoadBalancer 타입)
+- Metrics Server v0.7.1 설치 (TLS 비활성화 모드)
+- NFS 디렉토리 설정 (dynamic-vol)
+- NFS Provisioner v4.0.2 설치
+- StorageClass 설치 (managed-nfs-storage, 기본 SC로 설정)
 
 ---
 

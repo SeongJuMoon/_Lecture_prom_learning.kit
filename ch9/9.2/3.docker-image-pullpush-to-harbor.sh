@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Docker version 
-docker_V='5:24.0.6-1~ubuntu.22.04~jammy' 
+docker_V='5:26.1.3-1~ubuntu.24.04~noble' 
 
 # install & enable docker (bg)
 apt-get update > /dev/null 2>&1
